@@ -1,0 +1,21 @@
+.#{$namespace}-viewport {
+
+  ul.#{$namespace}-breadcrumb {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-table;
+    color: $color-title;
+    > li {
+      display: inline;
+      > i {
+        margin: 0 0.40em;
+      }
+      > span.#{$namespace}-active {
+        color: $color-text;
+        cursor: default;
+      }
+    }
+  }
+
+}

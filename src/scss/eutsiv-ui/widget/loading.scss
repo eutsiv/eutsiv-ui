@@ -1,0 +1,49 @@
+.#{$namespace}-viewport {
+
+  .#{$namespace}-loading {
+
+    div.#{$namespace}-ball {
+      width: 0.72em;
+      height: 0.72em;
+      margin: 0.12em;
+      background: e-color('e-color-primary', 'base');
+      border-radius: 100%;
+      display: inline-block;
+      animation: #{$namespace}-loading 2s infinite ease-in-out both;
+    }
+
+    div.#{$namespace}-ball-1 {
+      animation-delay: -0.56s;
+    }
+
+    div.#{$namespace}-ball-2 {
+      animation-delay: -0.48s;
+    }
+
+    div.#{$namespace}-ball-3 {
+      animation-delay: -0.40s;
+    }
+
+    div.#{$namespace}-ball-4 {
+      animation-delay: -0.32s;
+    }
+
+    div.#{$namespace}-ball-5 {
+      animation-delay: -0.24s;
+    }
+
+    div.#{$namespace}-ball-6 {
+      animation-delay: -0.16s;
+    }
+
+  }
+
+}
+
+@keyframes #{$namespace}-loading {
+  0%, 80%, 100% {
+    transform: scale(0);
+  } 40% {
+    transform: scale(1.0);
+  }
+}

@@ -1,0 +1,60 @@
+.#{$namespace}-viewport {
+
+  ul.#{$namespace}-tree {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1em;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+
+    a {
+      display: block;
+      padding: 0.80em;
+      color: $color-text;
+      text-decoration: none;
+      &:hover {
+        background: e-color('e-color-gray', 'light-3');
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li.#{$namespace}-branch {
+      > ul {
+        display: none;
+      }
+      > a {
+        &::before {
+          font-family: "eui-icon-font";
+          content: "\e80b";
+          display: inline-block;
+          margin-right: 0.60em;
+          transition: transform 0.3s ease-in-out;
+        }
+      }
+      &.#{$namespace}-open {
+        > ul {
+          display: block;
+        }
+        > a::before {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    li.#{$namespace}-leaf {
+      i.#{$namespace}-icon, img.#{$namespace}-icon {
+        margin-right: 0.64em;
+        font-style: normal;
+      }
+    }
+
+  }
+
+}

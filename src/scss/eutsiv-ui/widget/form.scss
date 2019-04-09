@@ -1,0 +1,149 @@
+.#{$namespace}-viewport {
+
+  form.#{$namespace}-form, div.#{$namespace}-select {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: $font-size-default;
+    span.#{$namespace}-fieldset {
+      display: block;
+      margin: 0.8em 6px;
+      font-size: 1.08em;
+      font-weight: bold;
+      line-height: 1.76em;
+      color: $color-text;
+      border-bottom: $form-input-border;
+    }
+    .#{$namespace}-field {
+      display: block;
+      margin: 0 0 1em 0;
+      padding: 0 6px;
+    }
+    label {
+      display: block;
+      line-height: 1.75em;
+      color: $color-text;
+      font-size: 1em;
+      font-weight: bold;
+      -webkit-tap-highlight-color: transparent;
+
+      &.#{$namespace}-checkbox, &.#{$namespace}-radio {
+        font-weight: normal;
+      }
+
+      &.#{$namespace}-inline {
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+    }
+    input, select, textarea, .#{$namespace}-input {
+      display: block;
+      width: 100%;
+      height: 2.56em;
+      margin: 0;
+      padding: 0 0.64em;
+      line-height: 2.56em;
+      font-size: 1em;
+      background: $color-text-bg;
+      border: $form-input-border;
+      box-shadow: none;
+      outline: none;
+
+      &::placeholder {
+        opacity: 0.9;
+        font-weight: normal;
+      }
+
+    }
+    textarea {
+      min-height: 6em;
+    }
+    input:focus, select:focus, textarea:focus, .#{$namespace}-input:focus {
+      border: $form-input-focus-border;
+    }
+    input[disabled],
+    input[readonly],
+    select[disabled],
+    select[readonly],
+    textarea[disabled],
+    textarea[readonly] {
+      background: $color-disabled-bg;
+      color: $color-text;
+      &:focus {
+        border: $form-input-border;
+      }
+    }
+
+    // checkbox and radio common
+    input[type="checkbox"],
+    input[type="radio"] {
+
+      display: none;
+
+      + span.#{$namespace}-fake:before {
+        width: 16px;
+        height: 16px;
+        margin-top: -4px;
+        margin-right: 0.56em;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        background: $color-text-bg;
+        border: $form-input-border;
+        transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+        z-index: 1;
+      }
+
+      &:checked + span.#{$namespace}-fake:before {
+        border: $form-input-focus-border;
+        border-width: 5px;
+      }
+
+      &:disabled:not(:checked) + span.#{$namespace}-fake:before {
+        background: $color-disabled-bg;
+      }
+
+      &:disabled:checked + span.#{$namespace}-fake:before {
+        background: $color-disabled-bg;
+        border-color: e-color('e-color-primary', 'light-2');
+        border-width: 5px;
+      }
+
+    }
+
+    // radio
+    input[type=radio] {
+
+      + span.#{$namespace}-fake:before {
+        border-radius: 50%;
+      }
+
+    }
+
+    .#{$namespace}-input-icon {
+      display: flex;
+      border: $form-input-border;
+
+      &:focus-within {
+        border: $form-input-focus-border;
+      }
+
+      input, select, textarea, .#{$namespace}-input {
+        border: 0;
+      }
+
+      i.#{$namespace}-icon {
+        padding: 0.64em 0.32em;
+        vertical-align: middle;
+        line-height: 1.28em;
+        background: $color-text-bg;
+      }
+
+    }
+
+  }
+
+}
+
+@import 'form/select';

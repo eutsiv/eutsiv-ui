@@ -1,0 +1,63 @@
+div.#{$namespace}-select {
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+
+  .#{$namespace}-input {
+    &.#{$namespace}-open {
+      border: $form-input-focus-border;
+      border-bottom: 1px solid e-color('e-color-gray', 'light-3');
+    }
+  }
+
+  div.#{$namespace}-select-container {
+    display: none;
+
+    &.#{$namespace}-open {
+      display: block;
+    }
+
+    div.#{$namespace}-select-content {
+      position: absolute;
+      background: $color-text-bg;
+      border: $form-input-focus-border;
+      border-top: 0;
+
+      input, input:focus {
+        border: none;
+      }
+
+      > ul {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-height: 20.48em;
+        list-style: none;
+        overflow-y: auto;
+
+        li {
+          margin: 0;
+          padding: 0;
+          a {
+            display: block;
+            width: 100%;
+            margin: 0;
+            padding: 0.64em;
+            line-height: 1.28em;
+            font-size: 1em;
+            outline: none;
+            &:hover {
+              color: $color-text-bg;
+              background: $form-input-focus-border-color;
+              cursor: pointer;
+            }
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,135 @@
+<div class="eutsiv-ui-example">
+
+  <form class="e e-form" method="post" action="[% c.uri_for('/management/user/edit/save') %]">
+
+    <div class="e-tab e-tab-register">
+
+      <ul class="e-tab-menu">
+        <li class="e-tab-item"><a class="e-tab-link active" data-pane="info">Informações</a></li>
+        <li class="e-tab-item"><a class="e-tab-link" data-pane="bp">Parceiros de negócios</a></li>
+        <li class="e-tab-item"><a class="e-tab-link" data-pane="group">Grupos</a></li>
+        <li class="e-tab-item"><a class="e-tab-link" data-pane="permission">Permissões</a></li>
+      </ul>
+
+      <div class="e-tab-content">
+
+        <div class="e-tab-pane active" data-pane="info">
+
+          <div class="e-grid">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputId" class="right">Id</label>
+              <input type="text" name="id" value="[% c.stash.user.id %]" readonly="readonly">
+            </div>
+          </div>
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputName" class="right">Nome</label>
+                <input type="text" id="inputName" name="name" value="[% c.stash.user.name %]" placeholder="Nome">
+            </div>
+          </div>
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputEmail" class="right">E-mail</label>
+              <input type="text" id="inputEmail" name="email" value="[% c.stash.user.email %]" placeholder="E-mail">
+            </div>
+          </div>
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputPassword" class="right">Senha</label>
+              <input type="password" id="inputPassword" name="password" placeholder="Senha">
+            </div>
+          </div>
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputPhone" class="right">Telefone</label>
+              <input type="text" id="inputPhone" name="phone" value="[% c.stash.user.phone %]" placeholder="Telefone">
+            </div>
+          </div>
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputAdditionalEmails" class="right">E-mails adicionais</label>
+              <textarea id="inputAdditionalEmails" name="additional_emails" placeholder="E-mail adicionais">[% c.stash.user.additional_emails %]</textarea>
+              <small class="e-text-muted">Você pode adicionar vários e-mails, e separá-los por espaço, vírgula ou ponto e vírgula.</small>
+            </div>
+          </div>
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <input type="checkbox" id="inputVirtual" name="virtual" value="1" [% IF c.stash.user.virtual %]checked="checked"[% END %]>
+              <label for="inputVirtual">Virtual</label>
+            </div>
+          </div>
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <input type="checkbox" id="inputActive" name="active" value="1" [% IF c.stash.user.active %]checked="checked"[% END %]>
+              <label for="inputActive">Ativo</label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="e-tab-pane" data-pane="bp">
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputBP" class="right">Parceiros de negócios</label>
+                [% WHILE  ( row = c.stash.bp.next() ) %]
+                  <div style="width: 100%; padding: 5px; border-bottom: 1px solid #dddddd;">
+                    <input type="checkbox" name="bp" value="[% row.id %]" [% IF c.stash.is_bp_selected(row.id) %]checked="checked"[% END %]> [% row.name %]
+                  </div>
+                [% END %]
+            </div>
+          </div>
+
+        </div>
+
+        <div class="e-tab-pane" data-pane="group">
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputGroup" class="right">Grupos</label>
+              [% WHILE  ( row = c.stash.group.next() ) %]
+                <div style="width: 100%; padding: 5px; border-bottom: 1px solid #dddddd;">
+                  <input type="checkbox" name="group" value="[% row.id %]" [% IF c.stash.is_group_selected(row.id) %]checked="checked"[% END %]> [% row.name %]
+                </div>
+              [% END %]
+            </div>
+          </div>
+
+        </div>
+
+        <div class="e-tab-pane" data-pane="permission">
+
+          <div class="e-grid-row">
+            <div class="e-col e-sm-12 e-lg-6 e-field">
+              <label for="inputPermission" class="right">Permissões</label>
+              [% WHILE  ( row = c.stash.permission.next() ) %]
+                <div style="width: 100%; padding: 5px; border-bottom: 1px solid #dddddd;">
+                  <input type="checkbox" name="permission" value="[% row.id %]" [% IF c.stash.is_permission_selected(row.id) %]checked="checked"[% END %]> [% row.name %]
+                </div>
+              [% END %]
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="e-grid">
+      <div class="e-col e-sm-12 e-lg-6 e-field">
+        <button type="submit" class="e e-btn" onclick="javascript:history.go(-1)">Cancelar</button>
+        <button type="submit" class="e e-btn e-primary">Salvar</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

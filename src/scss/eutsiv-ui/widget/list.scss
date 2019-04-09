@@ -1,0 +1,49 @@
+ol.#{$namespace}, ul.#{$namespace} {
+  &, ul, ol {
+    padding: 0;
+    list-style-position: inside;
+  }
+
+  ul, ol {
+    margin: 0 0 0 1.28rem;
+  }
+
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+
+  li {
+    margin: 0;
+    padding: 0.32em 0;
+  }
+
+  &.#{$namespace}-relaxed {
+    li {
+      padding: 1em;
+    }
+  }
+
+  &.#{$namespace}-divided {
+    &, ol, ul {
+      list-style: none;
+    }
+    border-top: 1px solid e-color('e-color-gray', 'light-2');
+    li {
+      border-bottom: 1px solid e-color('e-color-gray', 'light-2');
+    }
+  }
+
+  &.#{$namespace}-hover {
+    li:hover {
+      background: e-color('e-color-gray', 'light-3');
+    }
+  }
+
+  &.#{$namespace}-darker {
+    border-top: 1px solid e-color('e-color-gray', 'light-2');
+    li {
+      background: e-color('e-color-gray', 'light-2');
+      border-bottom: 1px solid e-color('e-color-gray', 'light-3');
+    }
+  }
+
+}

@@ -1,0 +1,39 @@
+// namespace / prefix
+$namespace: "eui";
+
+// breakpoint sizes
+$media-screen-small: 800px;
+
+
+// media queries
+$media-query-small-down: "only screen and (max-width : #{$media-screen-small})" !default;
+$media-query-small-up: "only screen and (min-width : #{($media-screen-small + 1)})" !default;
+
+
+// grid
+$grid-vertical-total-columns: 8;
+$grid-horizontal-total-columns: 24;
+
+
+// colors
+$color-border: e-color('e-color-gray', 'light-2');
+
+$color-disabled-bg: e-color('e-color-gray', 'light-2');
+$color-disabled-color: e-color('e-color-gray', 'dark-3');
+$color-disabled-color-darker: darken(e-color('e-color-gray', 'dark-3'), 10%);
+
+$color-text: #232323;
+$color-text-bg: #ffffff;
+$color-title: e-color('e-color-primary', 'dark-2');
+
+
+// font
+$font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+$font-size-default: 1em;
+
+// form
+$form-input-border-color: e-color('e-color-gray', 'light-1');
+$form-input-border: 1px solid $form-input-border-color;
+
+$form-input-focus-border-color: e-color('e-color-primary', 'light-1');
+$form-input-focus-border: 1px solid $form-input-focus-border-color;

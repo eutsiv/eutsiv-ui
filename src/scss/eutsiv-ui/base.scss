@@ -1,0 +1,11 @@
+/* 
+
+eutsiv UI does not have any reset or base rules
+
+everything is defined inside the viewport component (eui-viewport)
+
+eutsiv UI does not touch in the html and body tags, you can configure those tags yourself
+
+Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
+
+*/

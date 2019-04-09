@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "system",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "rootDir": "./src/ts/",
+    "noLib": false,
+    "listFiles": false,
+    "moduleResolution": "classic",
+    "baseUrl": "./src/ts/",
+    "outFile": "./build/eutsiv-ui/eutsiv-ui.js",
+    "sourceMap": true,
+    "typeRoots" : [
+      "./node_modules/@types/"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "docs"
+  ]
+}

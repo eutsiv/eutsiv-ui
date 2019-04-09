@@ -1,0 +1,60 @@
+.#{$namespace}-viewport {
+
+  // grid
+  div.#{$namespace}-grid {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .#{$namespace}-row {
+      flex: 0 1 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: auto;
+    }
+
+    .#{$namespace}-column {
+
+      &.#{$namespace}-sm-offset-0 {
+        margin-left: 0 !important;
+      }
+
+      @for $i from 1 through $grid-horizontal-total-columns {
+        $perc: unquote((100 / ($grid-horizontal-total-columns / $i)) + "%");
+        &.#{$namespace}-sm-#{$i} {
+          flex: 0 1 $perc;
+          margin-left: 0;
+          overflow: auto;
+        }
+        &.#{$namespace}-sm-offset-#{$i} {
+          margin-left: $perc !important;
+        }
+      }
+
+      @media #{$media-query-small-up} {
+
+        &.#{$namespace}-offset-0 {
+          margin-left: 0 !important;
+        }
+
+        @for $i from 1 through $grid-horizontal-total-columns {
+          $perc: unquote((100 / ($grid-horizontal-total-columns / $i)) + "%");
+          &.#{$namespace}-#{$i} {
+            flex: 0 1 $perc;
+            margin-left: 0;
+            overflow: auto;
+          }
+          &.#{$namespace}-offset-#{$i} {
+            margin-left: $perc !important;
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}

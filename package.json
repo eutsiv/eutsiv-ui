@@ -1,0 +1,24 @@
+{
+  "name": "eutsiv-ui",
+  "devDependencies": {
+    "@types/mithril": "1.1.13",
+    "http-server": "0.11.1",
+    "mithril": "1.1.6",
+    "node-sass": "4.10.0",
+    "systemjs": "2.1.1",
+    "terser": "3.10.11",
+    "typescript": "3.1.6"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "npm run scss; npm run ts",
+    "build-docs": "cd docs; ../node_modules/typescript/bin/tsc",
+    "dist": "npm run scss-minified; npm run ts-minified",
+    "rename-definition-to-index": "mv build/eutsiv-ui/eutsiv-ui.d.ts build/eutsiv-ui/index.d.ts",
+    "scss": "node_modules/.bin/node-sass src/scss/eutsiv-ui.scss build/eutsiv-ui/eutsiv-ui.css",
+    "scss-minified": "node_modules/.bin/node-sass --output-style compressed src/scss/eutsiv-ui.scss build/eutsiv-ui/eutsiv-ui.min.css;",
+    "start": "node_modules/http-server/bin/http-server",
+    "ts": "node_modules/typescript/bin/tsc; npm run rename-definition-to-index",
+    "ts-minified": "node_modules/typescript/bin/tsc; npm run rename-definition-to-index; ./node_modules/.bin/terser build/eutsiv-ui/eutsiv-ui.js --compress --mangle --source-map --output build/eutsiv-ui/eutsiv-ui.min.js"
+  }
+}

@@ -1,0 +1,182 @@
+.#{$namespace}-viewport {
+
+  a.#{$namespace}-button, button.#{$namespace}-button, input.#{$namespace}-button {
+    cursor: pointer;
+    display: inline-block;
+    height: 2.56em;
+    margin: 0;
+    padding: 0 1.28em;
+    border: none;
+    outline: 0;
+    line-height: 2.56em;
+    text-decoration: none;
+    text-shadow: none;
+    text-align: center;
+
+    font-family: $font-family;
+    font-size: $font-size-default;
+    font-weight: bold;
+    
+    color: $color-text;
+    background: $color-disabled-bg;
+    z-index: 1;
+    transition: 0.2s ease-out;
+    user-select: none;
+
+    // Gets rid of tap active state
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      background: e-color('e-color-gray', 'light-1');
+    }
+
+    &.#{$namespace}-primary {
+      color: $color-text-bg;
+      background: e-color('e-color-primary', 'base');
+      &:hover {
+        background: e-color('e-color-primary', 'dark-1');
+      }
+    }
+
+    &.#{$namespace}-secondary {
+      color: $color-text-bg;
+      background: e-color('e-color-secondary', 'base');
+      &:hover {
+        background: e-color('e-color-secondary', 'dark-1');
+      }
+    }
+
+    &.#{$namespace}-danger {
+      color: $color-text-bg;
+      background: e-color('e-color-danger', 'base');
+      &:hover {
+        background: e-color('e-color-danger', 'dark-1');
+      }
+    }
+
+    &.#{$namespace}-warning {
+      color: $color-text-bg;
+      background: e-color('e-color-warning', 'base');
+      &:hover {
+        background: e-color('e-color-warning', 'dark-1');
+      }
+    }
+
+    &.#{$namespace}-caution {
+      color: $color-text;
+      background: e-color('e-color-caution', 'base');
+      &:hover {
+        background: e-color('e-color-caution', 'dark-1');
+      }
+    }
+
+    &.#{$namespace}-notice {
+      color: $color-text-bg;
+      background: e-color('e-color-notice', 'base');
+      &:hover {
+        background: e-color('e-color-notice', 'dark-1');
+      }
+    }
+
+    &.#{$namespace}-safety {
+      color: $color-text-bg;
+      background: e-color('e-color-safety', 'base');
+      &:hover {
+        background: e-color('e-color-safety', 'dark-1');
+      }
+    }
+
+    &.#{$namespace}-reverse {
+      color: $color-text-bg;
+      background: $color-text;
+      &:hover {
+        background: #000000;
+      }
+    }
+
+    &:disabled,
+    &[disabled] {
+      pointer-events: none;
+      background: $color-disabled-bg;
+      color: $color-disabled-color;
+      cursor: default;
+    }
+
+    &.#{$namespace}-flat {
+      background: transparent;
+      transition: none;
+
+      &:hover {
+        background: transparent;
+        text-decoration: underline;
+      }
+
+      &.#{$namespace}-primary {
+        color: e-color('e-color-primary', 'base');
+      }
+
+      &.#{$namespace}-secondary {
+        color: e-color('e-color-secondary', 'base');
+      }
+
+      &.#{$namespace}-danger {
+        color: e-color('e-color-danger', 'base');
+      }
+
+      &.#{$namespace}-warning {
+        color: e-color('e-color-warning', 'base');
+      }
+
+      &.#{$namespace}-caution {
+        color: e-color('e-color-caution', 'base');
+      }
+
+      &.#{$namespace}-notice {
+        color: e-color('e-color-notice', 'base');
+      }
+
+      &.#{$namespace}-safety {
+        color: e-color('e-color-safety', 'base');
+      }
+
+      &.#{$namespace}-reverse {
+        color: $color-text-bg;
+      }
+
+      &:disabled,
+      &[disabled] {
+        pointer-events: none;
+        background: transparent;
+        color: $color-disabled-color;
+        cursor: default;
+      }
+
+    }
+
+    &.#{$namespace}-block {
+      display: block;
+      width: 100%;
+    }
+
+    &.#{$namespace}-compact {
+      height: 1.72em;
+      line-height: 1.72em;
+      padding: 0 0.56em;
+      font-weight: normal;
+    }
+
+    &.#{$namespace}-spaced {
+      margin: 0 2px 2px 0;
+    }  
+
+    > i.#{$namespace}-icon:first-child {
+      margin: 0 0.428571429em 0 -0.214285714em;
+    }
+
+    > i.#{$namespace}-icon:last-child {
+      margin: 0 -0.214285714em 0 0.428571429em;
+    }  
+
+  }
+
+}

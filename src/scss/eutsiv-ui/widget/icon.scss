@@ -1,0 +1,42 @@
+.#{$namespace}-viewport {
+
+  i.#{$namespace}-icon {
+    
+    &.#{$namespace}-primary {
+      color: e-color('e-color-primary', 'base');
+    }
+
+    &.#{$namespace}-secondary {
+      color: e-color('e-color-secondary', 'base');
+    }
+
+    &.#{$namespace}-danger {
+      color: e-color('e-color-danger', 'base');
+    }
+
+    &.#{$namespace}-warning {
+      color: e-color('e-color-warning', 'base');
+    }
+
+    &.#{$namespace}-caution {
+      color: e-color('e-color-caution', 'base');
+    }
+
+    &.#{$namespace}-notice {
+      color: e-color('e-color-notice', 'base');
+    }
+
+    &.#{$namespace}-safety {
+      color: e-color('e-color-safety', 'base');
+    }
+
+    &:disabled,
+    &[disabled] {
+      opacity: 0.4;
+      color: $color-disabled-color;
+      cursor: default;
+    }
+
+  }
+
+}

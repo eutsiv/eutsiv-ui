@@ -1,0 +1,64 @@
+.#{$namespace}-viewport {
+
+  .#{$namespace}-calendar {
+
+    h2 {
+      margin: 0;
+      padding: 1em;
+      line-height: 1.5;
+      font-weight: 300;
+      color: #fff;
+      background: e-color('e-color-primary', 'base');
+      text-align: center;
+    }
+
+    .#{$namespace}-day {
+      width: 14.285714286%; // 100%/7
+      padding: 0.5em;
+    }
+
+    > .#{$namespace}-week-days {
+
+      color: #fff;
+      background: e-color('e-color-primary', 'base');
+
+      > .#{$namespace}-day {
+        display: inline-block;
+        line-height: 1.5;
+      }
+    }
+
+    > .#{$namespace}-calendar-grid {
+      display: flex;
+      flex-direction: column;
+
+      > .#{$namespace}-calendar-row {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+
+        > .#{$namespace}-day {
+
+          background: e-color('e-color-gray', 'light-3');
+          border: 1px solid e-color('e-color-gray', 'light-2');
+          border-bottom: 0;
+          border-right: 0;
+
+          &.#{$namespace}-other-month {
+            opacity: 0.5;
+          }
+
+          &:not(.#{$namespace}-other-month):hover {
+            color: #fff;
+            background: e-color('e-color-primary', 'base');
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,59 @@
+/*
+
+  - First of all, every app must have a viewport as root element
+  - And, fuck the things outside the viewport
+  - any type of reset will be made here
+
+*/
+
+.#{$namespace}-viewport {
+  
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: auto;
+
+  font-size: 14px;
+  font-family: $font-family;
+
+  & *, 
+  & *::before, 
+  & *::after {
+    box-sizing: border-box;
+  }
+
+  & img {
+    border: 0;
+  }
+
+
+  $scroll-bar-width: 6px;
+
+  // scroll bar init
+  /* width */
+  &::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: $scroll-bar-width;
+    height: $scroll-bar-width;
+    background-color: e-color('e-color-gray', 'light-2');
+  }
+
+  /* Track */
+  //::-webkit-scrollbar-track {}
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb {
+    background: e-color('e-color-primary', 'base');
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover,
+  *::-webkit-scrollbar-thumb:hover {
+    background: e-color('e-color-primary', 'light-1');
+  }
+  // scroll bar end
+
+}
