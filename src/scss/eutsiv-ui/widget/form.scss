@@ -45,7 +45,7 @@
       padding: 0 0.64em;
       line-height: 2.56em;
       font-size: 1em;
-      background: $color-text-bg;
+      background: $color-bg;
       border: $form-input-border;
       box-shadow: none;
       outline: none;
@@ -60,6 +60,7 @@
       min-height: 6em;
     }
     input:focus, select:focus, textarea:focus, .#{$namespace}-input:focus {
+      background: $color-focus-bg;
       border: $form-input-focus-border;
     }
     input[disabled],
@@ -106,7 +107,7 @@
 
       &:disabled:checked + span.#{$namespace}-fake:before {
         background: $color-disabled-bg;
-        border-color: e-color('e-color-primary', 'light-2');
+        border-color: eui-color('primary', 'light-2');
         border-width: 5px;
       }
 

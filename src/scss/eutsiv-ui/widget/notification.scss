@@ -4,34 +4,34 @@
     padding: 0.64em 1.28em;
     font-size: 1em;
     color: $color-text;
-    background-color: e-color('e-color-gray', 'light-3');
+    background-color: eui-color('gray', 'light-3');
 
     &.#{$namespace}-primary {
       color: #ffffff;
-      background: e-color('e-color-primary', 'base');
+      background: eui-color('primary', 'base');
     }
     &.#{$namespace}-secondary {
       color: #ffffff;
-      background: e-color('e-color-secondary', 'base');
+      background: eui-color('secondary', 'base');
     }
     &.#{$namespace}-reverse {
       color: #ffffff;
       background: #000000;
     }
     &.#{$namespace}-danger {
-      background: e-color('e-color-danger', 'light-3');
+      background: eui-color('danger', 'light-3');
     }
     &.#{$namespace}-warning {
-      background: e-color('e-color-warning', 'light-3');
+      background: eui-color('warning', 'light-3');
     }
     &.#{$namespace}-caution {
-      background: e-color('e-color-caution', 'light-3');
+      background: eui-color('caution', 'light-3');
     }
     &.#{$namespace}-notice {
-      background: e-color('e-color-notice', 'light-3');
+      background: eui-color('notice', 'light-3');
     }
     &.#{$namespace}-safety {
-      background: e-color('e-color-safety', 'light-3');
+      background: eui-color('safety', 'light-3');
     }
   }
 

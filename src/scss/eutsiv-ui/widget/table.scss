@@ -14,7 +14,7 @@
       > tbody {
         > tr {
           &:nth-child(odd) {
-            background-color: e-color('e-color-gray', 'light-3');
+            background-color: eui-color('gray', 'light-3');
           }
         }
       }
@@ -28,7 +28,7 @@
           font-size: 0.92em;
           font-weight: bold;
           text-align: left;
-          color: e-color('e-color-gray', 'dark-3');
+          color: eui-color('black', 'light-2');
         }
       }
     }
@@ -41,25 +41,25 @@
           color: $color-text;
         }
         &:hover {
-          background-color: e-color('e-color-gray', 'light-2') !important;
+          background-color: eui-color('gray', 'light-2') !important;
         }
         &.#{$namespace}-gray {
-          background-color: e-color('e-color-gray', 'light-3');
+          background-color: eui-color('gray', 'light-3');
         }
         &.#{$namespace}-danger {
-          background-color: e-color('e-color-danger', 'light-3');
+          background-color: eui-color('danger', 'light-3');
         }
         &.#{$namespace}-warning {
-          background-color: e-color('e-color-warning', 'light-3');
+          background-color: eui-color('warning', 'light-3');
         }
         &.#{$namespace}-caution {
-          background-color: e-color('e-color-caution', 'light-3');
+          background-color: eui-color('caution', 'light-3');
         }
         &.#{$namespace}-notice {
-          background-color: e-color('e-color-notice', 'light-3');
+          background-color: eui-color('notice', 'light-3');
         }
         &.#{$namespace}-safety {
-          background-color: e-color('e-color-safety', 'light-3');
+          background-color: eui-color('safety', 'light-3');
         }
         &.#{$namespace}-text-bold {
           font-weight: bold;

@@ -21,44 +21,44 @@
       font-size: 0.92em;
       font-weight: bold;
       color: $color-text;
-      background: e-color('e-color-gray', 'light-1');
+      background: eui-color('gray', 'light-1');
 
       // Gets rid of tap active state
       -webkit-tap-highlight-color: transparent;
 
       &.#{$namespace}-primary {
         color: $color-text-bg;
-        background: e-color('e-color-primary', 'base');
+        background: eui-color('primary', 'base');
       }
 
       &.#{$namespace}-secondary {
         color: $color-text-bg;
-        background: e-color('e-color-secondary', 'base');
+        background: eui-color('secondary', 'base');
       }
 
       &.#{$namespace}-danger {
         color: $color-text-bg;
-        background: e-color('e-color-danger', 'base');
+        background: eui-color('danger', 'base');
       }
 
       &.#{$namespace}-warning {
         color: $color-text-bg;
-        background: e-color('e-color-warning', 'base');
+        background: eui-color('warning', 'base');
       }
 
       &.#{$namespace}-caution {
         color: $color-text;
-        background: e-color('e-color-caution', 'base');
+        background: eui-color('caution', 'base');
       }
 
       &.#{$namespace}-notice {
         color: $color-text-bg;
-        background: e-color('e-color-notice', 'base');
+        background: eui-color('notice', 'base');
       }
 
       &.#{$namespace}-safety {
         color: $color-text-bg;
-        background: e-color('e-color-safety', 'base');
+        background: eui-color('safety', 'base');
       }
 
     }

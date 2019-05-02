@@ -6,7 +6,7 @@
     display: inline-block;
     font-size: 1em;
     text-decoration: underline;
-    color: e-color('e-color-notice', 'base');
+    color: eui-color('notice', 'base');
 
     // Gets rid of tap active state
     -webkit-tap-highlight-color: transparent;
@@ -16,31 +16,31 @@
     }
 
     &.#{$namespace}-primary {
-      color: e-color('e-color-primary', 'base');
+      color: eui-color('primary', 'base');
     }
 
     &.#{$namespace}-secondary {
-      color: e-color('e-color-secondary', 'base');
+      color: eui-color('secondary', 'base');
     }
 
     &.#{$namespace}-danger {
-      color: e-color('e-color-danger', 'base');
+      color: eui-color('danger', 'base');
     }
 
     &.#{$namespace}-warning {
-      color: e-color('e-color-warning', 'base');
+      color: eui-color('warning', 'base');
     }
 
     &.#{$namespace}-caution {
-      color: e-color('e-color-caution', 'base');
+      color: eui-color('caution', 'base');
     }
 
     &.#{$namespace}-notice {
-      color: e-color('e-color-notice', 'base');
+      color: eui-color('notice', 'base');
     }
 
     &.#{$namespace}-safety {
-      color: e-color('e-color-safety', 'base');
+      color: eui-color('safety', 'base');
     }
 
     &.#{$namespace}-black {

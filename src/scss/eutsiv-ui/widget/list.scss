@@ -26,23 +26,23 @@ ol.#{$namespace}, ul.#{$namespace} {
     &, ol, ul {
       list-style: none;
     }
-    border-top: 1px solid e-color('e-color-gray', 'light-2');
+    border-top: 1px solid eui-color('gray', 'light-2');
     li {
-      border-bottom: 1px solid e-color('e-color-gray', 'light-2');
+      border-bottom: 1px solid eui-color('gray', 'light-2');
     }
   }
 
   &.#{$namespace}-hover {
     li:hover {
-      background: e-color('e-color-gray', 'light-3');
+      background: eui-color('gray', 'light-3');
     }
   }
 
   &.#{$namespace}-darker {
-    border-top: 1px solid e-color('e-color-gray', 'light-2');
+    border-top: 1px solid eui-color('gray', 'light-2');
     li {
-      background: e-color('e-color-gray', 'light-2');
-      border-bottom: 1px solid e-color('e-color-gray', 'light-3');
+      background: eui-color('gray', 'light-2');
+      border-bottom: 1px solid eui-color('gray', 'light-3');
     }
   }
 

@@ -8,7 +8,7 @@
       line-height: 1.5;
       font-weight: 300;
       color: #fff;
-      background: e-color('e-color-primary', 'base');
+      background: eui-color('primary', 'base');
       text-align: center;
     }
 
@@ -20,7 +20,7 @@
     > .#{$namespace}-week-days {
 
       color: #fff;
-      background: e-color('e-color-primary', 'base');
+      background: eui-color('primary', 'base');
 
       > .#{$namespace}-day {
         display: inline-block;
@@ -39,8 +39,8 @@
 
         > .#{$namespace}-day {
 
-          background: e-color('e-color-gray', 'light-3');
-          border: 1px solid e-color('e-color-gray', 'light-2');
+          background: eui-color('gray', 'light-3');
+          border: 1px solid eui-color('gray', 'light-2');
           border-bottom: 0;
           border-right: 0;
 
@@ -50,7 +50,7 @@
 
           &:not(.#{$namespace}-other-month):hover {
             color: #fff;
-            background: e-color('e-color-primary', 'base');
+            background: eui-color('primary', 'base');
           }
 
         }

@@ -6,7 +6,7 @@ div.#{$namespace}-select {
   .#{$namespace}-input {
     &.#{$namespace}-open {
       border: $form-input-focus-border;
-      border-bottom: 1px solid e-color('e-color-gray', 'light-3');
+      border-bottom: 1px solid eui-color('gray', 'light-3');
     }
   }
 
@@ -48,7 +48,7 @@ div.#{$namespace}-select {
             outline: none;
             &:hover {
               color: $color-text-bg;
-              background: $form-input-focus-border-color;
+              background: $color-focus-border;
               cursor: pointer;
             }
           }

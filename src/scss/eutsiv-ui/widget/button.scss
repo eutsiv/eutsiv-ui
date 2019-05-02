@@ -27,62 +27,62 @@
     -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background: e-color('e-color-gray', 'light-1');
+      background: eui-color('gray', 'light-1');
     }
 
     &.#{$namespace}-primary {
       color: $color-text-bg;
-      background: e-color('e-color-primary', 'base');
+      background: eui-color('primary', 'base');
       &:hover {
-        background: e-color('e-color-primary', 'dark-1');
+        background: eui-color('primary', 'dark-1');
       }
     }
 
     &.#{$namespace}-secondary {
       color: $color-text-bg;
-      background: e-color('e-color-secondary', 'base');
+      background: eui-color('secondary', 'base');
       &:hover {
-        background: e-color('e-color-secondary', 'dark-1');
+        background: eui-color('secondary', 'dark-1');
       }
     }
 
     &.#{$namespace}-danger {
       color: $color-text-bg;
-      background: e-color('e-color-danger', 'base');
+      background: eui-color('danger', 'base');
       &:hover {
-        background: e-color('e-color-danger', 'dark-1');
+        background: eui-color('danger', 'dark-1');
       }
     }
 
     &.#{$namespace}-warning {
       color: $color-text-bg;
-      background: e-color('e-color-warning', 'base');
+      background: eui-color('warning', 'base');
       &:hover {
-        background: e-color('e-color-warning', 'dark-1');
+        background: eui-color('warning', 'dark-1');
       }
     }
 
     &.#{$namespace}-caution {
       color: $color-text;
-      background: e-color('e-color-caution', 'base');
+      background: eui-color('caution', 'base');
       &:hover {
-        background: e-color('e-color-caution', 'dark-1');
+        background: eui-color('caution', 'dark-1');
       }
     }
 
     &.#{$namespace}-notice {
       color: $color-text-bg;
-      background: e-color('e-color-notice', 'base');
+      background: eui-color('notice', 'base');
       &:hover {
-        background: e-color('e-color-notice', 'dark-1');
+        background: eui-color('notice', 'dark-1');
       }
     }
 
     &.#{$namespace}-safety {
       color: $color-text-bg;
-      background: e-color('e-color-safety', 'base');
+      background: eui-color('safety', 'base');
       &:hover {
-        background: e-color('e-color-safety', 'dark-1');
+        background: eui-color('safety', 'dark-1');
       }
     }
 
@@ -112,31 +112,31 @@
       }
 
       &.#{$namespace}-primary {
-        color: e-color('e-color-primary', 'base');
+        color: eui-color('primary', 'base');
       }
 
       &.#{$namespace}-secondary {
-        color: e-color('e-color-secondary', 'base');
+        color: eui-color('secondary', 'base');
       }
 
       &.#{$namespace}-danger {
-        color: e-color('e-color-danger', 'base');
+        color: eui-color('danger', 'base');
       }
 
       &.#{$namespace}-warning {
-        color: e-color('e-color-warning', 'base');
+        color: eui-color('warning', 'base');
       }
 
       &.#{$namespace}-caution {
-        color: e-color('e-color-caution', 'base');
+        color: eui-color('caution', 'base');
       }
 
       &.#{$namespace}-notice {
-        color: e-color('e-color-notice', 'base');
+        color: eui-color('notice', 'base');
       }
 
       &.#{$namespace}-safety {
-        color: e-color('e-color-safety', 'base');
+        color: eui-color('safety', 'base');
       }
 
       &.#{$namespace}-reverse {

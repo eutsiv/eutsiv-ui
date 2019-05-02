@@ -11,7 +11,7 @@ let View = {
         m("h1", "eutsiv UI")
       ]),
       m(Row, [
-        m(Link, 'http://github.com/eutsiv/eutsiv-ui')
+        m(Link, { href: 'https://github.com/eutsiv/eutsiv-ui' }, 'https://github.com/eutsiv/eutsiv-ui')
       ])
     ])
   }
