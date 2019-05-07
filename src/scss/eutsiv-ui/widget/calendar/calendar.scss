@@ -1,6 +1,6 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  .#{$namespace}-calendar {
+  .#{$eui-namespace}-calendar {
 
     h2 {
       margin: 0;
@@ -12,43 +12,43 @@
       text-align: center;
     }
 
-    .#{$namespace}-day {
+    .#{$eui-namespace}-day {
       width: 14.285714286%; // 100%/7
       padding: 0.5em;
     }
 
-    > .#{$namespace}-week-days {
+    > .#{$eui-namespace}-week-days {
 
       color: #fff;
       background: eui-color('primary', 'base');
 
-      > .#{$namespace}-day {
+      > .#{$eui-namespace}-day {
         display: inline-block;
         line-height: 1.5;
       }
     }
 
-    > .#{$namespace}-calendar-grid {
+    > .#{$eui-namespace}-calendar-grid {
       display: flex;
       flex-direction: column;
 
-      > .#{$namespace}-calendar-row {
+      > .#{$eui-namespace}-calendar-row {
         display: flex;
         flex-direction: row;
         flex-grow: 1;
 
-        > .#{$namespace}-day {
+        > .#{$eui-namespace}-day {
 
           background: eui-color('gray', 'light-3');
           border: 1px solid eui-color('gray', 'light-2');
           border-bottom: 0;
           border-right: 0;
 
-          &.#{$namespace}-other-month {
+          &.#{$eui-namespace}-other-month {
             opacity: 0.5;
           }
 
-          &:not(.#{$namespace}-other-month):hover {
+          &:not(.#{$eui-namespace}-other-month):hover {
             color: #fff;
             background: eui-color('primary', 'base');
           }

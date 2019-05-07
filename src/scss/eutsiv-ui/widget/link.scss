@@ -1,6 +1,6 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  a.#{$namespace}-link {
+  a.#{$eui-namespace}-link {
     cursor: pointer;
     border: none;
     display: inline-block;
@@ -15,46 +15,46 @@
       text-decoration: none;
     }
 
-    &.#{$namespace}-primary {
+    &.#{$eui-namespace}-primary {
       color: eui-color('primary', 'base');
     }
 
-    &.#{$namespace}-secondary {
+    &.#{$eui-namespace}-secondary {
       color: eui-color('secondary', 'base');
     }
 
-    &.#{$namespace}-danger {
+    &.#{$eui-namespace}-danger {
       color: eui-color('danger', 'base');
     }
 
-    &.#{$namespace}-warning {
+    &.#{$eui-namespace}-warning {
       color: eui-color('warning', 'base');
     }
 
-    &.#{$namespace}-caution {
+    &.#{$eui-namespace}-caution {
       color: eui-color('caution', 'base');
     }
 
-    &.#{$namespace}-notice {
+    &.#{$eui-namespace}-notice {
       color: eui-color('notice', 'base');
     }
 
-    &.#{$namespace}-safety {
+    &.#{$eui-namespace}-safety {
       color: eui-color('safety', 'base');
     }
 
-    &.#{$namespace}-black {
-      color: $color-text;
+    &.#{$eui-namespace}-black {
+      color: $eui-color;
     }
 
-    &.#{$namespace}-white {
-      color: $color-text-bg;
+    &.#{$eui-namespace}-white {
+      color: $eui-color-bg;
     }
 
     &:disabled,
     &[disabled] {
       pointer-events: none;
-      color: $color-disabled-color;
+      color: $eui-color-disabled;
       cursor: default;
       text-decoration: none;
     }

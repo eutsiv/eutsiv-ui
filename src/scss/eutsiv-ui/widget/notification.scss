@@ -1,36 +1,36 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  .#{$namespace}-notification {
+  .#{$eui-namespace}-notification {
     padding: 0.64em 1.28em;
     font-size: 1em;
-    color: $color-text;
+    color: $eui-color;
     background-color: eui-color('gray', 'light-3');
 
-    &.#{$namespace}-primary {
+    &.#{$eui-namespace}-primary {
       color: #ffffff;
       background: eui-color('primary', 'base');
     }
-    &.#{$namespace}-secondary {
+    &.#{$eui-namespace}-secondary {
       color: #ffffff;
       background: eui-color('secondary', 'base');
     }
-    &.#{$namespace}-reverse {
+    &.#{$eui-namespace}-reverse {
       color: #ffffff;
       background: #000000;
     }
-    &.#{$namespace}-danger {
+    &.#{$eui-namespace}-danger {
       background: eui-color('danger', 'light-3');
     }
-    &.#{$namespace}-warning {
+    &.#{$eui-namespace}-warning {
       background: eui-color('warning', 'light-3');
     }
-    &.#{$namespace}-caution {
+    &.#{$eui-namespace}-caution {
       background: eui-color('caution', 'light-3');
     }
-    &.#{$namespace}-notice {
+    &.#{$eui-namespace}-notice {
       background: eui-color('notice', 'light-3');
     }
-    &.#{$namespace}-safety {
+    &.#{$eui-namespace}-safety {
       background: eui-color('safety', 'light-3');
     }
   }

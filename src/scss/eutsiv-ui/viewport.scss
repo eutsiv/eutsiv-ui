@@ -6,7 +6,7 @@
 
 */
 
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
   
   box-sizing: border-box;
 
@@ -16,7 +16,7 @@
   overflow: auto;
 
   font-size: 14px;
-  font-family: $font-family;
+  font-family: $eui-font-family;
 
   & *, 
   & *::before, 

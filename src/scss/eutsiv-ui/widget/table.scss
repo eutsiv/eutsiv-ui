@@ -1,20 +1,20 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  table.#{$namespace}-table {
+  table.#{$eui-namespace}-table {
     width: 100%;
     margin: 0;
     padding: 0;
     border-collapse: collapse;
     border-spacing: 0px;
-    border-top: 1px solid $color-border;
-    background: $color-text-bg;
+    border-top: 1px solid $eui-color-border;
+    background: $eui-color-white;
     white-space: nowrap;
 
-    &.#{$namespace}-striped {
+    &.#{$eui-namespace}-striped {
       > tbody {
         > tr {
           &:nth-child(odd) {
-            background-color: eui-color('gray', 'light-3');
+            background-color: $eui-color-bg;
           }
         }
       }
@@ -24,7 +24,7 @@
       > tr {
         > th {
           padding: 1.16em;
-          border-bottom: 1px solid $color-border;
+          border-bottom: 1px solid $eui-color-border;
           font-size: 0.92em;
           font-weight: bold;
           text-align: left;
@@ -36,32 +36,32 @@
       > tr {
         > td {
           padding: 0.64em 1.28em;
-          border-bottom: 1px solid $color-border;
+          border-bottom: 1px solid $eui-color-border;
           font-size: 1em;
-          color: $color-text;
+          color: $eui-color;
         }
         &:hover {
-          background-color: eui-color('gray', 'light-2') !important;
+          background-color: $eui-color-hover !important;
         }
-        &.#{$namespace}-gray {
+        &.#{$eui-namespace}-gray {
           background-color: eui-color('gray', 'light-3');
         }
-        &.#{$namespace}-danger {
+        &.#{$eui-namespace}-danger {
           background-color: eui-color('danger', 'light-3');
         }
-        &.#{$namespace}-warning {
+        &.#{$eui-namespace}-warning {
           background-color: eui-color('warning', 'light-3');
         }
-        &.#{$namespace}-caution {
+        &.#{$eui-namespace}-caution {
           background-color: eui-color('caution', 'light-3');
         }
-        &.#{$namespace}-notice {
+        &.#{$eui-namespace}-notice {
           background-color: eui-color('notice', 'light-3');
         }
-        &.#{$namespace}-safety {
+        &.#{$eui-namespace}-safety {
           background-color: eui-color('safety', 'light-3');
         }
-        &.#{$namespace}-text-bold {
+        &.#{$eui-namespace}-text-bold {
           font-weight: bold;
         }
       }
@@ -70,7 +70,7 @@
   }
 
   // make the table responsive
-  div.#{$namespace}-table-container {
+  div.#{$eui-namespace}-table-container {
     overflow-x: auto;
   }
 

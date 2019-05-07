@@ -582,29 +582,29 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     line-height: 1.6em;
     font-size: 0.92em;
     font-weight: bold;
-    color: #232323;
+    color: #222222;
     background: #dbdbdb;
     -webkit-tap-highlight-color: transparent; }
     .eui-viewport .eui-badge-container .eui-badge.eui-primary {
-      color: #ffffff;
+      color: #ebebeb;
       background: #214478; }
     .eui-viewport .eui-badge-container .eui-badge.eui-secondary {
-      color: #ffffff;
+      color: #ebebeb;
       background: #5aa02c; }
     .eui-viewport .eui-badge-container .eui-badge.eui-danger {
-      color: #ffffff;
+      color: #ebebeb;
       background: #f21c0d; }
     .eui-viewport .eui-badge-container .eui-badge.eui-warning {
-      color: #ffffff;
+      color: #ebebeb;
       background: #ff9900; }
     .eui-viewport .eui-badge-container .eui-badge.eui-caution {
-      color: #232323;
+      color: #222222;
       background: #ffe500; }
     .eui-viewport .eui-badge-container .eui-badge.eui-notice {
-      color: #ffffff;
+      color: #ebebeb;
       background: #0d8bf2; }
     .eui-viewport .eui-badge-container .eui-badge.eui-safety {
-      color: #ffffff;
+      color: #ebebeb;
       background: #4eb151; }
 
 .eui-viewport ul.eui-breadcrumb {
@@ -612,31 +612,30 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   padding: 0;
   list-style: none;
   display: inline-table;
-  color: #0d1b30; }
+  color: #173054; }
   .eui-viewport ul.eui-breadcrumb > li {
     display: inline; }
     .eui-viewport ul.eui-breadcrumb > li > i {
       margin: 0 0.40em; }
     .eui-viewport ul.eui-breadcrumb > li > span.eui-active {
-      color: #232323;
+      color: #222222;
       cursor: default; }
 
 .eui-viewport a.eui-button, .eui-viewport button.eui-button, .eui-viewport input.eui-button {
   cursor: pointer;
   display: inline-block;
-  height: 2.56em;
   margin: 0;
-  padding: 0 1.28em;
+  padding: 12px 20px;
   border: none;
   outline: 0;
-  line-height: 2.56em;
+  line-height: 1.1;
   text-decoration: none;
   text-shadow: none;
   text-align: center;
   font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 1em;
   font-weight: bold;
-  color: #232323;
+  color: #222222;
   background: #ebebeb;
   z-index: 1;
   transition: 0.2s ease-out;
@@ -665,7 +664,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     .eui-viewport a.eui-button.eui-warning:hover, .eui-viewport button.eui-button.eui-warning:hover, .eui-viewport input.eui-button.eui-warning:hover {
       background: #cc7a00; }
   .eui-viewport a.eui-button.eui-caution, .eui-viewport button.eui-button.eui-caution, .eui-viewport input.eui-button.eui-caution {
-    color: #232323;
+    color: #222222;
     background: #ffe500; }
     .eui-viewport a.eui-button.eui-caution:hover, .eui-viewport button.eui-button.eui-caution:hover, .eui-viewport input.eui-button.eui-caution:hover {
       background: #ccb700; }
@@ -681,13 +680,13 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
       background: #377c39; }
   .eui-viewport a.eui-button.eui-reverse, .eui-viewport button.eui-button.eui-reverse, .eui-viewport input.eui-button.eui-reverse {
     color: #ffffff;
-    background: #232323; }
+    background: #222222; }
     .eui-viewport a.eui-button.eui-reverse:hover, .eui-viewport button.eui-button.eui-reverse:hover, .eui-viewport input.eui-button.eui-reverse:hover {
       background: #000000; }
   .eui-viewport a.eui-button:disabled, .eui-viewport a.eui-button[disabled], .eui-viewport button.eui-button:disabled, .eui-viewport button.eui-button[disabled], .eui-viewport input.eui-button:disabled, .eui-viewport input.eui-button[disabled] {
     pointer-events: none;
-    background: #ebebeb;
-    color: #525252;
+    background: #fafafa;
+    color: #8f8f8f;
     cursor: default; }
   .eui-viewport a.eui-button.eui-flat, .eui-viewport button.eui-button.eui-flat, .eui-viewport input.eui-button.eui-flat {
     background: transparent;
@@ -714,22 +713,21 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     .eui-viewport a.eui-button.eui-flat:disabled, .eui-viewport a.eui-button.eui-flat[disabled], .eui-viewport button.eui-button.eui-flat:disabled, .eui-viewport button.eui-button.eui-flat[disabled], .eui-viewport input.eui-button.eui-flat:disabled, .eui-viewport input.eui-button.eui-flat[disabled] {
       pointer-events: none;
       background: transparent;
-      color: #525252;
+      color: #8f8f8f;
       cursor: default; }
   .eui-viewport a.eui-button.eui-block, .eui-viewport button.eui-button.eui-block, .eui-viewport input.eui-button.eui-block {
     display: block;
     width: 100%; }
   .eui-viewport a.eui-button.eui-compact, .eui-viewport button.eui-button.eui-compact, .eui-viewport input.eui-button.eui-compact {
-    height: 1.72em;
-    line-height: 1.72em;
-    padding: 0 0.56em;
+    line-height: 1.1;
+    padding: 6px 10px;
     font-weight: normal; }
   .eui-viewport a.eui-button.eui-spaced, .eui-viewport button.eui-button.eui-spaced, .eui-viewport input.eui-button.eui-spaced {
-    margin: 0 2px 2px 0; }
+    margin: 0 4px 4px 0; }
   .eui-viewport a.eui-button > i.eui-icon:first-child, .eui-viewport button.eui-button > i.eui-icon:first-child, .eui-viewport input.eui-button > i.eui-icon:first-child {
-    margin: 0 0.428571429em 0 -0.214285714em; }
+    margin: 0 8px 0 -0.21429em; }
   .eui-viewport a.eui-button > i.eui-icon:last-child, .eui-viewport button.eui-button > i.eui-icon:last-child, .eui-viewport input.eui-button > i.eui-icon:last-child {
-    margin: 0 -0.214285714em 0 0.428571429em; }
+    margin: 0 -0.21429em 0 8px; }
 
 .eui-viewport .eui-calendar h2 {
   margin: 0;
@@ -837,21 +835,22 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   display: inline-block;
   padding: 0.5em 0;
   font-size: 0.84em;
-  color: #232323; }
+  color: #222222; }
 
 .eui-viewport form.eui-form, .eui-viewport div.eui-select {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 1em; }
+  font-size: 1em;
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; }
   .eui-viewport form.eui-form span.eui-fieldset, .eui-viewport div.eui-select span.eui-fieldset {
     display: block;
     margin: 0.8em 6px;
     font-size: 1.08em;
     font-weight: bold;
     line-height: 1.76em;
-    color: #232323;
-    border-bottom: 1px solid #ebebeb; }
+    color: #222222;
+    border-bottom: 1px solid #dbdbdb; }
   .eui-viewport form.eui-form .eui-field, .eui-viewport div.eui-select .eui-field {
     display: block;
     margin: 0 0 1em 0;
@@ -859,7 +858,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport form.eui-form label, .eui-viewport div.eui-select label {
     display: block;
     line-height: 1.75em;
-    color: #232323;
+    color: #222222;
     font-size: 1em;
     font-weight: bold;
     -webkit-tap-highlight-color: transparent; }
@@ -871,13 +870,13 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport form.eui-form input, .eui-viewport form.eui-form select, .eui-viewport form.eui-form textarea, .eui-viewport form.eui-form .eui-input, .eui-viewport div.eui-select input, .eui-viewport div.eui-select select, .eui-viewport div.eui-select textarea, .eui-viewport div.eui-select .eui-input {
     display: block;
     width: 100%;
-    height: 2.56em;
     margin: 0;
-    padding: 0 0.64em;
-    line-height: 2.56em;
+    padding: 11px;
+    line-height: 1.1;
     font-size: 1em;
-    background: #fafafa;
-    border: 1px solid #ebebeb;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    background: #ebebeb;
+    border: 1px solid #dbdbdb;
     box-shadow: none;
     outline: none; }
     .eui-viewport form.eui-form input::placeholder, .eui-viewport form.eui-form select::placeholder, .eui-viewport form.eui-form textarea::placeholder, .eui-viewport form.eui-form .eui-input::placeholder, .eui-viewport div.eui-select input::placeholder, .eui-viewport div.eui-select select::placeholder, .eui-viewport div.eui-select textarea::placeholder, .eui-viewport div.eui-select .eui-input::placeholder {
@@ -899,8 +898,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport div.eui-select select[readonly],
   .eui-viewport div.eui-select textarea[disabled],
   .eui-viewport div.eui-select textarea[readonly] {
-    background: #ebebeb;
-    color: #232323; }
+    background: #fafafa;
+    color: #222222; }
     .eui-viewport form.eui-form input[disabled]:focus,
     .eui-viewport form.eui-form input[readonly]:focus,
     .eui-viewport form.eui-form select[disabled]:focus,
@@ -912,7 +911,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     .eui-viewport div.eui-select select[readonly]:focus,
     .eui-viewport div.eui-select textarea[disabled]:focus,
     .eui-viewport div.eui-select textarea[readonly]:focus {
-      border: 1px solid #ebebeb; }
+      border: 1px solid #dbdbdb; }
   .eui-viewport form.eui-form input[type="checkbox"],
   .eui-viewport form.eui-form input[type="radio"], .eui-viewport div.eui-select input[type="checkbox"],
   .eui-viewport div.eui-select input[type="radio"] {
@@ -927,8 +926,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
       content: "";
       display: inline-block;
       vertical-align: middle;
-      background: #ffffff;
-      border: 1px solid #ebebeb;
+      background: #ebebeb;
+      border: 1px solid #dbdbdb;
       transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
       z-index: 1; }
     .eui-viewport form.eui-form input[type="checkbox"]:checked + span.eui-fake:before,
@@ -939,18 +938,18 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     .eui-viewport form.eui-form input[type="checkbox"]:disabled:not(:checked) + span.eui-fake:before,
     .eui-viewport form.eui-form input[type="radio"]:disabled:not(:checked) + span.eui-fake:before, .eui-viewport div.eui-select input[type="checkbox"]:disabled:not(:checked) + span.eui-fake:before,
     .eui-viewport div.eui-select input[type="radio"]:disabled:not(:checked) + span.eui-fake:before {
-      background: #ebebeb; }
+      background: #fafafa; }
     .eui-viewport form.eui-form input[type="checkbox"]:disabled:checked + span.eui-fake:before,
     .eui-viewport form.eui-form input[type="radio"]:disabled:checked + span.eui-fake:before, .eui-viewport div.eui-select input[type="checkbox"]:disabled:checked + span.eui-fake:before,
     .eui-viewport div.eui-select input[type="radio"]:disabled:checked + span.eui-fake:before {
-      background: #ebebeb;
+      background: #fafafa;
       border-color: #a6b4c9;
       border-width: 5px; }
   .eui-viewport form.eui-form input[type=radio] + span.eui-fake:before, .eui-viewport div.eui-select input[type=radio] + span.eui-fake:before {
     border-radius: 50%; }
   .eui-viewport form.eui-form .eui-input-icon, .eui-viewport div.eui-select .eui-input-icon {
     display: flex;
-    border: 1px solid #ebebeb; }
+    border: 1px solid #dbdbdb; }
     .eui-viewport form.eui-form .eui-input-icon:focus-within, .eui-viewport div.eui-select .eui-input-icon:focus-within {
       border: 1px solid #0d8bf2; }
     .eui-viewport form.eui-form .eui-input-icon input, .eui-viewport form.eui-form .eui-input-icon select, .eui-viewport form.eui-form .eui-input-icon textarea, .eui-viewport form.eui-form .eui-input-icon .eui-input, .eui-viewport div.eui-select .eui-input-icon input, .eui-viewport div.eui-select .eui-input-icon select, .eui-viewport div.eui-select .eui-input-icon textarea, .eui-viewport div.eui-select .eui-input-icon .eui-input {
@@ -959,7 +958,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
       padding: 0.64em 0.32em;
       vertical-align: middle;
       line-height: 1.28em;
-      background: #ffffff; }
+      background: #ebebeb; }
 
 div.eui-select {
   margin: 0;
@@ -974,7 +973,7 @@ div.eui-select {
       display: block; }
     div.eui-select div.eui-select-container div.eui-select-content {
       position: absolute;
-      background: #ffffff;
+      background: #ebebeb;
       border: 1px solid #0d8bf2;
       border-top: 0; }
       div.eui-select div.eui-select-container div.eui-select-content input, div.eui-select div.eui-select-container div.eui-select-content input:focus {
@@ -998,7 +997,7 @@ div.eui-select {
             font-size: 1em;
             outline: none; }
             div.eui-select div.eui-select-container div.eui-select-content > ul li a:hover {
-              color: #ffffff;
+              color: #ebebeb;
               background: #0d8bf2;
               cursor: pointer; }
 
@@ -1025,7 +1024,7 @@ div.eui-select {
 
 .eui-viewport i.eui-icon:disabled, .eui-viewport i.eui-icon[disabled] {
   opacity: 0.4;
-  color: #525252;
+  color: #8f8f8f;
   cursor: default; }
 
 .eui-viewport a.eui-link {
@@ -1053,12 +1052,12 @@ div.eui-select {
   .eui-viewport a.eui-link.eui-safety {
     color: #4eb151; }
   .eui-viewport a.eui-link.eui-black {
-    color: #232323; }
+    color: #222222; }
   .eui-viewport a.eui-link.eui-white {
-    color: #ffffff; }
+    color: #ebebeb; }
   .eui-viewport a.eui-link:disabled, .eui-viewport a.eui-link[disabled] {
     pointer-events: none;
-    color: #525252;
+    color: #8f8f8f;
     cursor: default;
     text-decoration: none; }
 
@@ -1125,7 +1124,7 @@ ol.eui, ul.eui {
 .eui-viewport .eui-notification {
   padding: 0.64em 1.28em;
   font-size: 1em;
-  color: #232323;
+  color: #222222;
   background-color: #fafafa; }
   .eui-viewport .eui-notification.eui-primary {
     color: #ffffff;
@@ -1194,25 +1193,25 @@ ol.eui, ul.eui {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0px;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid #dbdbdb;
   background: #ffffff;
   white-space: nowrap; }
   .eui-viewport table.eui-table.eui-striped > tbody > tr:nth-child(odd) {
-    background-color: #fafafa; }
+    background-color: #ebebeb; }
   .eui-viewport table.eui-table > thead > tr > th {
     padding: 1.16em;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #dbdbdb;
     font-size: 0.92em;
     font-weight: bold;
     text-align: left;
     color: #888888; }
   .eui-viewport table.eui-table > tbody > tr > td {
     padding: 0.64em 1.28em;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #dbdbdb;
     font-size: 1em;
-    color: #232323; }
+    color: #222222; }
   .eui-viewport table.eui-table > tbody > tr:hover {
-    background-color: #ebebeb !important; }
+    background-color: #e9ecf2 !important; }
   .eui-viewport table.eui-table > tbody > tr.eui-gray {
     background-color: #fafafa; }
   .eui-viewport table.eui-table > tbody > tr.eui-danger {
@@ -1242,10 +1241,10 @@ ol.eui, ul.eui {
   .eui-viewport ul.eui-tree a {
     display: block;
     padding: 0.80em;
-    color: #232323;
+    color: #222222;
     text-decoration: none; }
     .eui-viewport ul.eui-tree a:hover {
-      background: #fafafa; }
+      background: #e9ecf2; }
   .eui-viewport ul.eui-tree ul {
     margin: 0;
     padding: 0;

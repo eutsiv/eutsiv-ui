@@ -1,49 +1,52 @@
 // namespace / prefix
-$namespace: "eui";
-
-
-// components unit grid
-// all spaces must be multiple of this
-// components unit grid is used for space between components
-$component-unit-grid: 8px;
-// components unit grid is used for components inner spaces
-$component-unit-grid-inner: $component-unit-grid / 2;
-
-
-// breakpoint sizes
-$media-screen-small: 800px;
-
-// media queries
-$media-query-small-down: "only screen and (max-width : #{$media-screen-small})" !default;
-$media-query-small-up: "only screen and (min-width : #{($media-screen-small + 1)})" !default;
-
-
-// grid
-$grid-horizontal-total-columns: 24;
+$eui-namespace: "eui";
 
 
 // colors
-$color-bg: eui-color('gray', 'light-3');
-$color-border: eui-color('gray', 'light-2');
+$eui-color-white: #ffffff;
 
-$color-disabled-bg: eui-color('gray', 'light-2');
-$color-disabled-color: eui-color('gray', 'dark-2');
-$color-disabled-color-darker: darken(eui-color('gray', 'dark-2'), 10%);
+$eui-color: eui-color('black', 'dark-1');
+$eui-color-bg: eui-color('gray', 'light-2');
+$eui-color-border: eui-color('gray', 'light-1');
+$eui-color-hover: eui-color('primary', 'light-3');
 
-$color-focus-bg: eui-color('notice', 'light-3');
-$color-focus-border: eui-color('notice', 'base');
+$eui-color-title: eui-color('primary', 'dark-1');
 
-$color-text: #232323;
-$color-text-bg: #ffffff;
-$color-title: eui-color('primary', 'dark-2');
+$eui-color-disabled: eui-color('gray', 'dark-1');
+$eui-color-disabled-bg: eui-color('gray', 'light-3');
+$eui-color-disabled-border: $eui-color-disabled-bg;
+
+$eui-color-focus-bg: eui-color('notice', 'light-3');
+$eui-color-focus-border: eui-color('notice', 'base');
+
+
+// unit grid
+// all spaces must be multiple of this
+// unit grid is used for space between components
+$eui-unit-grid: 8px;
+// inner unit grid is used for components inner spaces
+$eui-unit-grid-inner: $eui-unit-grid / 2;
+
+
+// eui breakpoint size
+// we just consider small or big screens, just one breakpoint
+$eui-media-screen-break-point: 800px;
+
+// media queries
+$eui-media-query-screen-down: "only screen and (max-width : #{$eui-media-screen-break-point})" !default;
+$eui-media-query-screen-up: "only screen and (min-width : #{($eui-media-screen-break-point + 1)})" !default;
 
 
 // font
-$font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-$font-size-default: 1em;
+$eui-font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+$eui-font-size: 1em;
 
 
+// layout grid
+$eui-layout-grid-columns: 24;
+
+
+// widgets
 // form
-$form-input-border: 1px solid $color-border;
-
-$form-input-focus-border: 1px solid $color-focus-border;
+$eui-widget-form-input-border: 1px solid $eui-color-border;
+$eui-widget-form-input-focus-border: 1px solid $eui-color-focus-border;

@@ -1,38 +1,38 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  .#{$namespace}-loading {
+  .#{$eui-namespace}-loading {
 
-    div.#{$namespace}-ball {
+    div.#{$eui-namespace}-ball {
       width: 0.72em;
       height: 0.72em;
       margin: 0.12em;
       background: eui-color('primary', 'base');
       border-radius: 100%;
       display: inline-block;
-      animation: #{$namespace}-loading 2s infinite ease-in-out both;
+      animation: #{$eui-namespace}-loading 2s infinite ease-in-out both;
     }
 
-    div.#{$namespace}-ball-1 {
+    div.#{$eui-namespace}-ball-1 {
       animation-delay: -0.56s;
     }
 
-    div.#{$namespace}-ball-2 {
+    div.#{$eui-namespace}-ball-2 {
       animation-delay: -0.48s;
     }
 
-    div.#{$namespace}-ball-3 {
+    div.#{$eui-namespace}-ball-3 {
       animation-delay: -0.40s;
     }
 
-    div.#{$namespace}-ball-4 {
+    div.#{$eui-namespace}-ball-4 {
       animation-delay: -0.32s;
     }
 
-    div.#{$namespace}-ball-5 {
+    div.#{$eui-namespace}-ball-5 {
       animation-delay: -0.24s;
     }
 
-    div.#{$namespace}-ball-6 {
+    div.#{$eui-namespace}-ball-6 {
       animation-delay: -0.16s;
     }
 
@@ -40,7 +40,7 @@
 
 }
 
-@keyframes #{$namespace}-loading {
+@keyframes #{$eui-namespace}-loading {
   0%, 80%, 100% {
     transform: scale(0);
   } 40% {

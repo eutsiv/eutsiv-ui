@@ -1,26 +1,26 @@
-div.#{$namespace}-select {
+div.#{$eui-namespace}-select {
   margin: 0;
   padding: 0;
   z-index: 2;
 
-  .#{$namespace}-input {
-    &.#{$namespace}-open {
-      border: $form-input-focus-border;
+  .#{$eui-namespace}-input {
+    &.#{$eui-namespace}-open {
+      border: $eui-widget-form-input-focus-border;
       border-bottom: 1px solid eui-color('gray', 'light-3');
     }
   }
 
-  div.#{$namespace}-select-container {
+  div.#{$eui-namespace}-select-container {
     display: none;
 
-    &.#{$namespace}-open {
+    &.#{$eui-namespace}-open {
       display: block;
     }
 
-    div.#{$namespace}-select-content {
+    div.#{$eui-namespace}-select-content {
       position: absolute;
-      background: $color-text-bg;
-      border: $form-input-focus-border;
+      background: $eui-color-bg;
+      border: $eui-widget-form-input-focus-border;
       border-top: 0;
 
       input, input:focus {
@@ -47,8 +47,8 @@ div.#{$namespace}-select {
             font-size: 1em;
             outline: none;
             &:hover {
-              color: $color-text-bg;
-              background: $color-focus-border;
+              color: $eui-color-bg;
+              background: $eui-color-focus-border;
               cursor: pointer;
             }
           }

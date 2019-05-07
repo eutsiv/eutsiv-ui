@@ -1,11 +1,11 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  nav.#{$namespace}-paging {
-    > .#{$namespace}-status {
+  nav.#{$eui-namespace}-paging {
+    > .#{$eui-namespace}-status {
       display: inline-block;
       padding: 0.5em 0;
       font-size: 0.84em;
-      color: $color-text;
+      color: $eui-color;
     }
   }
 

@@ -1,9 +1,9 @@
 @import 'lato';
 @import 'icon-font';
 
-i.#{$namespace}-icon, span.#{$namespace}-icon {
+i.#{$eui-namespace}-icon, span.#{$eui-namespace}-icon {
   cursor: pointer;
-  &.#{$namespace}-spin:before {
+  &.#{$eui-namespace}-spin:before {
     animation: spin 2s infinite linear;
   }
 }

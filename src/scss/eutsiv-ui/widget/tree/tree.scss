@@ -1,6 +1,6 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  ul.#{$namespace}-tree {
+  ul.#{$eui-namespace}-tree {
     margin: 0;
     padding: 0;
     cursor: pointer;
@@ -12,10 +12,10 @@
     a {
       display: block;
       padding: 0.80em;
-      color: $color-text;
+      color: $eui-color;
       text-decoration: none;
       &:hover {
-        background: eui-color('gray', 'light-3');
+        background: $eui-color-hover;
       }
     }
 
@@ -25,7 +25,7 @@
       list-style: none;
     }
 
-    li.#{$namespace}-branch {
+    li.#{$eui-namespace}-branch {
       > ul {
         display: none;
       }
@@ -38,7 +38,7 @@
           transition: transform 0.3s ease-in-out;
         }
       }
-      &.#{$namespace}-open {
+      &.#{$eui-namespace}-open {
         > ul {
           display: block;
         }
@@ -48,8 +48,8 @@
       }
     }
 
-    li.#{$namespace}-leaf {
-      i.#{$namespace}-icon, img.#{$namespace}-icon {
+    li.#{$eui-namespace}-leaf {
+      i.#{$eui-namespace}-icon, img.#{$eui-namespace}-icon {
         margin-right: 0.64em;
         font-style: normal;
       }

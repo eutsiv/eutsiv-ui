@@ -1,18 +1,18 @@
-.#{$namespace}-tab {
-  > .#{$namespace}-tab-menu {
+.#{$eui-namespace}-tab {
+  > .#{$eui-namespace}-tab-menu {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
     overflow: auto;
 
-    > .#{$namespace}-tab-item {
+    > .#{$eui-namespace}-tab-item {
       float: left;
 
-      + .#{$namespace}-tab-item {
+      + .#{$eui-namespace}-tab-item {
         margin-left: 0.32rem;
       }
 
-      > .#{$namespace}-tab-link {
+      > .#{$eui-namespace}-tab-link {
         display: inline-block;
         height: 48px;
         padding: 0.5em 1em;
@@ -49,9 +49,9 @@
 
   }
 
-  > .#{$namespace}-tab-content {
+  > .#{$eui-namespace}-tab-content {
     padding: 20px 10px;
-    > .#{$namespace}-tab-pane {
+    > .#{$eui-namespace}-tab-pane {
       display: none;
     }
     > .active {

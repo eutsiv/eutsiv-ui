@@ -1,18 +1,18 @@
-.#{$namespace}-viewport {
+.#{$eui-namespace}-viewport {
 
-  ul.#{$namespace}-breadcrumb {
+  ul.#{$eui-namespace}-breadcrumb {
     margin: 0;
     padding: 0;
     list-style: none;
     display: inline-table;
-    color: $color-title;
+    color: $eui-color-title;
     > li {
       display: inline;
       > i {
         margin: 0 0.40em;
       }
-      > span.#{$namespace}-active {
-        color: $color-text;
+      > span.#{$eui-namespace}-active {
+        color: $eui-color;
         cursor: default;
       }
     }
