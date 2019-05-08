@@ -609,7 +609,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
 
 .eui-viewport ul.eui-breadcrumb {
   margin: 0;
-  padding: 0;
+  padding: 12px 16px;
+  line-height: 1.1;
   list-style: none;
   display: inline-table;
   color: #173054; }
@@ -1122,8 +1123,9 @@ ol.eui, ul.eui {
     transform: scale(1); } }
 
 .eui-viewport .eui-notification {
-  padding: 0.64em 1.28em;
+  padding: 12px 16px;
   font-size: 1em;
+  line-height: 1.1;
   color: #222222;
   background-color: #fafafa; }
   .eui-viewport .eui-notification.eui-primary {
@@ -1199,16 +1201,18 @@ ol.eui, ul.eui {
   .eui-viewport table.eui-table.eui-striped > tbody > tr:nth-child(odd) {
     background-color: #fafafa; }
   .eui-viewport table.eui-table > thead > tr > th {
-    padding: 1.16em;
+    padding: 16px;
     border-bottom: 1px solid #ebebeb;
     font-size: 0.92em;
     font-weight: bold;
     text-align: left;
+    line-height: 1.1;
     color: #888888; }
   .eui-viewport table.eui-table > tbody > tr > td {
-    padding: 0.64em 1.28em;
+    padding: 12px 16px;
     border-bottom: 1px solid #ebebeb;
     font-size: 1em;
+    line-height: 1.1;
     color: #222222; }
   .eui-viewport table.eui-table > tbody > tr:hover {
     background-color: #e9ecf2 !important; }

@@ -11,15 +11,11 @@ FIX - vertical/grid/align/vbox must be implemented by javascript, margin-top per
 
 - Docs for Gutter
 - Docs for VSpace
-- Enable a global open property for Tree and open property for each branch too
 - Change calendar to have flexible height
 - Support for events in the calendar
-- Make a complete data grid before publishing
-- Refactor Tree
 - Refactor Calendar
 - Refactor data Grid
 - Refactor Paging
-- Refactor Table
 - Refactor Breadcumb
 - Docs for form
 

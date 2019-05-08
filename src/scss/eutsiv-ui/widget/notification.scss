@@ -1,8 +1,9 @@
 .#{$eui-namespace}-viewport {
 
   .#{$eui-namespace}-notification {
-    padding: 0.64em 1.28em;
+    padding: $eui-unit-grid-inner*3 $eui-unit-grid-inner*4;
     font-size: 1em;
+    line-height: 1.1;
     color: $eui-color;
     background-color: eui-color('gray', 'light-3');
 
