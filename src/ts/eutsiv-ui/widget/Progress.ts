@@ -10,7 +10,7 @@ const Progress = () => {
     view: (vn) => {
 
       return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig),
-        m('div', { class: 'eui-bar', style: `width:${vn.attrs.eui.percentage}%` })
+        m('div', { class: 'eui-bar', style: `width:${vn.attrs.eui.percent}%` })
       )
 
     }

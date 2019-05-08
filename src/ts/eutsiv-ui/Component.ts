@@ -26,9 +26,18 @@ const applyConfig = (attrs) => {
 
   let config = attrs.eui
 
+  let sizes = {
+    XS: '0.64em',
+    SM: '0.82em',
+    DE: '1.00em',
+    LG: '1.32em',
+    XL: '1.64em',
+    HU: '2.28em'
+  }
+
   if(config.context) attrs.class.push(`eui-${config.context}`)
 
-  if(config.size) attrs.style.push(`font-size:${config.size}`)
+  if(config.size) attrs.style.push(`font-size:${sizes[config.size]}`)
 
   return attrs
   

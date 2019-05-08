@@ -20,6 +20,7 @@ const menuTree = [
   {
     type: 'branch',
     text: 'layout',
+    open: true,
     children: [
       {
         type: 'leaf',
@@ -43,6 +44,7 @@ const menuTree = [
   {
     type: 'branch',
     text: 'widget',
+    open: true,
     children: [
       {
         type: 'branch',
@@ -145,7 +147,6 @@ const wrapperContainer = {
               m("h1", "eutsiv UI"),
               m(Tree, {
                 eui: {
-                  //open: true,
                   items: menuTree
                 }
               })

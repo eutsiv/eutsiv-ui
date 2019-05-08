@@ -17,7 +17,7 @@ const Grid = () => {
 const applyClasses = (attrs) => {
 
   attrs = applyClassesComponent(attrs)
-  attrs.class.push('eui-grid')
+  attrs.class.push('eui-layout-grid')
 
   return attrs
   

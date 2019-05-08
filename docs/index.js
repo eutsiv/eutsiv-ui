@@ -206,6 +206,7 @@ System.register("wrapper", ["mithril", "eutsiv-ui/layout/Grid", "eutsiv-ui/layou
                 {
                     type: 'branch',
                     text: 'layout',
+                    open: true,
                     children: [
                         {
                             type: 'leaf',
@@ -217,6 +218,7 @@ System.register("wrapper", ["mithril", "eutsiv-ui/layout/Grid", "eutsiv-ui/layou
                 {
                     type: 'branch',
                     text: 'widget',
+                    open: true,
                     children: [
                         {
                             type: 'branch',
@@ -453,14 +455,27 @@ System.register("layout/Grid", ["mithril", "resources/Section", "eutsiv-ui/layou
                             documentation: [
                                 mithril_7.default("h1", "Grid"),
                                 mithril_7.default(Grid_5.Grid, mithril_7.default(Grid_5.Row, [
-                                    mithril_7.default(Grid_5.Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [24, 12] } }, "Size 24/12"),
-                                    mithril_7.default(Grid_5.Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [24, 8] } }, "Size 24/8"),
-                                    mithril_7.default(Grid_5.Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [24, 4] } }, "Size 24/4"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [24, 24] } }, "24")
                                 ]), mithril_7.default(Grid_5.Row, [
-                                    mithril_7.default(Grid_5.Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [8, 8] } }, "Size 8/8"),
-                                    mithril_7.default(Grid_5.Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [8, 8], offset: [8, 8] } }, "Size 8/8 Offset 8/8"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [12, 12] } }, "12"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [12, 12] } }, "12")
                                 ]), mithril_7.default(Grid_5.Row, [
-                                    mithril_7.default(Grid_5.Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [12, 8], offset: [6, 8] } }, "Size 12/8 Offset 6/8"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [1, 1] } }, "1"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [2, 2] } }, "2"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [3, 3] } }, "3"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [4, 4] } }, "4"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [5, 5] } }, "5"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [6, 6] } }, "6"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [3, 3] } }, "3")
+                                ]), mithril_7.default(Grid_5.Row, [
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [24, 12] } }, "24/12"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [24, 8] } }, "24/8"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [24, 4] } }, "24/4"),
+                                ]), mithril_7.default(Grid_5.Row, [
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [8, 8] } }, "8/8"),
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [8, 8], offset: [8, 8] } }, "8/8 offset 8/8"),
+                                ]), mithril_7.default(Grid_5.Row, [
+                                    mithril_7.default(Grid_5.Column, { class: 'layout-grid-test', eui: { size: [12, 8], offset: [6, 8] } }, "12/8 offset 6/8"),
                                 ]))
                             ],
                             source: `
@@ -468,16 +483,32 @@ import {Grid, Row, Column} from 'eutsiv-ui/layout/Grid'
 
 m(Grid,
   m(Row, [
-    m(Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [24, 12] } }, "Size 24/12"),
-    m(Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [24, 8] } }, "Size 24/8"),
-    m(Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [24, 4] } }, "Size 24/4"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [24, 24] } }, "24")
   ]),
   m(Row, [
-    m(Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [8, 8] } }, "Size 8/8"),
-    m(Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [8, 8], offset: [8, 8] } }, "Size 8/8 Offset 8/8"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [12, 12] } }, "12"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [12, 12] } }, "12")
   ]),
   m(Row, [
-    m(Column, { style: "padding:4px;border:1px solid #aaa", eui: { size: [12, 8], offset: [6, 8] } }, "Size 12/8 Offset 6/8"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [1, 1] } }, "1"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [2, 2] } }, "2"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [3, 3] } }, "3"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [4, 4] } }, "4"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [5, 5] } }, "5"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [6, 6] } }, "6"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [3, 3] } }, "3")
+  ]),
+  m(Row, [
+    m(Column, { class: 'layout-grid-test', eui: { size: [24, 12] } }, "24/12"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [24, 8] } }, "24/8"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [24, 4] } }, "24/4"),
+  ]),
+  m(Row, [
+    m(Column, { class: 'layout-grid-test', eui: { size: [8, 8] } }, "8/8"),
+    m(Column, { class: 'layout-grid-test', eui: { size: [8, 8], offset: [8, 8] } }, "8/8 offset 8/8"),
+  ]),
+  m(Row, [
+    m(Column, { class: 'layout-grid-test', eui: { size: [12, 8], offset: [6, 8] } }, "12/8 offset 6/8"),
   ])
 )
 
@@ -1374,12 +1405,12 @@ System.register("widget/Progress", ["mithril", "resources/Section", "eutsiv-ui/w
                         mithril_15.default(Section_9.Section, {
                             documentation: [
                                 mithril_15.default("h1", "Progress"),
-                                mithril_15.default(Progress_1.Progress, { eui: { percentage: 35 } })
+                                mithril_15.default(Progress_1.Progress, { eui: { percent: 35 } })
                             ],
                             source: `
 import {Loading} from 'eutsiv-ui/widget/Progress'
 
-m(Progress, { eui: { percentage: 35 } })
+m(Progress, { eui: { percent: 35 } })
         `
                         })
                     ];
@@ -1718,6 +1749,7 @@ System.register("widget/tree/Tree", ["mithril", "resources/Section", "eutsiv-ui/
                 {
                     type: "branch",
                     text: "Tree Branch Level 1",
+                    open: true,
                     children: [
                         {
                             type: "branch",
@@ -1774,6 +1806,7 @@ let treeItems = [
   {
     type: "branch",
     text: "Tree Branch Level 1",
+    open: true,
     children: [
       {
         type: "branch",

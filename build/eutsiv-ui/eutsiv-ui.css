@@ -211,308 +211,308 @@ eutsiv UI does not touch in the html and body tags, you can configure those tags
 Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
 
 */
-.eui-viewport div.eui-grid {
+.eui-viewport div.eui-layout-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
-  .eui-viewport div.eui-grid .eui-row {
+  .eui-viewport div.eui-layout-grid .eui-row {
     flex: 0 1 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-0 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-0 {
     margin-left: 0 !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-1 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-1 {
     flex: 0 1 4.16667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-1 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-1 {
     margin-left: 4.16667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-2 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-2 {
     flex: 0 1 8.33333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-2 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-2 {
     margin-left: 8.33333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-3 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-3 {
     flex: 0 1 12.5%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-3 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-3 {
     margin-left: 12.5% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-4 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-4 {
     flex: 0 1 16.66667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-4 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-4 {
     margin-left: 16.66667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-5 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-5 {
     flex: 0 1 20.83333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-5 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-5 {
     margin-left: 20.83333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-6 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-6 {
     flex: 0 1 25%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-6 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-6 {
     margin-left: 25% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-7 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-7 {
     flex: 0 1 29.16667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-7 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-7 {
     margin-left: 29.16667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-8 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-8 {
     flex: 0 1 33.33333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-8 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-8 {
     margin-left: 33.33333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-9 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-9 {
     flex: 0 1 37.5%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-9 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-9 {
     margin-left: 37.5% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-10 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-10 {
     flex: 0 1 41.66667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-10 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-10 {
     margin-left: 41.66667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-11 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-11 {
     flex: 0 1 45.83333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-11 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-11 {
     margin-left: 45.83333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-12 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-12 {
     flex: 0 1 50%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-12 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-12 {
     margin-left: 50% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-13 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-13 {
     flex: 0 1 54.16667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-13 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-13 {
     margin-left: 54.16667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-14 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-14 {
     flex: 0 1 58.33333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-14 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-14 {
     margin-left: 58.33333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-15 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-15 {
     flex: 0 1 62.5%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-15 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-15 {
     margin-left: 62.5% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-16 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-16 {
     flex: 0 1 66.66667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-16 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-16 {
     margin-left: 66.66667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-17 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-17 {
     flex: 0 1 70.83333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-17 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-17 {
     margin-left: 70.83333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-18 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-18 {
     flex: 0 1 75%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-18 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-18 {
     margin-left: 75% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-19 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-19 {
     flex: 0 1 79.16667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-19 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-19 {
     margin-left: 79.16667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-20 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-20 {
     flex: 0 1 83.33333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-20 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-20 {
     margin-left: 83.33333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-21 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-21 {
     flex: 0 1 87.5%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-21 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-21 {
     margin-left: 87.5% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-22 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-22 {
     flex: 0 1 91.66667%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-22 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-22 {
     margin-left: 91.66667% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-23 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-23 {
     flex: 0 1 95.83333%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-23 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-23 {
     margin-left: 95.83333% !important; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-24 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-24 {
     flex: 0 1 100%;
     margin-left: 0;
     overflow: auto; }
-  .eui-viewport div.eui-grid .eui-column.eui-sm-offset-24 {
+  .eui-viewport div.eui-layout-grid .eui-column.eui-sm-offset-24 {
     margin-left: 100% !important; }
   @media only screen and (min-width: 801px) {
-    .eui-viewport div.eui-grid .eui-column.eui-offset-0 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-0 {
       margin-left: 0 !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-1 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-1 {
       flex: 0 1 4.16667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-1 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-1 {
       margin-left: 4.16667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-2 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-2 {
       flex: 0 1 8.33333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-2 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-2 {
       margin-left: 8.33333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-3 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-3 {
       flex: 0 1 12.5%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-3 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-3 {
       margin-left: 12.5% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-4 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-4 {
       flex: 0 1 16.66667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-4 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-4 {
       margin-left: 16.66667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-5 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-5 {
       flex: 0 1 20.83333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-5 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-5 {
       margin-left: 20.83333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-6 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-6 {
       flex: 0 1 25%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-6 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-6 {
       margin-left: 25% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-7 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-7 {
       flex: 0 1 29.16667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-7 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-7 {
       margin-left: 29.16667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-8 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-8 {
       flex: 0 1 33.33333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-8 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-8 {
       margin-left: 33.33333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-9 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-9 {
       flex: 0 1 37.5%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-9 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-9 {
       margin-left: 37.5% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-10 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-10 {
       flex: 0 1 41.66667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-10 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-10 {
       margin-left: 41.66667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-11 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-11 {
       flex: 0 1 45.83333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-11 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-11 {
       margin-left: 45.83333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-12 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-12 {
       flex: 0 1 50%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-12 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-12 {
       margin-left: 50% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-13 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-13 {
       flex: 0 1 54.16667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-13 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-13 {
       margin-left: 54.16667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-14 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-14 {
       flex: 0 1 58.33333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-14 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-14 {
       margin-left: 58.33333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-15 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-15 {
       flex: 0 1 62.5%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-15 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-15 {
       margin-left: 62.5% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-16 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-16 {
       flex: 0 1 66.66667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-16 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-16 {
       margin-left: 66.66667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-17 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-17 {
       flex: 0 1 70.83333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-17 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-17 {
       margin-left: 70.83333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-18 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-18 {
       flex: 0 1 75%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-18 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-18 {
       margin-left: 75% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-19 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-19 {
       flex: 0 1 79.16667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-19 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-19 {
       margin-left: 79.16667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-20 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-20 {
       flex: 0 1 83.33333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-20 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-20 {
       margin-left: 83.33333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-21 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-21 {
       flex: 0 1 87.5%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-21 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-21 {
       margin-left: 87.5% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-22 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-22 {
       flex: 0 1 91.66667%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-22 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-22 {
       margin-left: 91.66667% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-23 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-23 {
       flex: 0 1 95.83333%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-23 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-23 {
       margin-left: 95.83333% !important; }
-    .eui-viewport div.eui-grid .eui-column.eui-24 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-24 {
       flex: 0 1 100%;
       margin-left: 0;
       overflow: auto; }
-    .eui-viewport div.eui-grid .eui-column.eui-offset-24 {
+    .eui-viewport div.eui-layout-grid .eui-column.eui-offset-24 {
       margin-left: 100% !important; } }
 
 .eui-viewport .eui-gutter {
@@ -725,9 +725,9 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport a.eui-button.eui-spaced, .eui-viewport button.eui-button.eui-spaced, .eui-viewport input.eui-button.eui-spaced {
     margin: 0 4px 4px 0; }
   .eui-viewport a.eui-button > i.eui-icon:first-child, .eui-viewport button.eui-button > i.eui-icon:first-child, .eui-viewport input.eui-button > i.eui-icon:first-child {
-    margin: 0 8px 0 -0.21429em; }
+    margin: 0 8px 0 -4px; }
   .eui-viewport a.eui-button > i.eui-icon:last-child, .eui-viewport button.eui-button > i.eui-icon:last-child, .eui-viewport input.eui-button > i.eui-icon:last-child {
-    margin: 0 -0.21429em 0 8px; }
+    margin: 0 -4px 0 8px; }
 
 .eui-viewport .eui-calendar h2 {
   margin: 0;
@@ -1193,21 +1193,21 @@ ol.eui, ul.eui {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0px;
-  border-top: 1px solid #dbdbdb;
+  border-top: 1px solid #ebebeb;
   background: #ffffff;
   white-space: nowrap; }
   .eui-viewport table.eui-table.eui-striped > tbody > tr:nth-child(odd) {
-    background-color: #ebebeb; }
+    background-color: #fafafa; }
   .eui-viewport table.eui-table > thead > tr > th {
     padding: 1.16em;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #ebebeb;
     font-size: 0.92em;
     font-weight: bold;
     text-align: left;
     color: #888888; }
   .eui-viewport table.eui-table > tbody > tr > td {
     padding: 0.64em 1.28em;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #ebebeb;
     font-size: 1em;
     color: #222222; }
   .eui-viewport table.eui-table > tbody > tr:hover {

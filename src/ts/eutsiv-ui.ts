@@ -29,12 +29,12 @@ const applyAttrsModifiers = (attrs, ...fn) => {
 }
 
 const Sizes = {
-  XS: "0.72em",
-  SM: "0.88em",
-  DE: "1.00em",
-  LG: "1.28em",
-  XL: "1.52em",
-  HU: "1.76em"
+  XS: 'XS',
+  SM: 'SM',
+  DE: 'DE',
+  LG: 'LG',
+  XL: 'XL',
+  HU: 'HU'
 }
 
 export { applyAttrsModifiers, Sizes }

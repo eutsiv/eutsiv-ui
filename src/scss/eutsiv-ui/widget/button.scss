@@ -168,11 +168,11 @@
     }  
 
     > i.#{$eui-namespace}-icon:first-child {
-      margin: 0 $eui-unit-grid-inner*2 0 -0.214285714em;
+      margin: 0 $eui-unit-grid-inner*2 0 $eui-unit-grid-inner*-1;
     }
 
     > i.#{$eui-namespace}-icon:last-child {
-      margin: 0 -0.214285714em 0 $eui-unit-grid-inner*2;
+      margin: 0 $eui-unit-grid-inner*-1 0 $eui-unit-grid-inner*2;
     }  
 
   }

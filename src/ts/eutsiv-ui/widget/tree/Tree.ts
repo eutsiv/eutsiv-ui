@@ -6,39 +6,44 @@ import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
 
 const buildTreeNodes = (data, indentation, open) => {
 
-  indentation += 1
+  indentation += 16
 
-  return data.map(value => {
-    return value.type == 'branch' ? 
-      m(Branch, { item: value, indentation, open }) :
-      m(Leaf, { item: value, indentation })
+  return data.map(item => {
+    return item.type == 'branch' ? 
+      m(Branch, { item, indentation, open }) :
+      m(Leaf, { ...item, indentation })
   })
 
 }
 
-const Branch = (vc) => {
+const Branch = () => {
 
-  let open = vc.attrs.open || false
+  let open = false
   let clicked = false
 
   return {
-    onbeforeupdate: (vn) => {
-      if(typeof vn.attrs.open == 'boolean') open = vn.attrs.open
-    },
-    view: (vn) => {
+    view: ({ attrs }) => {
 
       let classes = 'eui-branch'
+      
+      if(clicked) clicked = false
+      else if(typeof attrs.item.open == 'boolean') open = attrs.item.open
+      else if(typeof attrs.open == 'boolean') open = attrs.open
 
       classes += open ? ' eui-open' : ''
 
       return m('li', 
         {
           class: classes,
-          onclick: (e) => { e.stopPropagation(); open = !open; clicked = true }
+          onclick: (e) => { 
+            e.stopPropagation() 
+            open = !open
+            clicked = true
+          }
         }, 
         [ 
-          m(Item, { item: vn.attrs.item, indentation: vn.attrs.indentation }),
-          m('ul', buildTreeNodes(vn.attrs.item.children, vn.attrs.indentation, vn.attrs.open)) 
+          m(Item, { ...attrs.item, indentation: attrs.indentation }),
+          m('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.open)) 
         ] 
       )
     }
@@ -46,28 +51,31 @@ const Branch = (vc) => {
 }
 
 const Leaf = {
-  view: (vn) => {
+  view: ({ attrs }) => {
     return m('li', { class: 'eui-leaf' }, 
-      m(Item, { item: vn.attrs.item, indentation: vn.attrs.indentation })
+      m(Item, attrs)
     )
   }
 }
 
 const Item = {
-  view: (vn) => {
+  view: ({ attrs }) => {
 
-    let item = vn.attrs.item,
-      text = typeof item.text == 'function' ? item.text() : item.text,
-      attrs = { style: `padding-left: ${vn.attrs.indentation}em;`, href: undefined, onclick: undefined, oncreate: undefined }
+    let text = typeof attrs.text == 'function' ? attrs.text() : attrs.text,
+      na = { style: `padding-left:${attrs.indentation}px`, href: undefined, onclick: undefined, oncreate: undefined }
 
-    if(item.onclick) attrs.onclick = (e) => { e.stopPropagation(); e.preventDefault(); item.onclick(e) }
+    if(attrs.onclick) na.onclick = (e) => { 
+      e.stopPropagation()
+      e.preventDefault()
+      attrs.onclick(e) 
+    }
 
-    if(item.oncreate) attrs.oncreate = item.oncreate
+    if(attrs.oncreate) na.oncreate = attrs.oncreate
 
     // if attr href is undefined it is just discarded by mithril
-    attrs.href = item.href
+    na.href = attrs.href
 
-    return m('a', attrs, text)
+    return m('a', na, text)
 
   }
 }
@@ -75,10 +83,10 @@ const Item = {
 const Tree = () => {
 
   return {
-    view: (vn) => {
+    view: ({ attrs }) => {
 
-      let params = vn.attrs.eui
-      return m('ul', applyAttrsModifiers(vn.attrs, applyClasses), buildTreeNodes(params.items, 0, params.open))
+      let params = attrs.eui
+      return m('ul', applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(params.items, 0, params.open))
 
     }
   }

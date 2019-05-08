@@ -182,7 +182,9 @@ declare module "eutsiv-ui/widget/form/Select" {
 declare module "eutsiv-ui/widget/tree/Tree" {
     import m from 'mithril';
     const Tree: () => {
-        view: (vn: any) => m.Vnode<any, any>;
+        view: ({ attrs }: {
+            attrs: any;
+        }) => m.Vnode<any, any>;
     };
     export { Tree };
 }

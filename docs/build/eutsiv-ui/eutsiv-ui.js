@@ -20,12 +20,12 @@ System.register("eutsiv-ui", [], function (exports_1, context_1) {
             };
             exports_1("applyAttrsModifiers", applyAttrsModifiers);
             Sizes = {
-                XS: "0.72em",
-                SM: "0.88em",
-                DE: "1.00em",
-                LG: "1.28em",
-                XL: "1.52em",
-                HU: "1.76em"
+                XS: 'XS',
+                SM: 'SM',
+                DE: 'DE',
+                LG: 'LG',
+                XL: 'XL',
+                HU: 'HU'
             };
             exports_1("Sizes", Sizes);
         }
@@ -60,10 +60,18 @@ System.register("eutsiv-ui/Component", ["mithril", "eutsiv-ui"], function (expor
             exports_2("applyClasses", applyClasses);
             applyConfig = (attrs) => {
                 let config = attrs.eui;
+                let sizes = {
+                    XS: '0.64em',
+                    SM: '0.82em',
+                    DE: '1.00em',
+                    LG: '1.32em',
+                    XL: '1.64em',
+                    HU: '2.28em'
+                };
                 if (config.context)
                     attrs.class.push(`eui-${config.context}`);
                 if (config.size)
-                    attrs.style.push(`font-size:${config.size}`);
+                    attrs.style.push(`font-size:${sizes[config.size]}`);
                 return attrs;
             };
             exports_2("applyConfig", applyConfig);
@@ -237,7 +245,7 @@ System.register("eutsiv-ui/layout/grid/Grid", ["mithril", "eutsiv-ui", "eutsiv-u
             exports_5("Grid", Grid);
             applyClasses = (attrs) => {
                 attrs = Component_2.applyClasses(attrs);
-                attrs.class.push('eui-grid');
+                attrs.class.push('eui-layout-grid');
                 return attrs;
             };
         }
@@ -738,7 +746,7 @@ System.register("eutsiv-ui/widget/Progress", ["mithril", "eutsiv-ui", "eutsiv-ui
             Progress = () => {
                 return {
                     view: (vn) => {
-                        return mithril_17.default('div', eutsiv_ui_16.applyAttrsModifiers(vn.attrs, applyClasses, Component_14.applyConfig), mithril_17.default('div', { class: 'eui-bar', style: `width:${vn.attrs.eui.percentage}%` }));
+                        return mithril_17.default('div', eutsiv_ui_16.applyAttrsModifiers(vn.attrs, applyClasses, Component_14.applyConfig), mithril_17.default('div', { class: 'eui-bar', style: `width:${vn.attrs.eui.percent}%` }));
                     }
                 };
             };
@@ -1127,55 +1135,65 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
         ],
         execute: function () {
             buildTreeNodes = (data, indentation, open) => {
-                indentation += 1;
-                return data.map(value => {
-                    return value.type == 'branch' ?
-                        mithril_22.default(Branch, { item: value, indentation, open }) :
-                        mithril_22.default(Leaf, { item: value, indentation });
+                indentation += 16;
+                return data.map(item => {
+                    return item.type == 'branch' ?
+                        mithril_22.default(Branch, { item, indentation, open }) :
+                        mithril_22.default(Leaf, Object.assign({}, item, { indentation }));
                 });
             };
-            Branch = (vc) => {
-                let open = vc.attrs.open || false;
+            Branch = () => {
+                let open = false;
                 let clicked = false;
                 return {
-                    onbeforeupdate: (vn) => {
-                        if (typeof vn.attrs.open == 'boolean')
-                            open = vn.attrs.open;
-                    },
-                    view: (vn) => {
+                    view: ({ attrs }) => {
                         let classes = 'eui-branch';
+                        if (clicked)
+                            clicked = false;
+                        else if (typeof attrs.item.open == 'boolean')
+                            open = attrs.item.open;
+                        else if (typeof attrs.open == 'boolean')
+                            open = attrs.open;
                         classes += open ? ' eui-open' : '';
                         return mithril_22.default('li', {
                             class: classes,
-                            onclick: (e) => { e.stopPropagation(); open = !open; clicked = true; }
+                            onclick: (e) => {
+                                e.stopPropagation();
+                                open = !open;
+                                clicked = true;
+                            }
                         }, [
-                            mithril_22.default(Item, { item: vn.attrs.item, indentation: vn.attrs.indentation }),
-                            mithril_22.default('ul', buildTreeNodes(vn.attrs.item.children, vn.attrs.indentation, vn.attrs.open))
+                            mithril_22.default(Item, Object.assign({}, attrs.item, { indentation: attrs.indentation })),
+                            mithril_22.default('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.open))
                         ]);
                     }
                 };
             };
             Leaf = {
-                view: (vn) => {
-                    return mithril_22.default('li', { class: 'eui-leaf' }, mithril_22.default(Item, { item: vn.attrs.item, indentation: vn.attrs.indentation }));
+                view: ({ attrs }) => {
+                    return mithril_22.default('li', { class: 'eui-leaf' }, mithril_22.default(Item, attrs));
                 }
             };
             Item = {
-                view: (vn) => {
-                    let item = vn.attrs.item, text = typeof item.text == 'function' ? item.text() : item.text, attrs = { style: `padding-left: ${vn.attrs.indentation}em;`, href: undefined, onclick: undefined, oncreate: undefined };
-                    if (item.onclick)
-                        attrs.onclick = (e) => { e.stopPropagation(); e.preventDefault(); item.onclick(e); };
-                    if (item.oncreate)
-                        attrs.oncreate = item.oncreate;
-                    attrs.href = item.href;
-                    return mithril_22.default('a', attrs, text);
+                view: ({ attrs }) => {
+                    let text = typeof attrs.text == 'function' ? attrs.text() : attrs.text, na = { style: `padding-left:${attrs.indentation}px`, href: undefined, onclick: undefined, oncreate: undefined };
+                    if (attrs.onclick)
+                        na.onclick = (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            attrs.onclick(e);
+                        };
+                    if (attrs.oncreate)
+                        na.oncreate = attrs.oncreate;
+                    na.href = attrs.href;
+                    return mithril_22.default('a', na, text);
                 }
             };
             Tree = () => {
                 return {
-                    view: (vn) => {
-                        let params = vn.attrs.eui;
-                        return mithril_22.default('ul', eutsiv_ui_20.applyAttrsModifiers(vn.attrs, applyClasses), buildTreeNodes(params.items, 0, params.open));
+                    view: ({ attrs }) => {
+                        let params = attrs.eui;
+                        return mithril_22.default('ul', eutsiv_ui_20.applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(params.items, 0, params.open));
                     }
                 };
             };

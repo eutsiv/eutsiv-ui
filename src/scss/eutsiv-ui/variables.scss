@@ -50,3 +50,7 @@ $eui-layout-grid-columns: 24;
 // form
 $eui-widget-form-input-border: 1px solid $eui-color-border;
 $eui-widget-form-input-focus-border: 1px solid $eui-color-focus-border;
+
+// table
+$eui-widget-table-color-bg: eui-color('gray', 'light-3');
+$eui-widget-table-color-border: eui-color('gray', 'light-2');

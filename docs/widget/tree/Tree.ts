@@ -25,6 +25,7 @@ let treeItems = [
   {
     type: "branch",
     text: "Tree Branch Level 1",
+    open: true,
     children: [
       {
         type: "branch",
@@ -84,6 +85,7 @@ let treeItems = [
   {
     type: "branch",
     text: "Tree Branch Level 1",
+    open: true,
     children: [
       {
         type: "branch",

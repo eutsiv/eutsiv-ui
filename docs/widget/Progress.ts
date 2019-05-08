@@ -13,12 +13,12 @@ let View = {
       m(Section, { 
         documentation: [
           m("h1", "Progress"),
-          m(Progress, { eui: { percentage: 35 } })
+          m(Progress, { eui: { percent: 35 } })
         ],
         source: `
 import {Loading} from 'eutsiv-ui/widget/Progress'
 
-m(Progress, { eui: { percentage: 35 } })
+m(Progress, { eui: { percent: 35 } })
         `
       })
 
