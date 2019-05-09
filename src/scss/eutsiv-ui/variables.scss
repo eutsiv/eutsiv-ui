@@ -22,10 +22,8 @@ $eui-color-focus-border: eui-color('notice', 'base');
 
 // unit grid
 // all spaces must be multiple of this
-// unit grid is used for space between components
-$eui-unit-grid: 8px;
-// inner unit grid is used for components inner spaces
-$eui-unit-grid-inner: $eui-unit-grid / 2;
+// unit grid is used for space between and in components
+$eui-unit-grid: 4px;
 
 
 // eui breakpoint size

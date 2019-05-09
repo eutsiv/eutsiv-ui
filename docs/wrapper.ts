@@ -26,13 +26,13 @@ const menuTree = [
         type: 'leaf',
         text: 'Grid',
         onclick: () => setRoute('#!/index?path=layout/Grid')
-      }
-      /*
+      },
       {
         type: 'leaf',
         text: 'Gutter',
-        onclick: () => setRoute('#!/index?path=Color')
-      },
+        onclick: () => setRoute('#!/index?path=layout/Gutter')
+      }
+      /*
       {
         type: 'leaf',
         text: 'VSpace',

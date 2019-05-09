@@ -37,8 +37,6 @@ const applyConfig = (attrs) => {
 
   if(config.flat) attrs.class.push('eui-flat')
 
-  if(config.spaced) attrs.class.push('eui-spaced')
-
   return attrs
   
 }

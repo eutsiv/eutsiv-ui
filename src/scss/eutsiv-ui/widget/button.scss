@@ -3,8 +3,8 @@
   a.#{$eui-namespace}-button, button.#{$eui-namespace}-button, input.#{$eui-namespace}-button {
     cursor: pointer;
     display: inline-block;
-    margin: 0;
-    padding: $eui-unit-grid-inner*3 $eui-unit-grid-inner*5;
+    //margin: 0;
+    padding: $eui-unit-grid*3 $eui-unit-grid*5;
     border: none;
     outline: 0;
     line-height: 1.1;
@@ -153,26 +153,21 @@
     }
 
     &.#{$eui-namespace}-block {
-      display: block;
       width: 100%;
     }
 
     &.#{$eui-namespace}-compact {
       line-height: 1.1;
-      padding: $eui-unit-grid-inner*1.5 $eui-unit-grid-inner*2.5;
+      padding: $eui-unit-grid*1.5 $eui-unit-grid*2.5;
       font-weight: normal;
     }
 
-    &.#{$eui-namespace}-spaced {
-      margin: 0 $eui-unit-grid-inner $eui-unit-grid-inner 0;
-    }  
-
     > i.#{$eui-namespace}-icon:first-child {
-      margin: 0 $eui-unit-grid-inner*2 0 $eui-unit-grid-inner*-1;
+      margin: 0 $eui-unit-grid*2 0 $eui-unit-grid*-1;
     }
 
     > i.#{$eui-namespace}-icon:last-child {
-      margin: 0 $eui-unit-grid-inner*-1 0 $eui-unit-grid-inner*2;
+      margin: 0 $eui-unit-grid*-1 0 $eui-unit-grid*2;
     }  
 
   }

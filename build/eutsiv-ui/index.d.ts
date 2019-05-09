@@ -18,7 +18,8 @@ declare module "eutsiv-ui/Component" {
     };
     const applyClasses: (attrs: any) => any;
     const applyConfig: (attrs: any) => any;
-    export { Component, applyClasses, applyConfig };
+    const applyConfigFit: (attrs: any) => any;
+    export { Component, applyClasses, applyConfig, applyConfigFit };
 }
 declare module "eutsiv-ui/Viewport" {
     import m from 'mithril';
@@ -68,7 +69,10 @@ declare module "eutsiv-ui/layout/Grid" {
 declare module "eutsiv-ui/layout/Gutter" {
     import m from 'mithril';
     const Gutter: () => {
-        view: (vn: any) => m.Vnode<any, any>;
+        view: ({ attrs, children }: {
+            attrs: any;
+            children: any;
+        }) => m.Vnode<any, any>;
     };
     export { Gutter };
 }
@@ -110,7 +114,10 @@ declare module "eutsiv-ui/widget/Button" {
 declare module "eutsiv-ui/widget/form/Field" {
     import m from 'mithril';
     const Field: () => {
-        view: (vn: any) => m.Vnode<any, any>;
+        view: ({ attrs, children }: {
+            attrs: any;
+            children: any;
+        }) => m.Vnode<any, any>;
     };
     export { Field };
 }

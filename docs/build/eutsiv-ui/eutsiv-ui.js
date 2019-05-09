@@ -8,12 +8,11 @@ System.register("eutsiv-ui", [], function (exports_1, context_1) {
             applyAttrsModifiers = (attrs, ...fn) => {
                 attrs.eui = Object.assign({}, attrs.eui);
                 !Array.isArray(attrs.class) && (attrs.class = attrs.class ? [attrs.class] : []);
-                !Array.isArray(attrs.style) && (attrs.style = attrs.style ? [attrs.style] : []);
+                !attrs.style && (attrs.style = {});
                 fn.forEach(e => {
                     attrs = e(attrs);
                 });
                 Array.isArray(attrs.class) && (attrs.class = attrs.class.length ? attrs.class.join(' ') : undefined);
-                Array.isArray(attrs.style) && (attrs.style = attrs.style.length ? attrs.style.join(';') : undefined);
                 attrs = Object.assign({}, attrs);
                 attrs.eui = undefined;
                 return attrs;
@@ -33,7 +32,7 @@ System.register("eutsiv-ui", [], function (exports_1, context_1) {
 });
 System.register("eutsiv-ui/Component", ["mithril", "eutsiv-ui"], function (exports_2, context_2) {
     "use strict";
-    var mithril_1, eutsiv_ui_1, Component, applyClasses, applyConfig;
+    var mithril_1, eutsiv_ui_1, Component, applyClasses, applyConfig, applyConfigFit;
     var __moduleName = context_2 && context_2.id;
     return {
         setters: [
@@ -70,11 +69,19 @@ System.register("eutsiv-ui/Component", ["mithril", "eutsiv-ui"], function (expor
                 };
                 if (config.context)
                     attrs.class.push(`eui-${config.context}`);
+                attrs = applyConfigFit(attrs);
                 if (config.size)
-                    attrs.style.push(`font-size:${sizes[config.size]}`);
+                    attrs.style.fontSize = sizes[config.size];
                 return attrs;
             };
             exports_2("applyConfig", applyConfig);
+            applyConfigFit = (attrs) => {
+                let c = attrs.eui;
+                if (c.fit)
+                    attrs.class.push('eui-fit');
+                return attrs;
+            };
+            exports_2("applyConfigFit", applyConfigFit);
         }
     };
 });
@@ -356,7 +363,7 @@ System.register("eutsiv-ui/layout/Grid", ["eutsiv-ui/layout/grid/Grid", "eutsiv-
 });
 System.register("eutsiv-ui/layout/Gutter", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_9, context_9) {
     "use strict";
-    var mithril_7, eutsiv_ui_6, Component_5, Gutter, applyClasses;
+    var mithril_7, eutsiv_ui_6, Component_5, Gutter, applyClasses, applyConfig;
     var __moduleName = context_9 && context_9.id;
     return {
         setters: [
@@ -373,8 +380,8 @@ System.register("eutsiv-ui/layout/Gutter", ["mithril", "eutsiv-ui", "eutsiv-ui/C
         execute: function () {
             Gutter = () => {
                 return {
-                    view: (vn) => {
-                        return mithril_7.default('div', eutsiv_ui_6.applyAttrsModifiers(vn.attrs, applyClasses, Component_5.applyConfig), vn.children);
+                    view: ({ attrs, children }) => {
+                        return mithril_7.default('div', eutsiv_ui_6.applyAttrsModifiers(attrs, applyClasses, applyConfig), children);
                     }
                 };
             };
@@ -382,6 +389,11 @@ System.register("eutsiv-ui/layout/Gutter", ["mithril", "eutsiv-ui", "eutsiv-ui/C
             applyClasses = (attrs) => {
                 attrs = Component_5.applyClasses(attrs);
                 attrs.class.push('eui-gutter');
+                return attrs;
+            };
+            applyConfig = (attrs) => {
+                (typeof attrs.eui.fit != 'boolean') && (attrs.eui.fit = true);
+                attrs = Component_5.applyConfigFit(attrs);
                 return attrs;
             };
         }
@@ -609,8 +621,8 @@ System.register("eutsiv-ui/widget/form/Field", ["mithril", "eutsiv-ui", "eutsiv-
         execute: function () {
             Field = () => {
                 return {
-                    view: (vn) => {
-                        return mithril_13.default('div', eutsiv_ui_12.applyAttrsModifiers(vn.attrs, applyClasses, Column_2.applyConfig), vn.children);
+                    view: ({ attrs, children }) => {
+                        return mithril_13.default('div', eutsiv_ui_12.applyAttrsModifiers(attrs, applyClasses, Column_2.applyConfig), children);
                     }
                 };
             };

@@ -516,9 +516,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
       margin-left: 100% !important; } }
 
 .eui-viewport .eui-gutter {
-  width: 100%;
-  padding: 0.72em;
-  font-size: 1em; }
+  display: inline-block;
+  padding: 8px; }
 
 .eui-viewport div.eui-vspace {
   width: 100%;
@@ -527,6 +526,9 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
 
 .eui-viewport .eui-component {
   position: static; }
+
+.eui-viewport .eui-fit {
+  width: 100%; }
 
 /*
 
@@ -625,7 +627,6 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
 .eui-viewport a.eui-button, .eui-viewport button.eui-button, .eui-viewport input.eui-button {
   cursor: pointer;
   display: inline-block;
-  margin: 0;
   padding: 12px 20px;
   border: none;
   outline: 0;
@@ -717,7 +718,6 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
       color: #8f8f8f;
       cursor: default; }
   .eui-viewport a.eui-button.eui-block, .eui-viewport button.eui-button.eui-block, .eui-viewport input.eui-button.eui-block {
-    display: block;
     width: 100%; }
   .eui-viewport a.eui-button.eui-compact, .eui-viewport button.eui-button.eui-compact, .eui-viewport input.eui-button.eui-compact {
     line-height: 1.1;
@@ -843,7 +843,14 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   margin: 0;
   padding: 0;
   font-size: 1em;
-  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  /*
+    .eui-field {
+      display: block;
+      margin: 0 0 1em 0;
+      padding: 0 6px;
+    }
+    */ }
   .eui-viewport form.eui-form span.eui-fieldset, .eui-viewport div.eui-select span.eui-fieldset {
     display: block;
     margin: 0.8em 6px;
@@ -852,10 +859,6 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     line-height: 1.76em;
     color: #222222;
     border-bottom: 1px solid #dbdbdb; }
-  .eui-viewport form.eui-form .eui-field, .eui-viewport div.eui-select .eui-field {
-    display: block;
-    margin: 0 0 1em 0;
-    padding: 0 6px; }
   .eui-viewport form.eui-form label, .eui-viewport div.eui-select label {
     display: block;
     line-height: 1.75em;

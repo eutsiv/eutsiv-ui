@@ -49,6 +49,16 @@ declare module "layout/Grid" {
     };
     export { View };
 }
+declare module "layout/Gutter" {
+    import m from 'mithril';
+    let View: {
+        view: () => m.Vnode<{
+            documentation: m.Vnode<any, any>[];
+            source: string;
+        }, {}>[];
+    };
+    export { View };
+}
 declare module "widget/Breadcrumb" {
     import m from 'mithril';
     let View: {

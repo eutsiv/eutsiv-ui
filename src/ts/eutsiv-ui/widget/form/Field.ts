@@ -7,8 +7,8 @@ import {applyClasses as applyClassesColumn, applyConfig} from 'eutsiv-ui/layout/
 const Field = () => {
 
   return {
-    view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
+    view: ({ attrs, children }) => {
+      return m('div', applyAttrsModifiers(attrs, applyClasses, applyConfig), children)
     }
   }
 

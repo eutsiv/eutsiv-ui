@@ -1,9 +1,8 @@
 .#{$eui-namespace}-viewport {
 
   .#{$eui-namespace}-gutter {
-    width: 100%;
-    padding: 0.72em;
-    font-size: 1em;
+    display: inline-block;
+    padding: $eui-unit-grid * 2;
   }
 
 }

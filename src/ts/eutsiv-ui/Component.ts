@@ -21,7 +21,6 @@ const applyClasses = (attrs) => {
   
 }
 
-
 const applyConfig = (attrs) => {
 
   let config = attrs.eui
@@ -35,13 +34,24 @@ const applyConfig = (attrs) => {
     HU: '2.28em'
   }
 
+  // context
   if(config.context) attrs.class.push(`eui-${config.context}`)
 
-  if(config.size) attrs.style.push(`font-size:${sizes[config.size]}`)
+  // fit
+  attrs = applyConfigFit(attrs)
+
+  // size
+  if(config.size) attrs.style.fontSize = sizes[config.size]
 
   return attrs
   
 }
 
+const applyConfigFit = (attrs) => {
+  let c = attrs.eui
+  if(c.fit) attrs.class.push('eui-fit')
+  return attrs
+}
 
-export { Component, applyClasses, applyConfig }
+
+export { Component, applyClasses, applyConfig, applyConfigFit }

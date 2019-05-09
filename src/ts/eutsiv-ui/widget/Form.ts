@@ -8,8 +8,8 @@ import {Field} from 'eutsiv-ui/widget/form/Field'
 const Form = () => {
 
   return {
-    view: (vn) => {
-      return m('form', applyAttrsModifiers(vn.attrs, applyClasses), vn.children)
+    view: ({ attrs, children }) => {
+      return m('form', applyAttrsModifiers(attrs, applyClasses), children)
     }
   }
 

@@ -2,6 +2,7 @@ import m from 'mithril'
 
 import {Section} from 'resources/Section'
 import {Button} from 'eutsiv-ui/widget/Button'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 import {Icon} from 'eutsiv-ui/widget/Icon'
 import {Sizes} from 'eutsiv-ui'
 
@@ -145,20 +146,42 @@ m(Button, { eui: { context: "reverse", compact: true } }, "Reverse")
       m(Section, { 
         documentation: [
           m("h2", "Spaced"),
-          m(Button, { eui: { spaced: true } }, "Default"),
-          m(Button, { disabled: true, eui: { spaced: true } }, "Disabled"),
-          m(Button, { eui: { context: "primary", spaced: true } }, "Primary"),
-          m(Button, { eui: { context: "secondary", spaced: true } }, "Secondary"),
-          m(Button, { eui: { context: "reverse", spaced: true } }, "Reverse")
+          m('p', 'If you want spaced buttons, Gutter may be an option'),
+          m(Gutter, { eui: { fit: false } },
+            m(Button, { eui: { spaced: true } }, "Default")
+          ),
+          m(Gutter, { eui: { fit: false } },
+            m(Button, { disabled: true, eui: { spaced: true } }, "Disabled")
+          ),
+          m(Gutter, { eui: { fit: false } },
+            m(Button, { eui: { context: "primary", spaced: true } }, "Primary")
+          ),
+          m(Gutter, { eui: { fit: false } },
+            m(Button, { eui: { context: "secondary", spaced: true } }, "Secondary")
+          ),
+          m(Gutter, { eui: { fit: false } },
+            m(Button, { eui: { context: "reverse", spaced: true } }, "Reverse")
+          )
         ],
         source: `
 import {Button} from 'eutsiv-ui/widget/Button'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 
-m(Button, { eui: { spaced: true } }, "Default"),
-m(Button, { disabled: true, eui: { spaced: true } }, "Disabled"),
-m(Button, { eui: { context: "primary", spaced: true } }, "Primary"),
-m(Button, { eui: { context: "secondary", spaced: true } }, "Secondary"),
-m(Button, { eui: { context: "reverse", spaced: true } }, "Reverse")
+m(Gutter, { eui: { fit: false } },
+  m(Button, { eui: { spaced: true } }, "Default")
+),
+m(Gutter, { eui: { fit: false } },
+  m(Button, { disabled: true, eui: { spaced: true } }, "Disabled")
+),
+m(Gutter, { eui: { fit: false } },
+  m(Button, { eui: { context: "primary", spaced: true } }, "Primary")
+),
+m(Gutter, { eui: { fit: false } },
+  m(Button, { eui: { context: "secondary", spaced: true } }, "Secondary")
+),
+m(Gutter, { eui: { fit: false } },
+  m(Button, { eui: { context: "reverse", spaced: true } }, "Reverse")
+)
         `
       }),
 

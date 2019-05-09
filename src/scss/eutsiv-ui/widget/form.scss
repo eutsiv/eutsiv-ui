@@ -17,11 +17,13 @@
       color: $eui-color;
       border-bottom: $eui-widget-form-input-border;
     }
+    /*
     .#{$eui-namespace}-field {
       display: block;
       margin: 0 0 1em 0;
       padding: 0 6px;
     }
+    */
     label {
       display: block;
       line-height: 1.75em;
@@ -44,7 +46,7 @@
       display: block;
       width: 100%;
       margin: 0;
-      padding: ($eui-unit-grid-inner*3) - 1; // remove 1 pixel because border
+      padding: ($eui-unit-grid*3) - 1; // remove 1 pixel because border
       line-height: 1.1;
       font-size: $eui-font-size;
       font-family: $eui-font-family;
