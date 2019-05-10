@@ -1,27 +1,19 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesColumn, applyConfig} from 'eutsiv-ui/layout/grid/Column'
+import {Column} from 'eutsiv-ui/layout/Grid'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 
 
 const Field = () => {
 
   return {
-    view: ({ attrs, children }) => {
-      return m('div', applyAttrsModifiers(attrs, applyClasses, applyConfig), children)
+    view: (vn) => {
+      return m(Column, vn.attrs, 
+        m(Gutter, vn.children)
+      )
     }
   }
 
 }
-
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesColumn(attrs)
-  attrs.class.push('eui-field')
-
-  return attrs
-  
-}
-
 
 export { Field }

@@ -6,12 +6,13 @@
     cursor: pointer;
     list-style: none;
     font-size: 1em;
+    line-height: 1.1;
     text-align: left;
     -webkit-tap-highlight-color: transparent;
 
     a {
       display: block;
-      padding: 0.80em;
+      padding: $eui-unit-grid*3 $eui-unit-grid*4;
       color: $eui-color;
       text-decoration: none;
       &:hover {

@@ -18,7 +18,8 @@ declare module "eutsiv-ui/Component" {
     };
     const applyClasses: (attrs: any) => any;
     const applyConfig: (attrs: any) => any;
-    export { Component, applyClasses, applyConfig };
+    const applyConfigFit: (attrs: any) => any;
+    export { Component, applyClasses, applyConfig, applyConfigFit };
 }
 declare module "eutsiv-ui/Viewport" {
     import m from 'mithril';
@@ -72,13 +73,6 @@ declare module "eutsiv-ui/layout/Gutter" {
     };
     export { Gutter };
 }
-declare module "eutsiv-ui/layout/VSpace" {
-    import m from 'mithril';
-    const VSpace: () => {
-        view: (vn: any) => m.Vnode<any, any>;
-    };
-    export { VSpace };
-}
 declare module "eutsiv-ui/widget/Link" {
     import m from 'mithril';
     const Link: () => {
@@ -107,20 +101,44 @@ declare module "eutsiv-ui/widget/Button" {
     };
     export { Button };
 }
+declare module "eutsiv-ui/widget/form/Checkbox" {
+    import m from 'mithril';
+    const Checkbox: () => {
+        view: (vn: any) => m.Vnode<any, any>;
+    };
+    export { Checkbox };
+}
 declare module "eutsiv-ui/widget/form/Field" {
     import m from 'mithril';
     const Field: () => {
-        view: (vn: any) => m.Vnode<any, any>;
+        view: (vn: any) => m.Vnode<{}, {}>;
     };
     export { Field };
 }
+declare module "eutsiv-ui/widget/form/Label" {
+    import m from 'mithril';
+    const Label: () => {
+        view: (vn: any) => m.Vnode<any, any>;
+    };
+    export { Label };
+}
+declare module "eutsiv-ui/widget/form/Radio" {
+    import m from 'mithril';
+    const Radio: () => {
+        view: (vn: any) => m.Vnode<any, any>;
+    };
+    export { Radio };
+}
 declare module "eutsiv-ui/widget/Form" {
     import m from 'mithril';
+    import { Checkbox } from "eutsiv-ui/widget/form/Checkbox";
     import { Field } from "eutsiv-ui/widget/form/Field";
+    import { Label } from "eutsiv-ui/widget/form/Label";
+    import { Radio } from "eutsiv-ui/widget/form/Radio";
     const Form: () => {
         view: (vn: any) => m.Vnode<any, any>;
     };
-    export { Form, Field };
+    export { Form, Checkbox, Field, Label, Radio };
 }
 declare module "eutsiv-ui/widget/Loading" {
     import m from 'mithril';
@@ -182,7 +200,9 @@ declare module "eutsiv-ui/widget/form/Select" {
 declare module "eutsiv-ui/widget/tree/Tree" {
     import m from 'mithril';
     const Tree: () => {
-        view: (vn: any) => m.Vnode<any, any>;
+        view: ({ attrs }: {
+            attrs: any;
+        }) => m.Vnode<any, any>;
     };
     export { Tree };
 }

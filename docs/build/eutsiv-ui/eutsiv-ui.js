@@ -380,8 +380,8 @@ System.register("eutsiv-ui/layout/Gutter", ["mithril", "eutsiv-ui", "eutsiv-ui/C
         execute: function () {
             Gutter = () => {
                 return {
-                    view: ({ attrs, children }) => {
-                        return mithril_7.default('div', eutsiv_ui_6.applyAttrsModifiers(attrs, applyClasses, applyConfig), children);
+                    view: (vn) => {
+                        return mithril_7.default('div', eutsiv_ui_6.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
                     }
                 };
             };
@@ -399,9 +399,9 @@ System.register("eutsiv-ui/layout/Gutter", ["mithril", "eutsiv-ui", "eutsiv-ui/C
         }
     };
 });
-System.register("eutsiv-ui/layout/VSpace", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_10, context_10) {
+System.register("eutsiv-ui/widget/Link", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_10, context_10) {
     "use strict";
-    var mithril_8, eutsiv_ui_7, Component_6, VSpace, applyClasses;
+    var mithril_8, eutsiv_ui_7, Component_6, Link, applyClasses;
     var __moduleName = context_10 && context_10.id;
     return {
         setters: [
@@ -416,25 +416,25 @@ System.register("eutsiv-ui/layout/VSpace", ["mithril", "eutsiv-ui", "eutsiv-ui/C
             }
         ],
         execute: function () {
-            VSpace = () => {
+            Link = () => {
                 return {
                     view: (vn) => {
-                        return mithril_8.default('div', eutsiv_ui_7.applyAttrsModifiers(vn.attrs, applyClasses, Component_6.applyConfig), mithril_8.default.trust('&nbsp;'));
+                        return mithril_8.default('a', eutsiv_ui_7.applyAttrsModifiers(vn.attrs, applyClasses, Component_6.applyConfig), vn.children);
                     }
                 };
             };
-            exports_10("VSpace", VSpace);
+            exports_10("Link", Link);
             applyClasses = (attrs) => {
                 attrs = Component_6.applyClasses(attrs);
-                attrs.class.push('eui-vspace');
+                attrs.class.push('eui-link');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/Link", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_11, context_11) {
+System.register("eutsiv-ui/widget/Icon", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_11, context_11) {
     "use strict";
-    var mithril_9, eutsiv_ui_8, Component_7, Link, applyClasses;
+    var mithril_9, eutsiv_ui_8, Component_7, Icon, applyClasses, applyConfig;
     var __moduleName = context_11 && context_11.id;
     return {
         setters: [
@@ -449,25 +449,34 @@ System.register("eutsiv-ui/widget/Link", ["mithril", "eutsiv-ui", "eutsiv-ui/Com
             }
         ],
         execute: function () {
-            Link = () => {
+            Icon = () => {
                 return {
                     view: (vn) => {
-                        return mithril_9.default('a', eutsiv_ui_8.applyAttrsModifiers(vn.attrs, applyClasses, Component_7.applyConfig), vn.children);
+                        return mithril_9.default('i', eutsiv_ui_8.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
                     }
                 };
             };
-            exports_11("Link", Link);
+            exports_11("Icon", Icon);
             applyClasses = (attrs) => {
                 attrs = Component_7.applyClasses(attrs);
-                attrs.class.push('eui-link');
+                attrs.class.push('eui-icon');
+                return attrs;
+            };
+            applyConfig = (attrs) => {
+                attrs = Component_7.applyConfig(attrs);
+                let config = attrs.eui;
+                if (config.type)
+                    attrs.class.push(`eui-icon-${config.type}`);
+                if (config.spin)
+                    attrs.class.push('eui-spin');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/Icon", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_12, context_12) {
+System.register("eutsiv-ui/widget/Breadcrumb", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Link", "eutsiv-ui/widget/Icon"], function (exports_12, context_12) {
     "use strict";
-    var mithril_10, eutsiv_ui_9, Component_8, Icon, applyClasses, applyConfig;
+    var mithril_10, eutsiv_ui_9, Component_8, Link_1, Icon_1, Breadcrumb, applyClasses;
     var __moduleName = context_12 && context_12.id;
     return {
         setters: [
@@ -479,48 +488,6 @@ System.register("eutsiv-ui/widget/Icon", ["mithril", "eutsiv-ui", "eutsiv-ui/Com
             },
             function (Component_8_1) {
                 Component_8 = Component_8_1;
-            }
-        ],
-        execute: function () {
-            Icon = () => {
-                return {
-                    view: (vn) => {
-                        return mithril_10.default('i', eutsiv_ui_9.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
-                    }
-                };
-            };
-            exports_12("Icon", Icon);
-            applyClasses = (attrs) => {
-                attrs = Component_8.applyClasses(attrs);
-                attrs.class.push('eui-icon');
-                return attrs;
-            };
-            applyConfig = (attrs) => {
-                attrs = Component_8.applyConfig(attrs);
-                let config = attrs.eui;
-                if (config.type)
-                    attrs.class.push(`eui-icon-${config.type}`);
-                if (config.spin)
-                    attrs.class.push('eui-spin');
-                return attrs;
-            };
-        }
-    };
-});
-System.register("eutsiv-ui/widget/Breadcrumb", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Link", "eutsiv-ui/widget/Icon"], function (exports_13, context_13) {
-    "use strict";
-    var mithril_11, eutsiv_ui_10, Component_9, Link_1, Icon_1, Breadcrumb, applyClasses;
-    var __moduleName = context_13 && context_13.id;
-    return {
-        setters: [
-            function (mithril_11_1) {
-                mithril_11 = mithril_11_1;
-            },
-            function (eutsiv_ui_10_1) {
-                eutsiv_ui_10 = eutsiv_ui_10_1;
-            },
-            function (Component_9_1) {
-                Component_9 = Component_9_1;
             },
             function (Link_1_1) {
                 Link_1 = Link_1_1;
@@ -533,31 +500,76 @@ System.register("eutsiv-ui/widget/Breadcrumb", ["mithril", "eutsiv-ui", "eutsiv-
             Breadcrumb = () => {
                 return {
                     view: (vn) => {
-                        return mithril_11.default('ul', eutsiv_ui_10.applyAttrsModifiers(vn.attrs, applyClasses, Component_9.applyConfig), [
+                        return mithril_10.default('ul', eutsiv_ui_9.applyAttrsModifiers(vn.attrs, applyClasses, Component_8.applyConfig), [
                             vn.attrs.eui.items.map((v, i, a) => {
                                 let text = typeof v.text == 'function' ? v.text() : v.text;
-                                let it = (i == (a.length - 1)) ? mithril_11.default('span', { class: 'eui-active' }, text) : [
-                                    mithril_11.default(Link_1.Link, { href: v.href, disabled: v.disabled, oncreate: v.oncreate, eui: { context: v.context } }, text),
-                                    mithril_11.default(Icon_1.Icon, { disabled: true, eui: { type: 'right-open' } })
+                                let it = (i == (a.length - 1)) ? mithril_10.default('span', { class: 'eui-active' }, text) : [
+                                    mithril_10.default(Link_1.Link, { href: v.href, disabled: v.disabled, oncreate: v.oncreate, eui: { context: v.context } }, text),
+                                    mithril_10.default(Icon_1.Icon, { disabled: true, eui: { type: 'right-open' } })
                                 ];
-                                return mithril_11.default('li', it);
+                                return mithril_10.default('li', it);
                             })
                         ]);
                     }
                 };
             };
-            exports_13("Breadcrumb", Breadcrumb);
+            exports_12("Breadcrumb", Breadcrumb);
             applyClasses = (attrs) => {
-                attrs = Component_9.applyClasses(attrs);
+                attrs = Component_8.applyClasses(attrs);
                 attrs.class.push('eui-breadcrumb');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_14, context_14) {
+System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_13, context_13) {
     "use strict";
-    var mithril_12, eutsiv_ui_11, Component_10, Button, applyClasses, applyConfig;
+    var mithril_11, eutsiv_ui_10, Component_9, Button, applyClasses, applyConfig;
+    var __moduleName = context_13 && context_13.id;
+    return {
+        setters: [
+            function (mithril_11_1) {
+                mithril_11 = mithril_11_1;
+            },
+            function (eutsiv_ui_10_1) {
+                eutsiv_ui_10 = eutsiv_ui_10_1;
+            },
+            function (Component_9_1) {
+                Component_9 = Component_9_1;
+            }
+        ],
+        execute: function () {
+            Button = () => {
+                return {
+                    view: (vn) => {
+                        let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href) ? 'a' : 'button';
+                        return mithril_11.default(tag, eutsiv_ui_10.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
+                    }
+                };
+            };
+            exports_13("Button", Button);
+            applyClasses = (attrs) => {
+                attrs = Component_9.applyClasses(attrs);
+                attrs.class.push('eui-button');
+                return attrs;
+            };
+            applyConfig = (attrs) => {
+                attrs = Component_9.applyConfig(attrs);
+                let config = attrs.eui;
+                if (config.block)
+                    attrs.class.push('eui-block');
+                if (config.compact)
+                    attrs.class.push('eui-compact');
+                if (config.flat)
+                    attrs.class.push('eui-flat');
+                return attrs;
+            };
+        }
+    };
+});
+System.register("eutsiv-ui/widget/form/Checkbox", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_14, context_14) {
+    "use strict";
+    var mithril_12, eutsiv_ui_11, Component_10, Checkbox, applyClasses, applyConfig;
     var __moduleName = context_14 && context_14.id;
     return {
         setters: [
@@ -572,219 +584,297 @@ System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/C
             }
         ],
         execute: function () {
-            Button = () => {
+            Checkbox = () => {
                 return {
                     view: (vn) => {
-                        let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href) ? 'a' : 'button';
-                        return mithril_12.default(tag, eutsiv_ui_11.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
+                        let attrs = eutsiv_ui_11.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig);
+                        let onchange = attrs.onchange;
+                        delete attrs.onchange;
+                        return mithril_12.default('label', attrs, mithril_12.default('input', { type: 'checkbox', checked: attrs.checked, disabled: attrs.disabled, name: attrs.name, value: attrs.value, onchange }), mithril_12.default('span', { class: 'eui-fake' }), vn.children);
                     }
                 };
             };
-            exports_14("Button", Button);
+            exports_14("Checkbox", Checkbox);
             applyClasses = (attrs) => {
                 attrs = Component_10.applyClasses(attrs);
-                attrs.class.push('eui-button');
+                attrs.class.push('eui-checkbox');
                 return attrs;
             };
             applyConfig = (attrs) => {
-                attrs = Component_10.applyConfig(attrs);
-                let config = attrs.eui;
-                if (config.block)
-                    attrs.class.push('eui-block');
-                if (config.compact)
-                    attrs.class.push('eui-compact');
-                if (config.flat)
-                    attrs.class.push('eui-flat');
-                if (config.spaced)
-                    attrs.class.push('eui-spaced');
+                let c = attrs.eui;
+                if (c.inline)
+                    attrs.class.push('eui-inline');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/form/Field", ["mithril", "eutsiv-ui", "eutsiv-ui/layout/grid/Column"], function (exports_15, context_15) {
+System.register("eutsiv-ui/widget/form/Field", ["mithril", "eutsiv-ui/layout/Grid", "eutsiv-ui/layout/Gutter"], function (exports_15, context_15) {
     "use strict";
-    var mithril_13, eutsiv_ui_12, Column_2, Field, applyClasses;
+    var mithril_13, Grid_2, Gutter_1, Field;
     var __moduleName = context_15 && context_15.id;
     return {
         setters: [
             function (mithril_13_1) {
                 mithril_13 = mithril_13_1;
             },
-            function (eutsiv_ui_12_1) {
-                eutsiv_ui_12 = eutsiv_ui_12_1;
+            function (Grid_2_1) {
+                Grid_2 = Grid_2_1;
             },
-            function (Column_2_1) {
-                Column_2 = Column_2_1;
+            function (Gutter_1_1) {
+                Gutter_1 = Gutter_1_1;
             }
         ],
         execute: function () {
             Field = () => {
                 return {
-                    view: ({ attrs, children }) => {
-                        return mithril_13.default('div', eutsiv_ui_12.applyAttrsModifiers(attrs, applyClasses, Column_2.applyConfig), children);
+                    view: (vn) => {
+                        return mithril_13.default(Grid_2.Column, vn.attrs, mithril_13.default(Gutter_1.Gutter, vn.children));
                     }
                 };
             };
             exports_15("Field", Field);
-            applyClasses = (attrs) => {
-                attrs = Column_2.applyClasses(attrs);
-                attrs.class.push('eui-field');
-                return attrs;
-            };
         }
     };
 });
-System.register("eutsiv-ui/widget/Form", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/form/Field"], function (exports_16, context_16) {
+System.register("eutsiv-ui/widget/form/Label", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_16, context_16) {
     "use strict";
-    var mithril_14, eutsiv_ui_13, Component_11, Field_1, Form, applyClasses;
+    var mithril_14, eutsiv_ui_12, Component_11, Label, applyConfig;
     var __moduleName = context_16 && context_16.id;
     return {
         setters: [
             function (mithril_14_1) {
                 mithril_14 = mithril_14_1;
             },
-            function (eutsiv_ui_13_1) {
-                eutsiv_ui_13 = eutsiv_ui_13_1;
+            function (eutsiv_ui_12_1) {
+                eutsiv_ui_12 = eutsiv_ui_12_1;
             },
             function (Component_11_1) {
                 Component_11 = Component_11_1;
-            },
-            function (Field_1_1) {
-                Field_1 = Field_1_1;
             }
         ],
         execute: function () {
-            exports_16("Field", Field_1.Field);
-            Form = () => {
+            Label = () => {
                 return {
                     view: (vn) => {
-                        return mithril_14.default('form', eutsiv_ui_13.applyAttrsModifiers(vn.attrs, applyClasses), vn.children);
+                        return mithril_14.default('label', eutsiv_ui_12.applyAttrsModifiers(vn.attrs, Component_11.applyClasses, applyConfig), vn.children);
                     }
                 };
             };
-            exports_16("Form", Form);
-            applyClasses = (attrs) => {
-                attrs = Component_11.applyClasses(attrs);
-                attrs.class.push('eui-form');
+            exports_16("Label", Label);
+            applyConfig = (attrs) => {
+                let c = attrs.eui;
+                if (c.inline)
+                    attrs.class.push('eui-inline');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/Loading", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_17, context_17) {
+System.register("eutsiv-ui/widget/form/Radio", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_17, context_17) {
     "use strict";
-    var mithril_15, eutsiv_ui_14, Component_12, Loading, applyClasses;
+    var mithril_15, eutsiv_ui_13, Component_12, Radio, applyClasses, applyConfig;
     var __moduleName = context_17 && context_17.id;
     return {
         setters: [
             function (mithril_15_1) {
                 mithril_15 = mithril_15_1;
             },
-            function (eutsiv_ui_14_1) {
-                eutsiv_ui_14 = eutsiv_ui_14_1;
+            function (eutsiv_ui_13_1) {
+                eutsiv_ui_13 = eutsiv_ui_13_1;
             },
             function (Component_12_1) {
                 Component_12 = Component_12_1;
             }
         ],
         execute: function () {
-            Loading = () => {
+            Radio = () => {
                 return {
                     view: (vn) => {
-                        return mithril_15.default('div', eutsiv_ui_14.applyAttrsModifiers(vn.attrs, applyClasses), [...Array(6).keys()].map(i => { return mithril_15.default('div', { class: `eui-ball eui-ball-${i + 1}` }); }));
+                        let attrs = eutsiv_ui_13.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig);
+                        let onchange = attrs.onchange;
+                        delete attrs.onchange;
+                        return mithril_15.default('label', attrs, mithril_15.default('input', { type: 'radio', checked: attrs.checked, disabled: attrs.disabled, name: attrs.name, value: attrs.value, onchange }), mithril_15.default('span', { class: 'eui-fake' }), vn.children);
                     }
                 };
             };
-            exports_17("Loading", Loading);
+            exports_17("Radio", Radio);
             applyClasses = (attrs) => {
                 attrs = Component_12.applyClasses(attrs);
-                attrs.class.push('eui-loading');
+                attrs.class.push('eui-radio');
+                return attrs;
+            };
+            applyConfig = (attrs) => {
+                let c = attrs.eui;
+                if (c.inline)
+                    attrs.class.push('eui-inline');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/Notification", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_18, context_18) {
+System.register("eutsiv-ui/widget/Form", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/form/Checkbox", "eutsiv-ui/widget/form/Field", "eutsiv-ui/widget/form/Label", "eutsiv-ui/widget/form/Radio"], function (exports_18, context_18) {
     "use strict";
-    var mithril_16, eutsiv_ui_15, Component_13, Notification, applyClasses;
+    var mithril_16, eutsiv_ui_14, Component_13, Checkbox_1, Field_1, Label_1, Radio_1, Form, applyClasses;
     var __moduleName = context_18 && context_18.id;
     return {
         setters: [
             function (mithril_16_1) {
                 mithril_16 = mithril_16_1;
             },
-            function (eutsiv_ui_15_1) {
-                eutsiv_ui_15 = eutsiv_ui_15_1;
+            function (eutsiv_ui_14_1) {
+                eutsiv_ui_14 = eutsiv_ui_14_1;
             },
             function (Component_13_1) {
                 Component_13 = Component_13_1;
+            },
+            function (Checkbox_1_1) {
+                Checkbox_1 = Checkbox_1_1;
+            },
+            function (Field_1_1) {
+                Field_1 = Field_1_1;
+            },
+            function (Label_1_1) {
+                Label_1 = Label_1_1;
+            },
+            function (Radio_1_1) {
+                Radio_1 = Radio_1_1;
             }
         ],
         execute: function () {
-            Notification = () => {
+            exports_18("Checkbox", Checkbox_1.Checkbox);
+            exports_18("Field", Field_1.Field);
+            exports_18("Label", Label_1.Label);
+            exports_18("Radio", Radio_1.Radio);
+            Form = () => {
                 return {
                     view: (vn) => {
-                        return mithril_16.default('div', eutsiv_ui_15.applyAttrsModifiers(vn.attrs, applyClasses, Component_13.applyConfig), vn.children);
+                        return mithril_16.default('form', eutsiv_ui_14.applyAttrsModifiers(vn.attrs, applyClasses), vn.children);
                     }
                 };
             };
-            exports_18("Notification", Notification);
+            exports_18("Form", Form);
             applyClasses = (attrs) => {
                 attrs = Component_13.applyClasses(attrs);
-                attrs.class.push('eui-notification');
+                attrs.class.push('eui-form');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/Progress", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_19, context_19) {
+System.register("eutsiv-ui/widget/Loading", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_19, context_19) {
     "use strict";
-    var mithril_17, eutsiv_ui_16, Component_14, Progress, applyClasses;
+    var mithril_17, eutsiv_ui_15, Component_14, Loading, applyClasses;
     var __moduleName = context_19 && context_19.id;
     return {
         setters: [
             function (mithril_17_1) {
                 mithril_17 = mithril_17_1;
             },
-            function (eutsiv_ui_16_1) {
-                eutsiv_ui_16 = eutsiv_ui_16_1;
+            function (eutsiv_ui_15_1) {
+                eutsiv_ui_15 = eutsiv_ui_15_1;
             },
             function (Component_14_1) {
                 Component_14 = Component_14_1;
             }
         ],
         execute: function () {
-            Progress = () => {
+            Loading = () => {
                 return {
                     view: (vn) => {
-                        return mithril_17.default('div', eutsiv_ui_16.applyAttrsModifiers(vn.attrs, applyClasses, Component_14.applyConfig), mithril_17.default('div', { class: 'eui-bar', style: `width:${vn.attrs.eui.percent}%` }));
+                        return mithril_17.default('div', eutsiv_ui_15.applyAttrsModifiers(vn.attrs, applyClasses), [...Array(6).keys()].map(i => { return mithril_17.default('div', { class: `eui-ball eui-ball-${i + 1}` }); }));
                     }
                 };
             };
-            exports_19("Progress", Progress);
+            exports_19("Loading", Loading);
             applyClasses = (attrs) => {
                 attrs = Component_14.applyClasses(attrs);
-                attrs.class.push('eui-progress');
+                attrs.class.push('eui-loading');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/Table", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_20, context_20) {
+System.register("eutsiv-ui/widget/Notification", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_20, context_20) {
     "use strict";
-    var mithril_18, eutsiv_ui_17, Component_15, Table, applyClasses;
+    var mithril_18, eutsiv_ui_16, Component_15, Notification, applyClasses;
     var __moduleName = context_20 && context_20.id;
     return {
         setters: [
             function (mithril_18_1) {
                 mithril_18 = mithril_18_1;
             },
-            function (eutsiv_ui_17_1) {
-                eutsiv_ui_17 = eutsiv_ui_17_1;
+            function (eutsiv_ui_16_1) {
+                eutsiv_ui_16 = eutsiv_ui_16_1;
             },
             function (Component_15_1) {
                 Component_15 = Component_15_1;
+            }
+        ],
+        execute: function () {
+            Notification = () => {
+                return {
+                    view: (vn) => {
+                        return mithril_18.default('div', eutsiv_ui_16.applyAttrsModifiers(vn.attrs, applyClasses, Component_15.applyConfig), vn.children);
+                    }
+                };
+            };
+            exports_20("Notification", Notification);
+            applyClasses = (attrs) => {
+                attrs = Component_15.applyClasses(attrs);
+                attrs.class.push('eui-notification');
+                return attrs;
+            };
+        }
+    };
+});
+System.register("eutsiv-ui/widget/Progress", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_21, context_21) {
+    "use strict";
+    var mithril_19, eutsiv_ui_17, Component_16, Progress, applyClasses;
+    var __moduleName = context_21 && context_21.id;
+    return {
+        setters: [
+            function (mithril_19_1) {
+                mithril_19 = mithril_19_1;
+            },
+            function (eutsiv_ui_17_1) {
+                eutsiv_ui_17 = eutsiv_ui_17_1;
+            },
+            function (Component_16_1) {
+                Component_16 = Component_16_1;
+            }
+        ],
+        execute: function () {
+            Progress = () => {
+                return {
+                    view: (vn) => {
+                        return mithril_19.default('div', eutsiv_ui_17.applyAttrsModifiers(vn.attrs, applyClasses, Component_16.applyConfig), mithril_19.default('div', { class: 'eui-bar', style: `width:${vn.attrs.eui.percent}%` }));
+                    }
+                };
+            };
+            exports_21("Progress", Progress);
+            applyClasses = (attrs) => {
+                attrs = Component_16.applyClasses(attrs);
+                attrs.class.push('eui-progress');
+                return attrs;
+            };
+        }
+    };
+});
+System.register("eutsiv-ui/widget/Table", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_22, context_22) {
+    "use strict";
+    var mithril_20, eutsiv_ui_18, Component_17, Table, applyClasses;
+    var __moduleName = context_22 && context_22.id;
+    return {
+        setters: [
+            function (mithril_20_1) {
+                mithril_20 = mithril_20_1;
+            },
+            function (eutsiv_ui_18_1) {
+                eutsiv_ui_18 = eutsiv_ui_18_1;
+            },
+            function (Component_17_1) {
+                Component_17 = Component_17_1;
             }
         ],
         execute: function () {
@@ -792,45 +882,45 @@ System.register("eutsiv-ui/widget/Table", ["mithril", "eutsiv-ui", "eutsiv-ui/Co
                 return {
                     view: (vn) => {
                         let params = vn.attrs.eui;
-                        return mithril_18.default('div', eutsiv_ui_17.applyAttrsModifiers(vn.attrs, applyClasses), mithril_18.default('table', { class: 'eui-table eui-condensed eui-striped' }, [
-                            mithril_18.default('thead', [
-                                mithril_18.default('tr', params.columns.map((f) => {
-                                    return Array.isArray(f.title) ? mithril_18.default('th', { onclick: f.title[1], style: 'cursor:pointer' }, f.title[0]) : mithril_18.default('th', f.title);
+                        return mithril_20.default('div', eutsiv_ui_18.applyAttrsModifiers(vn.attrs, applyClasses), mithril_20.default('table', { class: 'eui-table eui-condensed eui-striped' }, [
+                            mithril_20.default('thead', [
+                                mithril_20.default('tr', params.columns.map((f) => {
+                                    return Array.isArray(f.title) ? mithril_20.default('th', { onclick: f.title[1], style: 'cursor:pointer' }, f.title[0]) : mithril_20.default('th', f.title);
                                 }))
                             ]),
-                            mithril_18.default('tbody', params.data.map((r) => {
-                                return mithril_18.default('tr', { key: r[params.key] }, params.columns.map((f) => {
+                            mithril_20.default('tbody', params.data.map((r) => {
+                                return mithril_20.default('tr', { key: r[params.key] }, params.columns.map((f) => {
                                     let v = typeof f.content === 'function' ? f.content(r) : r[f.content];
-                                    return mithril_18.default('td', v);
+                                    return mithril_20.default('td', v);
                                 }));
                             }))
                         ]));
                     }
                 };
             };
-            exports_20("Table", Table);
+            exports_22("Table", Table);
             applyClasses = (attrs) => {
-                attrs = Component_15.applyClasses(attrs);
+                attrs = Component_17.applyClasses(attrs);
                 attrs.class.push('eui-table-container');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_21, context_21) {
+System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_23, context_23) {
     "use strict";
-    var mithril_19, eutsiv_ui_18, Component_16, Calendar, applyClasses;
-    var __moduleName = context_21 && context_21.id;
+    var mithril_21, eutsiv_ui_19, Component_18, Calendar, applyClasses;
+    var __moduleName = context_23 && context_23.id;
     return {
         setters: [
-            function (mithril_19_1) {
-                mithril_19 = mithril_19_1;
+            function (mithril_21_1) {
+                mithril_21 = mithril_21_1;
             },
-            function (eutsiv_ui_18_1) {
-                eutsiv_ui_18 = eutsiv_ui_18_1;
+            function (eutsiv_ui_19_1) {
+                eutsiv_ui_19 = eutsiv_ui_19_1;
             },
-            function (Component_16_1) {
-                Component_16 = Component_16_1;
+            function (Component_18_1) {
+                Component_18 = Component_18_1;
             }
         ],
         execute: function () {
@@ -842,8 +932,8 @@ System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "
                 let days_in_month = getDaysInMonth(vc.attrs.month, vc.attrs.year), first_day_date = new Date(vc.attrs.year, vc.attrs.month, 1), first_day_weekday = first_day_date.getDay();
                 let prev_month = vc.attrs.month == 0 ? 11 : vc.attrs.month - 1, prev_year = prev_month == 11 ? vc.attrs.year - 1 : vc.attrs.year, prev_days = getDaysInMonth(prev_month, prev_year);
                 const buildHeader = () => {
-                    return mithril_19.default('div', { class: 'eui-week-days' }, days_labels.map(v => {
-                        return mithril_19.default('div', { class: 'eui-day' }, v);
+                    return mithril_21.default('div', { class: 'eui-week-days' }, days_labels.map(v => {
+                        return mithril_21.default('div', { class: 'eui-day' }, v);
                     }));
                 };
                 const calculateGridsDays = () => {
@@ -871,39 +961,39 @@ System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "
                 };
                 return {
                     view: (vn) => {
-                        return mithril_19.default('div', eutsiv_ui_18.applyAttrsModifiers(vn.attrs, applyClasses, Component_16.applyConfig), mithril_19.default('h2', months_labels[vn.attrs.month] + ' ' + vn.attrs.year), buildHeader(), mithril_19.default('div', { class: 'eui-calendar-grid' }, calculateGridsDays().map(w => {
-                            return mithril_19.default('div', { class: 'eui-calendar-row' }, w.map(d => {
+                        return mithril_21.default('div', eutsiv_ui_19.applyAttrsModifiers(vn.attrs, applyClasses, Component_18.applyConfig), mithril_21.default('h2', months_labels[vn.attrs.month] + ' ' + vn.attrs.year), buildHeader(), mithril_21.default('div', { class: 'eui-calendar-grid' }, calculateGridsDays().map(w => {
+                            return mithril_21.default('div', { class: 'eui-calendar-row' }, w.map(d => {
                                 let classes = 'eui-day';
                                 if (d.intruder)
                                     classes += ' eui-other-month';
                                 let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                                 let title = new Date(vn.attrs.year, vn.attrs.month, d.day).toLocaleDateString('en-GB', options);
-                                return mithril_19.default('div', { class: classes, title }, d.day);
+                                return mithril_21.default('div', { class: classes, title }, d.day);
                             }));
                         })));
                     }
                 };
             };
-            exports_21("Calendar", Calendar);
+            exports_23("Calendar", Calendar);
             applyClasses = (attrs) => {
-                attrs = Component_16.applyClasses(attrs);
+                attrs = Component_18.applyClasses(attrs);
                 attrs.class.push('eui-calendar');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"], function (exports_22, context_22) {
+System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"], function (exports_24, context_24) {
     "use strict";
-    var mithril_20, Component_17, applySort, Resizer, Grid, applyClasses;
-    var __moduleName = context_22 && context_22.id;
+    var mithril_22, Component_19, applySort, Resizer, Grid, applyClasses;
+    var __moduleName = context_24 && context_24.id;
     return {
         setters: [
-            function (mithril_20_1) {
-                mithril_20 = mithril_20_1;
+            function (mithril_22_1) {
+                mithril_22 = mithril_22_1;
             },
-            function (Component_17_1) {
-                Component_17 = Component_17_1;
+            function (Component_19_1) {
+                Component_19 = Component_19_1;
             }
         ],
         execute: function () {
@@ -914,7 +1004,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
             };
             Resizer = {
                 view: (vn) => {
-                    return mithril_20.default('div', Object.assign({ class: 'resizer' }, vn.attrs));
+                    return mithril_22.default('div', Object.assign({ class: 'resizer' }, vn.attrs));
                 }
             };
             Grid = (vni) => {
@@ -931,7 +1021,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                     if (!mcols[idx].width || mcols[idx].width < cvn.dom.scrollWidth) {
                         let n = cvn.dom.scrollWidth + (parseInt(window.getComputedStyle(cvn.dom, null).getPropertyValue('padding-right').slice(0, -2)) * 2);
                         mcols[idx].width = n;
-                        mithril_20.default.redraw();
+                        mithril_22.default.redraw();
                     }
                 };
                 return {
@@ -939,7 +1029,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                         let params = vn.attrs.eui;
                         let data = sortedData ? sortedData : params.data;
                         let height = params.height || 'auto';
-                        return mithril_20.default('div', { class: 'grid', style: `height: ${height}` }, mithril_20.default('div', { class: 'header', style: totalWidth ? `width:${totalWidth}px` : '' }, params.columns.map((col, idx) => {
+                        return mithril_22.default('div', { class: 'grid', style: `height: ${height}` }, mithril_22.default('div', { class: 'header', style: totalWidth ? `width:${totalWidth}px` : '' }, params.columns.map((col, idx) => {
                             let title = '&nbsp;';
                             if (col.title)
                                 title = col.title;
@@ -951,7 +1041,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                 title += ` <small>(${mcols[idx].sort.nth + 1})</small>`;
                             }
                             return [
-                                mithril_20.default('div', { class: 'col col-header', style: (mcols[idx] && mcols[idx].width) ? `width:${mcols[idx].width}px` : '',
+                                mithril_22.default('div', { class: 'col col-header', style: (mcols[idx] && mcols[idx].width) ? `width:${mcols[idx].width}px` : '',
                                     oncreate: (cvn) => { adjustColumnWidth(cvn, idx); },
                                     onupdate: (cvn) => { adjustColumnWidth(cvn, idx); },
                                     onclick: (e) => {
@@ -983,8 +1073,8 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                             mcols[idx].sort.nth = 0;
                                         }
                                         sortedData = applySort(params.data, sortStack);
-                                    } }, mithril_20.default.trust(title)),
-                                mithril_20.default(Resizer, { onmousedown: (e) => {
+                                    } }, mithril_22.default.trust(title)),
+                                mithril_22.default(Resizer, { onmousedown: (e) => {
                                         let marker = document.createElement('div');
                                         let mouseInitPosX = e.clientX;
                                         let colResizerInitPosX = mcols[idx].dom.offsetLeft + mcols[idx].dom.offsetWidth - leftScrolled;
@@ -1008,7 +1098,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                             vn.dom.removeChild(marker);
                                             let tw = mcols.map(i => { return i.width; }).reduce((acc, i) => { return acc + i + 5; }, 0);
                                             totalWidth = tw > vn.dom.getBoundingClientRect().width ? tw : 0;
-                                            mithril_20.default.redraw();
+                                            mithril_22.default.redraw();
                                             window.removeEventListener('mousemove', Resize, false);
                                             window.removeEventListener('selectstart', disableSelect);
                                             window.removeEventListener('mouseup', stopResize, false);
@@ -1018,26 +1108,26 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                         window.addEventListener('mouseup', stopResize, false);
                                     } })
                             ];
-                        })), mithril_20.default('div', { class: 'body', style: 'height: 100%', onscroll: (e) => {
+                        })), mithril_22.default('div', { class: 'body', style: 'height: 100%', onscroll: (e) => {
                                 e.redraw = false;
                                 if (leftScrolled != e.target.scrollLeft) {
                                     vn.dom.querySelector('div.header').style.left = (e.target.scrollLeft * -1) + 'px';
                                     leftScrolled = e.target.scrollLeft;
-                                    mithril_20.default.redraw();
+                                    mithril_22.default.redraw();
                                 }
                             },
                             oncreate: (bvn) => {
                                 if (height != 'auto')
                                     bvn.dom.style.height = (vn.dom.getBoundingClientRect().height - vn.dom.querySelector('.header').getBoundingClientRect().height) + 'px';
                             } }, data.map(row => {
-                            return mithril_20.default('div', { key: row[params.key], class: 'row', style: totalWidth ? `width:${totalWidth}px` : '' }, params.columns.map((col, idx) => {
+                            return mithril_22.default('div', { key: row[params.key], class: 'row', style: totalWidth ? `width:${totalWidth}px` : '' }, params.columns.map((col, idx) => {
                                 let content = typeof col.content === 'function' ? col.content(row) : row[col.content];
-                                return mithril_20.default('div', { class: 'col col-body', style: (mcols[idx] && mcols[idx].width) ? `width:${mcols[idx].width}px` : '', oncreate: (cvn) => {
+                                return mithril_22.default('div', { class: 'col col-body', style: (mcols[idx] && mcols[idx].width) ? `width:${mcols[idx].width}px` : '', oncreate: (cvn) => {
                                         if (!mcols[idx])
                                             mcols[idx] = {};
                                         if (!mcols[idx].width || mcols[idx].width < cvn.dom.getBoundingClientRect().width) {
                                             mcols[idx].width = cvn.dom.getBoundingClientRect().width;
-                                            mithril_20.default.redraw();
+                                            mithril_22.default.redraw();
                                         }
                                     } }, content);
                             }));
@@ -1045,29 +1135,29 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                     }
                 };
             };
-            exports_22("Grid", Grid);
+            exports_24("Grid", Grid);
             applyClasses = (attrs) => {
-                attrs = Component_17.applyClasses(attrs);
+                attrs = Component_19.applyClasses(attrs);
                 attrs.class.push('eui-data-grid');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Button"], function (exports_23, context_23) {
+System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Button"], function (exports_25, context_25) {
     "use strict";
-    var mithril_21, eutsiv_ui_19, Component_18, Button_1, Paging, applyClasses;
-    var __moduleName = context_23 && context_23.id;
+    var mithril_23, eutsiv_ui_20, Component_20, Button_1, Paging, applyClasses;
+    var __moduleName = context_25 && context_25.id;
     return {
         setters: [
-            function (mithril_21_1) {
-                mithril_21 = mithril_21_1;
+            function (mithril_23_1) {
+                mithril_23 = mithril_23_1;
             },
-            function (eutsiv_ui_19_1) {
-                eutsiv_ui_19 = eutsiv_ui_19_1;
+            function (eutsiv_ui_20_1) {
+                eutsiv_ui_20 = eutsiv_ui_20_1;
             },
-            function (Component_18_1) {
-                Component_18 = Component_18_1;
+            function (Component_20_1) {
+                Component_20 = Component_20_1;
             },
             function (Button_1_1) {
                 Button_1 = Button_1_1;
@@ -1083,66 +1173,66 @@ System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv
                         let perPage = params.rows.perPage;
                         let last = (rows % perPage > 0) ? (Math.floor(rows / perPage) + 1) : (rows / perPage);
                         let pages = [...Array(last).keys()].map(i => i + 1);
-                        return mithril_21.default('nav', eutsiv_ui_19.applyAttrsModifiers(vn.attrs, applyClasses), [
-                            mithril_21.default('span', { class: 'eui-status' }, 'Displaying x to x of x'),
-                            mithril_21.default('br'),
+                        return mithril_23.default('nav', eutsiv_ui_20.applyAttrsModifiers(vn.attrs, applyClasses), [
+                            mithril_23.default('span', { class: 'eui-status' }, 'Displaying x to x of x'),
+                            mithril_23.default('br'),
                             ...pages.map(p => {
-                                let ba = { href: params.buildHref(p, perPage), oncreate: mithril_21.default.route.link, eui: { context: p == page ? 'primary' : undefined, spaced: true } };
-                                return mithril_21.default(Button_1.Button, ba, p);
+                                let ba = { href: params.buildHref(p, perPage), oncreate: mithril_23.default.route.link, eui: { context: p == page ? 'primary' : undefined, spaced: true } };
+                                return mithril_23.default(Button_1.Button, ba, p);
                             })
                         ]);
                     }
                 };
             };
-            exports_23("Paging", Paging);
+            exports_25("Paging", Paging);
             applyClasses = (attrs) => {
-                attrs = Component_18.applyClasses(attrs);
+                attrs = Component_20.applyClasses(attrs);
                 attrs.class.push('eui-paging');
                 return attrs;
             };
         }
     };
 });
-System.register("eutsiv-ui/widget/form/ImprovedSelect", [], function (exports_24, context_24) {
+System.register("eutsiv-ui/widget/form/ImprovedSelect", [], function (exports_26, context_26) {
     "use strict";
     var ImprovedSelect;
-    var __moduleName = context_24 && context_24.id;
+    var __moduleName = context_26 && context_26.id;
     return {
         setters: [],
         execute: function () {
             ImprovedSelect = () => {
             };
-            exports_24("ImprovedSelect", ImprovedSelect);
+            exports_26("ImprovedSelect", ImprovedSelect);
         }
     };
 });
-System.register("eutsiv-ui/widget/form/Select", [], function (exports_25, context_25) {
+System.register("eutsiv-ui/widget/form/Select", [], function (exports_27, context_27) {
     "use strict";
     var Select;
-    var __moduleName = context_25 && context_25.id;
+    var __moduleName = context_27 && context_27.id;
     return {
         setters: [],
         execute: function () {
             Select = () => {
             };
-            exports_25("Select", Select);
+            exports_27("Select", Select);
         }
     };
 });
-System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_26, context_26) {
+System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_28, context_28) {
     "use strict";
-    var mithril_22, eutsiv_ui_20, Component_19, buildTreeNodes, Branch, Leaf, Item, Tree, applyClasses;
-    var __moduleName = context_26 && context_26.id;
+    var mithril_24, eutsiv_ui_21, Component_21, buildTreeNodes, Branch, Leaf, Item, Tree, applyClasses;
+    var __moduleName = context_28 && context_28.id;
     return {
         setters: [
-            function (mithril_22_1) {
-                mithril_22 = mithril_22_1;
+            function (mithril_24_1) {
+                mithril_24 = mithril_24_1;
             },
-            function (eutsiv_ui_20_1) {
-                eutsiv_ui_20 = eutsiv_ui_20_1;
+            function (eutsiv_ui_21_1) {
+                eutsiv_ui_21 = eutsiv_ui_21_1;
             },
-            function (Component_19_1) {
-                Component_19 = Component_19_1;
+            function (Component_21_1) {
+                Component_21 = Component_21_1;
             }
         ],
         execute: function () {
@@ -1150,40 +1240,36 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                 indentation += 16;
                 return data.map(item => {
                     return item.type == 'branch' ?
-                        mithril_22.default(Branch, { item, indentation, open }) :
-                        mithril_22.default(Leaf, Object.assign({}, item, { indentation }));
+                        mithril_24.default(Branch, { item, indentation, open }) :
+                        mithril_24.default(Leaf, Object.assign({}, item, { indentation }));
                 });
             };
-            Branch = () => {
+            Branch = ({ attrs }) => {
                 let open = false;
-                let clicked = false;
+                if (typeof attrs.item.open == 'boolean')
+                    open = attrs.item.open;
+                else if (typeof attrs.open == 'boolean')
+                    open = attrs.open;
                 return {
                     view: ({ attrs }) => {
                         let classes = 'eui-branch';
-                        if (clicked)
-                            clicked = false;
-                        else if (typeof attrs.item.open == 'boolean')
-                            open = attrs.item.open;
-                        else if (typeof attrs.open == 'boolean')
-                            open = attrs.open;
                         classes += open ? ' eui-open' : '';
-                        return mithril_22.default('li', {
+                        return mithril_24.default('li', {
                             class: classes,
                             onclick: (e) => {
                                 e.stopPropagation();
                                 open = !open;
-                                clicked = true;
                             }
                         }, [
-                            mithril_22.default(Item, Object.assign({}, attrs.item, { indentation: attrs.indentation })),
-                            mithril_22.default('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.open))
+                            mithril_24.default(Item, Object.assign({}, attrs.item, { indentation: attrs.indentation })),
+                            mithril_24.default('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.open))
                         ]);
                     }
                 };
             };
             Leaf = {
                 view: ({ attrs }) => {
-                    return mithril_22.default('li', { class: 'eui-leaf' }, mithril_22.default(Item, attrs));
+                    return mithril_24.default('li', { class: 'eui-leaf' }, mithril_24.default(Item, attrs));
                 }
             };
             Item = {
@@ -1198,20 +1284,20 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                     if (attrs.oncreate)
                         na.oncreate = attrs.oncreate;
                     na.href = attrs.href;
-                    return mithril_22.default('a', na, text);
+                    return mithril_24.default('a', na, text);
                 }
             };
             Tree = () => {
                 return {
                     view: ({ attrs }) => {
                         let params = attrs.eui;
-                        return mithril_22.default('ul', eutsiv_ui_20.applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(params.items, 0, params.open));
+                        return mithril_24.default('ul', eutsiv_ui_21.applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(params.items, 0, params.open));
                     }
                 };
             };
-            exports_26("Tree", Tree);
+            exports_28("Tree", Tree);
             applyClasses = (attrs) => {
-                attrs = Component_19.applyClasses(attrs);
+                attrs = Component_21.applyClasses(attrs);
                 attrs.class.push('eui-tree');
                 return attrs;
             };

@@ -7,8 +7,8 @@ import {applyClasses as applyClassesComponent, applyConfigFit} from 'eutsiv-ui/C
 const Gutter = () => {
 
   return {
-    view: ({ attrs, children }) => {
-      return m('div', applyAttrsModifiers(attrs, applyClasses, applyConfig), children)
+    view: (vn) => {
+      return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
     }
   }
 

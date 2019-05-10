@@ -10,20 +10,12 @@
 
     span.#{$eui-namespace}-fieldset {
       display: block;
-      margin: 0.8em 6px;
       font-size: 1.08em;
       font-weight: bold;
       line-height: 1.76em;
       color: $eui-color;
       border-bottom: $eui-widget-form-input-border;
     }
-    /*
-    .#{$eui-namespace}-field {
-      display: block;
-      margin: 0 0 1em 0;
-      padding: 0 6px;
-    }
-    */
     label {
       display: block;
       line-height: 1.75em;
@@ -75,10 +67,11 @@
     textarea[disabled],
     textarea[readonly] {
       background: $eui-color-disabled-bg;
+      border: 1px solid $eui-color-disabled-bg;
       color: $eui-color;
-      &:focus {
-        border: $eui-widget-form-input-border;
-      }
+      //&:focus {
+      //  border: $eui-widget-form-input-border;
+      //}
     }
 
     // checkbox and radio common
@@ -108,6 +101,7 @@
 
       &:disabled:not(:checked) + span.#{$eui-namespace}-fake:before {
         background: $eui-color-disabled-bg;
+        border: 1px solid $eui-color-disabled-bg;
       }
 
       &:disabled:checked + span.#{$eui-namespace}-fake:before {

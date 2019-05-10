@@ -16,19 +16,17 @@ const buildTreeNodes = (data, indentation, open) => {
 
 }
 
-const Branch = () => {
+const Branch = ({ attrs }) => {
 
   let open = false
-  let clicked = false
+
+  if(typeof attrs.item.open == 'boolean') open = attrs.item.open
+  else if(typeof attrs.open == 'boolean') open = attrs.open
 
   return {
     view: ({ attrs }) => {
 
       let classes = 'eui-branch'
-      
-      if(clicked) clicked = false
-      else if(typeof attrs.item.open == 'boolean') open = attrs.item.open
-      else if(typeof attrs.open == 'boolean') open = attrs.open
 
       classes += open ? ' eui-open' : ''
 
@@ -38,7 +36,6 @@ const Branch = () => {
           onclick: (e) => { 
             e.stopPropagation() 
             open = !open
-            clicked = true
           }
         }, 
         [ 
