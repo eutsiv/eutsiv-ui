@@ -1236,33 +1236,36 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
             }
         ],
         execute: function () {
-            buildTreeNodes = (data, indentation, open) => {
+            buildTreeNodes = (data, indentation, treeState) => {
                 indentation += 16;
                 return data.map(item => {
                     return item.type == 'branch' ?
-                        mithril_24.default(Branch, { item, indentation, open }) :
+                        mithril_24.default(Branch, { item, indentation, treeState }) :
                         mithril_24.default(Leaf, Object.assign({}, item, { indentation }));
                 });
             };
             Branch = ({ attrs }) => {
                 let open = false;
-                if (typeof attrs.item.open == 'boolean')
-                    open = attrs.item.open;
-                else if (typeof attrs.open == 'boolean')
-                    open = attrs.open;
                 return {
                     view: ({ attrs }) => {
                         let classes = 'eui-branch';
+                        if (attrs.treeState.outsideUpdate) {
+                            if (typeof attrs.item.open == 'boolean')
+                                open = attrs.item.open;
+                            else if (typeof attrs.treeState.open == 'boolean')
+                                open = attrs.treeState.open;
+                        }
                         classes += open ? ' eui-open' : '';
                         return mithril_24.default('li', {
                             class: classes,
                             onclick: (e) => {
                                 e.stopPropagation();
                                 open = !open;
+                                attrs.treeState.clicked = true;
                             }
                         }, [
                             mithril_24.default(Item, Object.assign({}, attrs.item, { indentation: attrs.indentation })),
-                            mithril_24.default('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.open))
+                            mithril_24.default('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.treeState))
                         ]);
                     }
                 };
@@ -1288,10 +1291,23 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                 }
             };
             Tree = () => {
+                let treeState = {
+                    clicked: false,
+                    open: false,
+                    outsideUpdate: true
+                };
                 return {
+                    onbeforeupdate: () => {
+                        if (treeState.clicked) {
+                            treeState.clicked = false;
+                            treeState.outsideUpdate = false;
+                        }
+                        else
+                            treeState.outsideUpdate = true;
+                    },
                     view: ({ attrs }) => {
-                        let params = attrs.eui;
-                        return mithril_24.default('ul', eutsiv_ui_21.applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(params.items, 0, params.open));
+                        treeState.open = attrs.eui.open;
+                        return mithril_24.default('ul', eutsiv_ui_21.applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(attrs.eui.items, 0, treeState));
                     }
                 };
             };

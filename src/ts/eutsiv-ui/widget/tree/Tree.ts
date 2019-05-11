@@ -4,13 +4,13 @@ import {applyAttrsModifiers} from 'eutsiv-ui'
 import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
 
 
-const buildTreeNodes = (data, indentation, open) => {
+const buildTreeNodes = (data, indentation, treeState) => {
 
   indentation += 16
 
   return data.map(item => {
     return item.type == 'branch' ? 
-      m(Branch, { item, indentation, open }) :
+      m(Branch, { item, indentation, treeState }) :
       m(Leaf, { ...item, indentation })
   })
 
@@ -20,13 +20,15 @@ const Branch = ({ attrs }) => {
 
   let open = false
 
-  if(typeof attrs.item.open == 'boolean') open = attrs.item.open
-  else if(typeof attrs.open == 'boolean') open = attrs.open
-
   return {
     view: ({ attrs }) => {
 
       let classes = 'eui-branch'
+
+      if(attrs.treeState.outsideUpdate) {
+        if(typeof attrs.item.open == 'boolean') open = attrs.item.open
+        else if(typeof attrs.treeState.open == 'boolean') open = attrs.treeState.open
+      }
 
       classes += open ? ' eui-open' : ''
 
@@ -36,11 +38,12 @@ const Branch = ({ attrs }) => {
           onclick: (e) => { 
             e.stopPropagation() 
             open = !open
+            attrs.treeState.clicked = true
           }
         }, 
         [ 
           m(Item, { ...attrs.item, indentation: attrs.indentation }),
-          m('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.open)) 
+          m('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.treeState)) 
         ] 
       )
     }
@@ -79,11 +82,24 @@ const Item = {
 
 const Tree = () => {
 
+  let treeState = {
+    clicked: false,
+    open: false,
+    outsideUpdate: true
+  }
+
   return {
+    onbeforeupdate: () => {
+      if(treeState.clicked) {
+        treeState.clicked = false
+        treeState.outsideUpdate = false
+      } else treeState.outsideUpdate = true
+    },
     view: ({ attrs }) => {
 
-      let params = attrs.eui
-      return m('ul', applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(params.items, 0, params.open))
+      treeState.open = attrs.eui.open
+
+      return m('ul', applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(attrs.eui.items, 0, treeState))
 
     }
   }

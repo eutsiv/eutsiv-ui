@@ -200,6 +200,7 @@ declare module "eutsiv-ui/widget/form/Select" {
 declare module "eutsiv-ui/widget/tree/Tree" {
     import m from 'mithril';
     const Tree: () => {
+        onbeforeupdate: () => void;
         view: ({ attrs }: {
             attrs: any;
         }) => m.Vnode<any, any>;
