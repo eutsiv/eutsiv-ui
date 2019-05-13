@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
+import {applyAttrsModifiers, Sizes} from 'eutsiv-ui'
 
 
 const Component = () => {  
@@ -25,15 +25,6 @@ const applyConfig = (attrs) => {
 
   let config = attrs.eui
 
-  let sizes = {
-    XS: '0.64em',
-    SM: '0.82em',
-    DE: '1.00em',
-    LG: '1.32em',
-    XL: '1.64em',
-    HU: '2.28em'
-  }
-
   // context
   if(config.context) attrs.class.push(`eui-${config.context}`)
 
@@ -41,7 +32,7 @@ const applyConfig = (attrs) => {
   attrs = applyConfigFit(attrs)
 
   // size
-  if(config.size) attrs.style.fontSize = sizes[config.size]
+  if(config.size) attrs.style.fontSize = Sizes.fontSize[config.size]
 
   return attrs
   

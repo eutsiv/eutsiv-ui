@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
+import {applyAttrsModifiers, Sizes} from 'eutsiv-ui'
 import {applyClasses as applyClassesComponent, applyConfigFit} from 'eutsiv-ui/Component'
 
 
@@ -29,6 +29,9 @@ const applyConfig = (attrs) => {
 
   // fit
   attrs = applyConfigFit(attrs)
+
+  // size
+  if(attrs.eui.size) attrs.style.padding = Sizes.unitGrid[attrs.eui.size]
 
   return attrs
   

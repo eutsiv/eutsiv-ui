@@ -8,6 +8,22 @@ declare module "eutsiv-ui" {
         LG: string;
         XL: string;
         HU: string;
+        fontSize: {
+            XS: string;
+            SM: string;
+            DE: string;
+            LG: string;
+            XL: string;
+            HU: string;
+        };
+        unitGrid: {
+            XS: string;
+            SM: string;
+            DE: string;
+            LG: string;
+            XL: string;
+            HU: string;
+        };
     };
     export { applyAttrsModifiers, Sizes };
 }

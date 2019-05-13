@@ -526,9 +526,9 @@ m(Grid,
         }
     };
 });
-System.register("layout/Gutter", ["mithril", "resources/Section", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Button"], function (exports_8, context_8) {
+System.register("layout/Gutter", ["mithril", "resources/Section", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Button", "eutsiv-ui"], function (exports_8, context_8) {
     "use strict";
-    var mithril_8, Section_2, Gutter_3, Button_1, View;
+    var mithril_8, Section_2, Gutter_3, Button_1, eutsiv_ui_1, View;
     var __moduleName = context_8 && context_8.id;
     return {
         setters: [
@@ -543,6 +543,9 @@ System.register("layout/Gutter", ["mithril", "resources/Section", "eutsiv-ui/lay
             },
             function (Button_1_1) {
                 Button_1 = Button_1_1;
+            },
+            function (eutsiv_ui_1_1) {
+                eutsiv_ui_1 = eutsiv_ui_1_1;
             }
         ],
         execute: function () {
@@ -552,25 +555,60 @@ System.register("layout/Gutter", ["mithril", "resources/Section", "eutsiv-ui/lay
                         mithril_8.default(Section_2.Section, {
                             documentation: [
                                 mithril_8.default("h1", "Gutter"),
-                                mithril_8.default(Gutter_3.Gutter, { style: 'background: #ebebeb' }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 1')),
-                                mithril_8.default(Gutter_3.Gutter, { style: 'background: #ebebeb', eui: { fit: false } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 2')),
-                                mithril_8.default(Gutter_3.Gutter, { style: 'background: #ebebeb', eui: { fit: false } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 3')),
-                                mithril_8.default(Gutter_3.Gutter, { style: 'background: #ebebeb' }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 4'))
+                                mithril_8.default(Gutter_3.Gutter, { style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 1')),
+                                mithril_8.default(Gutter_3.Gutter, { style: { background: '#ebebeb' }, eui: { fit: false } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 2')),
+                                mithril_8.default(Gutter_3.Gutter, { style: { background: '#ebebeb' }, eui: { fit: false } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 3')),
+                                mithril_8.default(Gutter_3.Gutter, { style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 4'))
                             ],
                             source: `
 import {Gutter} from 'eutsiv-ui/layout/Gutter'
 import {Button} from 'eutsiv-ui/widget/Button'
 
-m(Gutter, { style: 'background: #ebebeb' },
+m(Gutter, { style: { background: '#ebebeb' } },
   m(Button, { eui: { context: 'primary' } }, 'Button 1')
 ),
-m(Gutter, { style: 'background: #ebebeb', eui: { fit: false } },
+m(Gutter, { style: { background: '#ebebeb' }, eui: { fit: false } },
   m(Button, { eui: { context: 'primary' } }, 'Button 2')
 ),
-m(Gutter, { style: 'background: #ebebeb', eui: { fit: false } },
+m(Gutter, { style: { background: '#ebebeb' }, eui: { fit: false } },
   m(Button, { eui: { context: 'primary' } }, 'Button 3')
 ),
-m(Gutter, { style: 'background: #ebebeb' },
+m(Gutter, { style: { background: '#ebebeb' } },
+  m(Button, { eui: { context: 'primary' } }, 'Button 4')
+)
+
+        `
+                        }),
+                        mithril_8.default(Section_2.Section, {
+                            documentation: [
+                                mithril_8.default("h2", "Size"),
+                                mithril_8.default(Gutter_3.Gutter, { eui: { fit: false, size: eutsiv_ui_1.Sizes.XS }, style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 1')),
+                                mithril_8.default(Gutter_3.Gutter, { eui: { fit: false, size: eutsiv_ui_1.Sizes.SM }, style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 2')),
+                                mithril_8.default(Gutter_3.Gutter, { eui: { fit: false, size: eutsiv_ui_1.Sizes.DE }, style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 3')),
+                                mithril_8.default(Gutter_3.Gutter, { eui: { fit: false, size: eutsiv_ui_1.Sizes.LG }, style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 4')),
+                                mithril_8.default(Gutter_3.Gutter, { eui: { fit: false, size: eutsiv_ui_1.Sizes.XL }, style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 4')),
+                                mithril_8.default(Gutter_3.Gutter, { eui: { fit: false, size: eutsiv_ui_1.Sizes.HU }, style: { background: '#ebebeb' } }, mithril_8.default(Button_1.Button, { eui: { context: 'primary' } }, 'Button 4'))
+                            ],
+                            source: `
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
+import {Button} from 'eutsiv-ui/widget/Button'
+
+m(Gutter, { eui: { fit: false, size: Sizes.XS }, style: { background: '#ebebeb' } },
+  m(Button, { eui: { context: 'primary' } }, 'Button 1')
+),
+m(Gutter, { eui: { fit: false, size: Sizes.SM }, style: { background: '#ebebeb' } },
+  m(Button, { eui: { context: 'primary' } }, 'Button 2')
+),
+m(Gutter, { eui: { fit: false, size: Sizes.DE }, style: { background: '#ebebeb' } },
+  m(Button, { eui: { context: 'primary' } }, 'Button 3')
+),
+m(Gutter, { eui: { fit: false, size: Sizes.LG }, style: { background: '#ebebeb' } },
+  m(Button, { eui: { context: 'primary' } }, 'Button 4')
+),
+m(Gutter, { eui: { fit: false, size: Sizes.XL }, style: { background: '#ebebeb' } },
+  m(Button, { eui: { context: 'primary' } }, 'Button 4')
+),
+m(Gutter, { eui: { fit: false, size: Sizes.HU }, style: { background: '#ebebeb' } },
   m(Button, { eui: { context: 'primary' } }, 'Button 4')
 )
 
@@ -585,7 +623,7 @@ m(Gutter, { style: 'background: #ebebeb' },
 });
 System.register("widget/Breadcrumb", ["mithril", "resources/Section", "eutsiv-ui/widget/Breadcrumb", "eutsiv-ui"], function (exports_9, context_9) {
     "use strict";
-    var mithril_9, Section_3, Breadcrumb_1, eutsiv_ui_1, View;
+    var mithril_9, Section_3, Breadcrumb_1, eutsiv_ui_2, View;
     var __moduleName = context_9 && context_9.id;
     return {
         setters: [
@@ -598,8 +636,8 @@ System.register("widget/Breadcrumb", ["mithril", "resources/Section", "eutsiv-ui
             function (Breadcrumb_1_1) {
                 Breadcrumb_1 = Breadcrumb_1_1;
             },
-            function (eutsiv_ui_1_1) {
-                eutsiv_ui_1 = eutsiv_ui_1_1;
+            function (eutsiv_ui_2_1) {
+                eutsiv_ui_2 = eutsiv_ui_2_1;
             }
         ],
         execute: function () {
@@ -673,7 +711,7 @@ m(Breadcrumb, {
                                 mithril_9.default("h2", "Size"),
                                 mithril_9.default(Breadcrumb_1.Breadcrumb, {
                                     eui: {
-                                        size: eutsiv_ui_1.Sizes.HU,
+                                        size: eutsiv_ui_2.Sizes.HU,
                                         items: [
                                             { text: "Depeche Mode" },
                                             { text: "Pearl Jam", disabled: true },
@@ -711,7 +749,7 @@ m(Breadcrumb, {
 });
 System.register("widget/Button", ["mithril", "resources/Section", "eutsiv-ui/widget/Button", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Icon", "eutsiv-ui"], function (exports_10, context_10) {
     "use strict";
-    var mithril_10, Section_4, Button_2, Gutter_4, Icon_1, eutsiv_ui_2, View;
+    var mithril_10, Section_4, Button_2, Gutter_4, Icon_1, eutsiv_ui_3, View;
     var __moduleName = context_10 && context_10.id;
     return {
         setters: [
@@ -730,8 +768,8 @@ System.register("widget/Button", ["mithril", "resources/Section", "eutsiv-ui/wid
             function (Icon_1_1) {
                 Icon_1 = Icon_1_1;
             },
-            function (eutsiv_ui_2_1) {
-                eutsiv_ui_2 = eutsiv_ui_2_1;
+            function (eutsiv_ui_3_1) {
+                eutsiv_ui_3 = eutsiv_ui_3_1;
             }
         ],
         execute: function () {
@@ -808,12 +846,12 @@ m(Button, { eui: { context: "safety", flat: true } }, "Safety")
                         mithril_10.default(Section_4.Section, {
                             documentation: [
                                 mithril_10.default("h2", "Size"),
-                                mithril_10.default(Button_2.Button, { eui: { size: eutsiv_ui_2.Sizes.XS } }, "Extra small"),
-                                mithril_10.default(Button_2.Button, { disabled: true, eui: { size: eutsiv_ui_2.Sizes.SM } }, "Small"),
-                                mithril_10.default(Button_2.Button, { eui: { context: "primary", size: eutsiv_ui_2.Sizes.DE } }, "Default"),
-                                mithril_10.default(Button_2.Button, { eui: { context: "secondary", size: eutsiv_ui_2.Sizes.LG } }, "Large"),
-                                mithril_10.default(Button_2.Button, { eui: { context: "reverse", size: eutsiv_ui_2.Sizes.XL } }, "Extra large"),
-                                mithril_10.default(Button_2.Button, { eui: { context: "danger", size: eutsiv_ui_2.Sizes.HU } }, "Huge")
+                                mithril_10.default(Button_2.Button, { eui: { size: eutsiv_ui_3.Sizes.XS } }, "Extra small"),
+                                mithril_10.default(Button_2.Button, { disabled: true, eui: { size: eutsiv_ui_3.Sizes.SM } }, "Small"),
+                                mithril_10.default(Button_2.Button, { eui: { context: "primary", size: eutsiv_ui_3.Sizes.DE } }, "Default"),
+                                mithril_10.default(Button_2.Button, { eui: { context: "secondary", size: eutsiv_ui_3.Sizes.LG } }, "Large"),
+                                mithril_10.default(Button_2.Button, { eui: { context: "reverse", size: eutsiv_ui_3.Sizes.XL } }, "Extra large"),
+                                mithril_10.default(Button_2.Button, { eui: { context: "danger", size: eutsiv_ui_3.Sizes.HU } }, "Huge")
                             ],
                             source: `
 import {Button} from 'eutsiv-ui/widget/Button'
@@ -1049,7 +1087,7 @@ m(Form,
 });
 System.register("widget/Icon", ["mithril", "resources/Section", "eutsiv-ui/widget/Icon", "eutsiv-ui"], function (exports_12, context_12) {
     "use strict";
-    var mithril_12, Section_6, Icon_2, eutsiv_ui_3, iconMap, View;
+    var mithril_12, Section_6, Icon_2, eutsiv_ui_4, iconMap, View;
     var __moduleName = context_12 && context_12.id;
     return {
         setters: [
@@ -1062,32 +1100,32 @@ System.register("widget/Icon", ["mithril", "resources/Section", "eutsiv-ui/widge
             function (Icon_2_1) {
                 Icon_2 = Icon_2_1;
             },
-            function (eutsiv_ui_3_1) {
-                eutsiv_ui_3 = eutsiv_ui_3_1;
+            function (eutsiv_ui_4_1) {
+                eutsiv_ui_4 = eutsiv_ui_4_1;
             }
         ],
         execute: function () {
             iconMap = [
                 { type: "attach", context: "primary" },
-                { type: "attention", size: eutsiv_ui_3.Sizes.XS },
+                { type: "attention", size: eutsiv_ui_4.Sizes.XS },
                 { type: "calendar" },
                 { type: "cancel", context: "secondary" },
                 { type: "chart-bar" },
-                { type: "clock", size: eutsiv_ui_3.Sizes.SM },
+                { type: "clock", size: eutsiv_ui_4.Sizes.SM },
                 { type: "cog", context: "danger" },
                 { type: "doc" },
                 { type: "down-open" },
                 { type: "ellipsis-vert" },
-                { type: "folder-open", size: eutsiv_ui_3.Sizes.LG },
+                { type: "folder-open", size: eutsiv_ui_4.Sizes.LG },
                 { type: "left-open", context: "warning" },
                 { type: "list-bullet" },
                 { type: "menu" },
-                { type: "minus", size: eutsiv_ui_3.Sizes.XL },
+                { type: "minus", size: eutsiv_ui_4.Sizes.XL },
                 { type: "off" },
                 { type: "ok" },
                 { type: "plus", context: "caution" },
                 { type: "right-open" },
-                { type: "sort-alt-down", size: eutsiv_ui_3.Sizes.HU },
+                { type: "sort-alt-down", size: eutsiv_ui_4.Sizes.HU },
                 { type: "sort-alt-up", context: "notice" },
                 { type: "sort-name-down" },
                 { type: "sort-name-up" },
@@ -1190,7 +1228,7 @@ iconMap.map((i) => {
 });
 System.register("widget/Link", ["mithril", "resources/Section", "eutsiv-ui/widget/Link", "eutsiv-ui"], function (exports_13, context_13) {
     "use strict";
-    var mithril_13, Section_7, Link_2, eutsiv_ui_4, View;
+    var mithril_13, Section_7, Link_2, eutsiv_ui_5, View;
     var __moduleName = context_13 && context_13.id;
     return {
         setters: [
@@ -1203,8 +1241,8 @@ System.register("widget/Link", ["mithril", "resources/Section", "eutsiv-ui/widge
             function (Link_2_1) {
                 Link_2 = Link_2_1;
             },
-            function (eutsiv_ui_4_1) {
-                eutsiv_ui_4 = eutsiv_ui_4_1;
+            function (eutsiv_ui_5_1) {
+                eutsiv_ui_5 = eutsiv_ui_5_1;
             }
         ],
         execute: function () {
@@ -1245,11 +1283,11 @@ m(Link, { eui: { context: "white" } }, "White")
                         mithril_13.default(Section_7.Section, {
                             documentation: [
                                 mithril_13.default("h2", "Size"),
-                                mithril_13.default(Link_2.Link, { eui: { size: eutsiv_ui_4.Sizes.XS } }, "Default extra small"),
-                                mithril_13.default(Link_2.Link, { disabled: true, eui: { size: eutsiv_ui_4.Sizes.SM } }, "Disabled small"),
-                                mithril_13.default(Link_2.Link, { eui: { context: "primary", size: eutsiv_ui_4.Sizes.LG } }, "Primary large"),
-                                mithril_13.default(Link_2.Link, { eui: { context: "secondary", size: eutsiv_ui_4.Sizes.XL } }, "Secondary extra large"),
-                                mithril_13.default(Link_2.Link, { eui: { context: "danger", size: eutsiv_ui_4.Sizes.HU } }, "Danger huge")
+                                mithril_13.default(Link_2.Link, { eui: { size: eutsiv_ui_5.Sizes.XS } }, "Default extra small"),
+                                mithril_13.default(Link_2.Link, { disabled: true, eui: { size: eutsiv_ui_5.Sizes.SM } }, "Disabled small"),
+                                mithril_13.default(Link_2.Link, { eui: { context: "primary", size: eutsiv_ui_5.Sizes.LG } }, "Primary large"),
+                                mithril_13.default(Link_2.Link, { eui: { context: "secondary", size: eutsiv_ui_5.Sizes.XL } }, "Secondary extra large"),
+                                mithril_13.default(Link_2.Link, { eui: { context: "danger", size: eutsiv_ui_5.Sizes.HU } }, "Danger huge")
                             ],
                             source: `
 import {Link} from 'eutsiv-ui/widget/Link'
@@ -1309,7 +1347,7 @@ m(Loading)
 });
 System.register("widget/Notification", ["mithril", "resources/Section", "eutsiv-ui/widget/Notification", "eutsiv-ui"], function (exports_15, context_15) {
     "use strict";
-    var mithril_15, Section_9, Notification_1, eutsiv_ui_5, View;
+    var mithril_15, Section_9, Notification_1, eutsiv_ui_6, View;
     var __moduleName = context_15 && context_15.id;
     return {
         setters: [
@@ -1322,8 +1360,8 @@ System.register("widget/Notification", ["mithril", "resources/Section", "eutsiv-
             function (Notification_1_1) {
                 Notification_1 = Notification_1_1;
             },
-            function (eutsiv_ui_5_1) {
-                eutsiv_ui_5 = eutsiv_ui_5_1;
+            function (eutsiv_ui_6_1) {
+                eutsiv_ui_6 = eutsiv_ui_6_1;
             }
         ],
         execute: function () {
@@ -1369,11 +1407,11 @@ m(Notification, { eui: { context: "safety" } }, "Safety")
                         mithril_15.default(Section_9.Section, {
                             documentation: [
                                 mithril_15.default("h2", "Size"),
-                                mithril_15.default(Notification_1.Notification, { eui: { size: eutsiv_ui_5.Sizes.XS } }, "Default extra small"),
-                                mithril_15.default(Notification_1.Notification, { eui: { context: "primary", size: eutsiv_ui_5.Sizes.SM } }, "Primary small"),
-                                mithril_15.default(Notification_1.Notification, { eui: { context: "secondary", size: eutsiv_ui_5.Sizes.LG } }, "Secondary large"),
-                                mithril_15.default(Notification_1.Notification, { eui: { context: "reverse", size: eutsiv_ui_5.Sizes.XL } }, "Reverse extra large"),
-                                mithril_15.default(Notification_1.Notification, { eui: { context: "danger", size: eutsiv_ui_5.Sizes.HU } }, "Danger huge")
+                                mithril_15.default(Notification_1.Notification, { eui: { size: eutsiv_ui_6.Sizes.XS } }, "Default extra small"),
+                                mithril_15.default(Notification_1.Notification, { eui: { context: "primary", size: eutsiv_ui_6.Sizes.SM } }, "Primary small"),
+                                mithril_15.default(Notification_1.Notification, { eui: { context: "secondary", size: eutsiv_ui_6.Sizes.LG } }, "Secondary large"),
+                                mithril_15.default(Notification_1.Notification, { eui: { context: "reverse", size: eutsiv_ui_6.Sizes.XL } }, "Reverse extra large"),
+                                mithril_15.default(Notification_1.Notification, { eui: { context: "danger", size: eutsiv_ui_6.Sizes.HU } }, "Danger huge")
                             ],
                             source: `
 import {Notification} from 'eutsiv-ui/widget/Notification'

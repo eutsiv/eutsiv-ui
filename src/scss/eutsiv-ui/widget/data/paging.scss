@@ -1,9 +1,7 @@
 .#{$eui-namespace}-viewport {
 
   nav.#{$eui-namespace}-paging {
-    > .#{$eui-namespace}-status {
-      display: inline-block;
-      padding: 0.5em 0;
+    span.#{$eui-namespace}-status {
       font-size: 0.84em;
       color: $eui-color;
     }

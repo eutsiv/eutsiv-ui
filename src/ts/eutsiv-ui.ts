@@ -32,7 +32,23 @@ const Sizes = {
   DE: 'DE',
   LG: 'LG',
   XL: 'XL',
-  HU: 'HU'
+  HU: 'HU',
+  fontSize: {
+    XS: '0.64em',
+    SM: '0.82em',
+    DE: '1.00em',
+    LG: '1.32em',
+    XL: '1.64em',
+    HU: '2.28em'
+  },
+  unitGrid: {
+    XS: '2px',
+    SM: '4px',
+    DE: '8px',
+    LG: '12px',
+    XL: '16px',
+    HU: '24px'
+  }
 }
 
 export { applyAttrsModifiers, Sizes }

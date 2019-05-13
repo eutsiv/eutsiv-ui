@@ -24,7 +24,23 @@ System.register("eutsiv-ui", [], function (exports_1, context_1) {
                 DE: 'DE',
                 LG: 'LG',
                 XL: 'XL',
-                HU: 'HU'
+                HU: 'HU',
+                fontSize: {
+                    XS: '0.64em',
+                    SM: '0.82em',
+                    DE: '1.00em',
+                    LG: '1.32em',
+                    XL: '1.64em',
+                    HU: '2.28em'
+                },
+                unitGrid: {
+                    XS: '2px',
+                    SM: '4px',
+                    DE: '8px',
+                    LG: '12px',
+                    XL: '16px',
+                    HU: '24px'
+                }
             };
             exports_1("Sizes", Sizes);
         }
@@ -59,19 +75,11 @@ System.register("eutsiv-ui/Component", ["mithril", "eutsiv-ui"], function (expor
             exports_2("applyClasses", applyClasses);
             applyConfig = (attrs) => {
                 let config = attrs.eui;
-                let sizes = {
-                    XS: '0.64em',
-                    SM: '0.82em',
-                    DE: '1.00em',
-                    LG: '1.32em',
-                    XL: '1.64em',
-                    HU: '2.28em'
-                };
                 if (config.context)
                     attrs.class.push(`eui-${config.context}`);
                 attrs = applyConfigFit(attrs);
                 if (config.size)
-                    attrs.style.fontSize = sizes[config.size];
+                    attrs.style.fontSize = eutsiv_ui_1.Sizes.fontSize[config.size];
                 return attrs;
             };
             exports_2("applyConfig", applyConfig);
@@ -394,6 +402,8 @@ System.register("eutsiv-ui/layout/Gutter", ["mithril", "eutsiv-ui", "eutsiv-ui/C
             applyConfig = (attrs) => {
                 (typeof attrs.eui.fit != 'boolean') && (attrs.eui.fit = true);
                 attrs = Component_5.applyConfigFit(attrs);
+                if (attrs.eui.size)
+                    attrs.style.padding = eutsiv_ui_6.Sizes.unitGrid[attrs.eui.size];
                 return attrs;
             };
         }
@@ -1144,9 +1154,9 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
         }
     };
 });
-System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Button"], function (exports_25, context_25) {
+System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Button", "eutsiv-ui/layout/Gutter"], function (exports_25, context_25) {
     "use strict";
-    var mithril_23, eutsiv_ui_20, Component_20, Button_1, Paging, applyClasses;
+    var mithril_23, eutsiv_ui_20, Component_20, Button_1, Gutter_2, Paging, applyClasses;
     var __moduleName = context_25 && context_25.id;
     return {
         setters: [
@@ -1161,6 +1171,9 @@ System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv
             },
             function (Button_1_1) {
                 Button_1 = Button_1_1;
+            },
+            function (Gutter_2_1) {
+                Gutter_2 = Gutter_2_1;
             }
         ],
         execute: function () {
@@ -1173,12 +1186,14 @@ System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv
                         let perPage = params.rows.perPage;
                         let last = (rows % perPage > 0) ? (Math.floor(rows / perPage) + 1) : (rows / perPage);
                         let pages = [...Array(last).keys()].map(i => i + 1);
+                        let to = page * perPage;
+                        if (to > rows)
+                            to = rows;
                         return mithril_23.default('nav', eutsiv_ui_20.applyAttrsModifiers(vn.attrs, applyClasses), [
-                            mithril_23.default('span', { class: 'eui-status' }, 'Displaying x to x of x'),
-                            mithril_23.default('br'),
+                            mithril_23.default(Gutter_2.Gutter, { eui: { size: eutsiv_ui_20.Sizes.SM } }, mithril_23.default('span', { class: 'eui-status' }, `Displaying ${((page - 1) * perPage) + 1} to ${to} of ${rows}`)),
                             ...pages.map(p => {
                                 let ba = { href: params.buildHref(p, perPage), oncreate: mithril_23.default.route.link, eui: { context: p == page ? 'primary' : undefined, spaced: true } };
-                                return mithril_23.default(Button_1.Button, ba, p);
+                                return mithril_23.default(Gutter_2.Gutter, { eui: { fit: false, size: eutsiv_ui_20.Sizes.XS } }, mithril_23.default(Button_1.Button, ba, p));
                             })
                         ]);
                     }

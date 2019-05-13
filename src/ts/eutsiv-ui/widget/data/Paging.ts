@@ -1,8 +1,9 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
+import {applyAttrsModifiers, Sizes} from 'eutsiv-ui'
 import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
 import {Button} from 'eutsiv-ui/widget/Button'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 
 
 const Paging = () => {
@@ -17,13 +18,20 @@ const Paging = () => {
       let perPage = params.rows.perPage
       let last = (rows % perPage > 0) ? (Math.floor(rows/perPage) + 1) : (rows/perPage)
       let pages = [...Array(last).keys()].map(i => i + 1)
+      let to = page*perPage
+
+      // ensure to is not greater then total rows
+      if(to > rows) to = rows
 
       return m('nav', applyAttrsModifiers(vn.attrs, applyClasses), [
-        m('span', { class: 'eui-status' }, 'Displaying x to x of x'),
-        m('br'),
+        m(Gutter, { eui: { size: Sizes.SM }},
+          m('span', { class: 'eui-status' }, `Displaying ${((page-1)*perPage)+1} to ${to} of ${rows}`),
+        ),
         ...pages.map(p => {
           let ba = { href: params.buildHref(p, perPage), oncreate: m.route.link, eui: { context: p == page ? 'primary' : undefined, spaced: true }}
-          return m(Button, ba, p)
+          return m(Gutter, { eui: { fit: false, size: Sizes.XS }},
+            m(Button, ba, p)
+          )
         })
       ])
 
