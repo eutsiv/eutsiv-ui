@@ -1000,7 +1000,7 @@ System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "
 });
 System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"], function (exports_24, context_24) {
     "use strict";
-    var mithril_22, Component_19, applySort, Resizer, Grid, applyClasses;
+    var mithril_22, Component_19, applySort, Resizer, GridBodyRow, GridBodyColumn, Grid, applyClasses;
     var __moduleName = context_24 && context_24.id;
     return {
         setters: [
@@ -1022,17 +1022,43 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                     return mithril_22.default('div', Object.assign({ class: 'resizer' }, vn.attrs));
                 }
             };
-            Grid = (vni) => {
+            GridBodyRow = {
+                view: (vn) => {
+                    return mithril_22.default('div', {
+                        key: vn.attrs.data[vn.attrs.key],
+                        class: 'row',
+                        style: vn.attrs.gridState.totalWidth ? `width:${vn.attrs.gridState.totalWidth}px` : ''
+                    }, vn.attrs.columns.map((col, idx) => {
+                        let content = typeof col.content === 'function' ? col.content(vn.attrs.data) : vn.attrs.data[col.content];
+                        if (!vn.attrs.gridState.columns[idx])
+                            vn.attrs.gridState.columns[idx] = { sort: {} };
+                        return mithril_22.default(GridBodyColumn, { state: vn.attrs.gridState.columns[idx] }, content);
+                    }));
+                }
+            };
+            GridBodyColumn = {
+                oncreate: (vn) => {
+                    vn.attrs.state.dom = vn.dom;
+                    if (!vn.attrs.state.width || vn.attrs.state.width < vn.dom.getBoundingClientRect().width) {
+                        vn.attrs.state.width = vn.dom.getBoundingClientRect().width;
+                        mithril_22.default.redraw();
+                    }
+                },
+                view: (vn) => {
+                    return mithril_22.default('div', { class: 'col col-body', style: vn.attrs.state.width ? `width:${vn.attrs.state.width}px` : '' }, vn.children);
+                }
+            };
+            Grid = () => {
                 let mcols = [];
                 let totalWidth = 0;
                 let leftScrolled = 0;
                 let sortStack = [];
                 let sortedData = false;
+                let gridState = {
+                    columns: mcols,
+                    totalWidth: totalWidth
+                };
                 const adjustColumnWidth = (cvn, idx) => {
-                    if (!mcols[idx]) {
-                        mcols[idx] = { sort: {} };
-                        mcols[idx].dom = cvn.dom;
-                    }
                     if (!mcols[idx].width || mcols[idx].width < cvn.dom.scrollWidth) {
                         let n = cvn.dom.scrollWidth + (parseInt(window.getComputedStyle(cvn.dom, null).getPropertyValue('padding-right').slice(0, -2)) * 2);
                         mcols[idx].width = n;
@@ -1135,17 +1161,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                 if (height != 'auto')
                                     bvn.dom.style.height = (vn.dom.getBoundingClientRect().height - vn.dom.querySelector('.header').getBoundingClientRect().height) + 'px';
                             } }, data.map(row => {
-                            return mithril_22.default('div', { key: row[params.key], class: 'row', style: totalWidth ? `width:${totalWidth}px` : '' }, params.columns.map((col, idx) => {
-                                let content = typeof col.content === 'function' ? col.content(row) : row[col.content];
-                                return mithril_22.default('div', { class: 'col col-body', style: (mcols[idx] && mcols[idx].width) ? `width:${mcols[idx].width}px` : '', oncreate: (cvn) => {
-                                        if (!mcols[idx])
-                                            mcols[idx] = {};
-                                        if (!mcols[idx].width || mcols[idx].width < cvn.dom.getBoundingClientRect().width) {
-                                            mcols[idx].width = cvn.dom.getBoundingClientRect().width;
-                                            mithril_22.default.redraw();
-                                        }
-                                    } }, content);
-                            }));
+                            return mithril_22.default(GridBodyRow, { columns: params.columns, data: row, key: row[params.key], gridState });
                         })));
                     }
                 };
