@@ -4,71 +4,71 @@ import {applyAttrsModifiers} from 'eutsiv-ui'
 import {applyClasses as applyClassesComponent, applyConfig} from 'eutsiv-ui/Component'
 
 
-const Calendar = (vc) => {
+const numberOfWeeks = 6
 
-  const getDaysInMonth = (month, year) => {
-    // 0 = last day of the previous month
-    return new Date(year, month + 1, 0).getDate()
-  }  
-  
-  let days_labels = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'],
-      months_labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  
-  let days_in_month = getDaysInMonth(vc.attrs.month, vc.attrs.year),
-      first_day_date = new Date(vc.attrs.year, vc.attrs.month, 1),
-      first_day_weekday = first_day_date.getDay()
-  
-  let prev_month = vc.attrs.month == 0 ? 11 : vc.attrs.month - 1,
-      prev_year = prev_month == 11 ? vc.attrs.year - 1 : vc.attrs.year,
-      prev_days = getDaysInMonth(prev_month, prev_year)
+const daysLabels = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
+const  monthsLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-  const buildHeader = () => {
-    return m('div', { class: 'eui-week-days' }, days_labels.map(v => {
+const numberOfDaysInTheMonth = (y, m) => {
+  return new Date(y, m + 1, 0).getDate()
+}
+
+const calculateCalendarDays = (year, month) => {
+  
+  let numberDaysMonth = numberOfDaysInTheMonth(year, month)
+  let numberInWeekFirstDayOfMonth = new Date(year, month, 1).getDay()
+
+  let previousMonth = month == 0 ? 11 : month - 1
+  let previousYear = previousMonth == 11 ? year - 1 : year
+  let numberDaysPreviousMonth = numberOfDaysInTheMonth(previousYear, previousMonth)
+
+  let w = []
+  let n = 1 // next month days date
+  let c = 1 // current date
+  
+  return [ ...Array(numberOfWeeks * daysLabels.length).keys() ].reduce((acc, v) => {
+    
+    if (v < numberInWeekFirstDayOfMonth) {
+      // previous month's day
+      w.push({ day: (numberDaysPreviousMonth - numberInWeekFirstDayOfMonth + v + 1), intruder: true })
+    } else if (c > numberDaysMonth) {
+      // next month's day
+      w.push({ day: n++, intruder: true })
+    } else {
+      // current month's day
+      w.push({ day: c++, intruder: false })
+    }
+    
+    // new week
+    if((v + 1) % daysLabels.length == 0) {
+      acc.push(w)
+      w = []
+    }
+
+    return acc
+    
+  }, [])
+}
+
+const CalendarHeader = {
+  view: () => {
+    return m('div', { class: 'eui-week-days' }, daysLabels.map(v => {
       return m('div', { class: 'eui-day' }, v)
     }))
   }
+}
 
-  const calculateGridsDays = () => {
-    
-    let w = []
-    let n = 1 // next month days date
-    let c = 1 // current date
-    
-    return [...Array(6*days_labels.length).keys()].reduce((acc, v) => {
-      
-      if (v < new Date(vc.attrs.year, vc.attrs.month, 1).getDay()) {
-        // previous month's day
-        w.push({ day: (prev_days - first_day_weekday + v + 1), intruder: true })
-      } else if (c > days_in_month) {
-        // next month's day
-        w.push({ day: n, intruder: true })
-        n++;
-      } else {
-        // current month's day
-        w.push({ day: c, intruder: false })
-        c++;
-      }
-      
-      if((v + 1) % days_labels.length == 0) {
-        acc.push(w)
-        w = []
-      }
-
-      return acc
-      
-    }, [])
-  }
-  
+const Calendar = ({ attrs }) => { 
 
   return {
 
     view: (vn) => {
 
       return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), 
-        m('h2', months_labels[vn.attrs.month] + ' ' + vn.attrs.year),
-        buildHeader(),
+        m('h2', monthsLabels[vn.attrs.month] + ' ' + vn.attrs.year),
+        m(CalendarHeader),
         m('div', { class: 'eui-calendar-grid' },
-          calculateGridsDays().map(w => {
+          calculateCalendarDays(vn.attrs.year, vn.attrs.month).map(w => {
             return m('div', { class: 'eui-calendar-row'},
               w.map(d => {
                 let classes = 'eui-day'

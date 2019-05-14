@@ -919,7 +919,7 @@ System.register("eutsiv-ui/widget/Table", ["mithril", "eutsiv-ui", "eutsiv-ui/Co
 });
 System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_23, context_23) {
     "use strict";
-    var mithril_21, eutsiv_ui_19, Component_18, Calendar, applyClasses;
+    var mithril_21, eutsiv_ui_19, Component_18, numberOfWeeks, daysLabels, monthsLabels, numberOfDaysInTheMonth, calculateCalendarDays, CalendarHeader, Calendar, applyClasses;
     var __moduleName = context_23 && context_23.id;
     return {
         setters: [
@@ -934,44 +934,49 @@ System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "
             }
         ],
         execute: function () {
-            Calendar = (vc) => {
-                const getDaysInMonth = (month, year) => {
-                    return new Date(year, month + 1, 0).getDate();
-                };
-                let days_labels = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'], months_labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                let days_in_month = getDaysInMonth(vc.attrs.month, vc.attrs.year), first_day_date = new Date(vc.attrs.year, vc.attrs.month, 1), first_day_weekday = first_day_date.getDay();
-                let prev_month = vc.attrs.month == 0 ? 11 : vc.attrs.month - 1, prev_year = prev_month == 11 ? vc.attrs.year - 1 : vc.attrs.year, prev_days = getDaysInMonth(prev_month, prev_year);
-                const buildHeader = () => {
-                    return mithril_21.default('div', { class: 'eui-week-days' }, days_labels.map(v => {
+            numberOfWeeks = 6;
+            daysLabels = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+            monthsLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            numberOfDaysInTheMonth = (y, m) => {
+                return new Date(y, m + 1, 0).getDate();
+            };
+            calculateCalendarDays = (year, month) => {
+                let numberDaysMonth = numberOfDaysInTheMonth(year, month);
+                let numberInWeekFirstDayOfMonth = new Date(year, month, 1).getDay();
+                let previousMonth = month == 0 ? 11 : month - 1;
+                let previousYear = previousMonth == 11 ? year - 1 : year;
+                let numberDaysPreviousMonth = numberOfDaysInTheMonth(previousYear, previousMonth);
+                let w = [];
+                let n = 1;
+                let c = 1;
+                return [...Array(numberOfWeeks * daysLabels.length).keys()].reduce((acc, v) => {
+                    if (v < numberInWeekFirstDayOfMonth) {
+                        w.push({ day: (numberDaysPreviousMonth - numberInWeekFirstDayOfMonth + v + 1), intruder: true });
+                    }
+                    else if (c > numberDaysMonth) {
+                        w.push({ day: n++, intruder: true });
+                    }
+                    else {
+                        w.push({ day: c++, intruder: false });
+                    }
+                    if ((v + 1) % daysLabels.length == 0) {
+                        acc.push(w);
+                        w = [];
+                    }
+                    return acc;
+                }, []);
+            };
+            CalendarHeader = {
+                view: () => {
+                    return mithril_21.default('div', { class: 'eui-week-days' }, daysLabels.map(v => {
                         return mithril_21.default('div', { class: 'eui-day' }, v);
                     }));
-                };
-                const calculateGridsDays = () => {
-                    let w = [];
-                    let n = 1;
-                    let c = 1;
-                    return [...Array(6 * days_labels.length).keys()].reduce((acc, v) => {
-                        if (v < new Date(vc.attrs.year, vc.attrs.month, 1).getDay()) {
-                            w.push({ day: (prev_days - first_day_weekday + v + 1), intruder: true });
-                        }
-                        else if (c > days_in_month) {
-                            w.push({ day: n, intruder: true });
-                            n++;
-                        }
-                        else {
-                            w.push({ day: c, intruder: false });
-                            c++;
-                        }
-                        if ((v + 1) % days_labels.length == 0) {
-                            acc.push(w);
-                            w = [];
-                        }
-                        return acc;
-                    }, []);
-                };
+                }
+            };
+            Calendar = ({ attrs }) => {
                 return {
                     view: (vn) => {
-                        return mithril_21.default('div', eutsiv_ui_19.applyAttrsModifiers(vn.attrs, applyClasses, Component_18.applyConfig), mithril_21.default('h2', months_labels[vn.attrs.month] + ' ' + vn.attrs.year), buildHeader(), mithril_21.default('div', { class: 'eui-calendar-grid' }, calculateGridsDays().map(w => {
+                        return mithril_21.default('div', eutsiv_ui_19.applyAttrsModifiers(vn.attrs, applyClasses, Component_18.applyConfig), mithril_21.default('h2', monthsLabels[vn.attrs.month] + ' ' + vn.attrs.year), mithril_21.default(CalendarHeader), mithril_21.default('div', { class: 'eui-calendar-grid' }, calculateCalendarDays(vn.attrs.year, vn.attrs.month).map(w => {
                             return mithril_21.default('div', { class: 'eui-calendar-row' }, w.map(d => {
                                 let classes = 'eui-day';
                                 if (d.intruder)

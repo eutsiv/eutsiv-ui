@@ -186,7 +186,9 @@ declare module "eutsiv-ui/widget/Table" {
 }
 declare module "eutsiv-ui/widget/calendar/Calendar" {
     import m from 'mithril';
-    const Calendar: (vc: any) => {
+    const Calendar: ({ attrs }: {
+        attrs: any;
+    }) => {
         view: (vn: any) => m.Vnode<any, any>;
     };
     export { Calendar };
