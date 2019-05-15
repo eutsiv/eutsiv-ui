@@ -59,6 +59,16 @@ declare module "layout/Gutter" {
     };
     export { View };
 }
+declare module "widget/Badge" {
+    import m from 'mithril';
+    let View: {
+        view: () => m.Vnode<{
+            documentation: m.Vnode<any, any>[];
+            source: string;
+        }, {}>[];
+    };
+    export { View };
+}
 declare module "widget/Breadcrumb" {
     import m from 'mithril';
     let View: {

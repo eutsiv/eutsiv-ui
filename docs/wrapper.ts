@@ -86,6 +86,11 @@ const menuTree = [
       },
       {
         type: 'leaf',
+        text: 'Badge',
+        onclick: () => setRoute('#!/index?path=widget/Badge')
+      },
+      {
+        type: 'leaf',
         text: 'Breadcrumb',
         onclick: () => setRoute('#!/index?path=widget/Breadcrumb')
       },

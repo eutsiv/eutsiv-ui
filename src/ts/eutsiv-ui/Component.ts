@@ -26,7 +26,7 @@ const applyConfig = (attrs) => {
   let config = attrs.eui
 
   // context
-  if(config.context) attrs.class.push(`eui-${config.context}`)
+  attrs = applyConfigContext(attrs)
 
   // fit
   attrs = applyConfigFit(attrs)
@@ -38,6 +38,12 @@ const applyConfig = (attrs) => {
   
 }
 
+const applyConfigContext = (attrs) => {
+  let c = attrs.eui
+  if(c.context) attrs.class.push(`eui-${c.context}`)
+  return attrs
+}
+
 const applyConfigFit = (attrs) => {
   let c = attrs.eui
   if(c.fit) attrs.class.push('eui-fit')
@@ -45,4 +51,4 @@ const applyConfigFit = (attrs) => {
 }
 
 
-export { Component, applyClasses, applyConfig, applyConfigFit }
+export { Component, applyClasses, applyConfig, applyConfigContext, applyConfigFit }

@@ -1,5 +1,8 @@
-const applyAttrsModifiers = (attrs, ...fn) => {
+const applyAttrsModifiers = (a, ...fn) => {
   
+  // copy
+  let attrs = { ...a }
+
   // ensure eui is an object
   attrs.eui = { ...attrs.eui }
 
@@ -15,9 +18,6 @@ const applyAttrsModifiers = (attrs, ...fn) => {
 
   // if class is an array, join the classes
   Array.isArray(attrs.class) && ( attrs.class = attrs.class.length ? attrs.class.join(' '): undefined )
-
-  // copy
-  attrs = { ...attrs }
   
   // delete eui config container
   attrs.eui = undefined
