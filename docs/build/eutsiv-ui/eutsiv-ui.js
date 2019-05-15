@@ -710,7 +710,12 @@ System.register("eutsiv-ui/widget/form/Label", ["mithril", "eutsiv-ui", "eutsiv-
             Label = () => {
                 return {
                     view: (vn) => {
-                        return mithril_15.default('label', eutsiv_ui_13.applyAttrsModifiers(vn.attrs, Component_12.applyClasses, applyConfig), vn.children);
+                        return mithril_15.default('label', eutsiv_ui_13.applyAttrsModifiers(vn.attrs, Component_12.applyClasses, applyConfig), vn.children.map(ch => {
+                            if (ch.tag == '#')
+                                return mithril_15.default('span', { class: 'eui-text' }, ch);
+                            else
+                                return ch;
+                        }));
                     }
                 };
             };

@@ -1058,9 +1058,9 @@ m(Button, { eui: { context: "reverse" } }, [ m(Icon, { eui: { type: "user" } }),
         }
     };
 });
-System.register("widget/Form", ["mithril", "resources/Section", "eutsiv-ui/layout/Grid", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Form", "eutsiv-ui/widget/Button"], function (exports_12, context_12) {
+System.register("widget/Form", ["mithril", "resources/Section", "eutsiv-ui/layout/Grid", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Form", "eutsiv-ui/widget/Button", "eutsiv-ui/widget/Icon"], function (exports_12, context_12) {
     "use strict";
-    var mithril_12, Section_6, Grid_6, Gutter_6, Form_1, Button_4, View;
+    var mithril_12, Section_6, Grid_6, Gutter_6, Form_1, Button_4, Icon_2, View;
     var __moduleName = context_12 && context_12.id;
     return {
         setters: [
@@ -1081,6 +1081,9 @@ System.register("widget/Form", ["mithril", "resources/Section", "eutsiv-ui/layou
             },
             function (Button_4_1) {
                 Button_4 = Button_4_1;
+            },
+            function (Icon_2_1) {
+                Icon_2 = Icon_2_1;
             }
         ],
         execute: function () {
@@ -1096,6 +1099,7 @@ System.register("widget/Form", ["mithril", "resources/Section", "eutsiv-ui/layou
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(Form_1.Label, 'Name', mithril_12.default("input", { type: "text", name: "name", placeholder: "Name" })))),
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(Form_1.Label, 'Description', mithril_12.default('textarea', { name: "description", placeholder: "Description" })))),
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default('span', { class: 'eui-fieldset' }, 'Some fieldset description'))),
+                                    mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(Form_1.Label, 'Date', mithril_12.default("input", { type: "text", name: "date", placeholder: "Date" }), mithril_12.default(Button_4.Button, { eui: { context: 'notice' } }, mithril_12.default(Icon_2.Icon, { eui: { type: "calendar" } }))))),
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(Form_1.Label, { eui: { inline: true } }, 'Choose a car:'), mithril_12.default(Form_1.Radio, { eui: { inline: true }, name: 'car', value: 'audi' }, 'Audi'), mithril_12.default(Form_1.Radio, { eui: { inline: true }, name: 'car', value: 'bmw' }, 'BMW'), mithril_12.default(Form_1.Radio, { eui: { inline: true }, name: 'car', value: 'porsche', checked: 'checked', disabled: 'disabled' }, 'Porsche'), mithril_12.default(Form_1.Radio, { eui: { inline: true }, name: 'car', value: 'mercedes' }, 'Mercedes'))),
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(Form_1.Label, 'Other options:'), mithril_12.default(Form_1.Checkbox, { name: 'virtual', value: 'true' }, 'Virtual'), mithril_12.default(Form_1.Checkbox, { name: 'administrator', value: 'true', disabled: 'disabled' }, 'Administrator'), mithril_12.default(Form_1.Checkbox, { name: 'active', value: 'true', checked: 'checked', disabled: 'disabled' }, 'Active'))),
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Gutter_6.Gutter, { eui: { fit: false } }, mithril_12.default(Button_4.Button, 'Cancel')), mithril_12.default(Gutter_6.Gutter, { eui: { fit: false } }, mithril_12.default(Button_4.Button, { eui: { context: 'safety' } }, 'Save')))
@@ -1184,7 +1188,7 @@ m(Form,
 });
 System.register("widget/Icon", ["mithril", "resources/Section", "eutsiv-ui/widget/Icon", "eutsiv-ui"], function (exports_13, context_13) {
     "use strict";
-    var mithril_13, Section_7, Icon_2, eutsiv_ui_4, iconMap, View;
+    var mithril_13, Section_7, Icon_3, eutsiv_ui_4, iconMap, View;
     var __moduleName = context_13 && context_13.id;
     return {
         setters: [
@@ -1194,8 +1198,8 @@ System.register("widget/Icon", ["mithril", "resources/Section", "eutsiv-ui/widge
             function (Section_7_1) {
                 Section_7 = Section_7_1;
             },
-            function (Icon_2_1) {
-                Icon_2 = Icon_2_1;
+            function (Icon_3_1) {
+                Icon_3 = Icon_3_1;
             },
             function (eutsiv_ui_4_1) {
                 eutsiv_ui_4 = eutsiv_ui_4_1;
@@ -1241,7 +1245,7 @@ System.register("widget/Icon", ["mithril", "resources/Section", "eutsiv-ui/widge
                             documentation: [
                                 mithril_13.default("h1", "Icon"),
                                 iconMap.map((i) => {
-                                    return mithril_13.default(Icon_2.Icon, { eui: { type: i.type, spin: i.spin } });
+                                    return mithril_13.default(Icon_3.Icon, { eui: { type: i.type, spin: i.spin } });
                                 })
                             ],
                             source: `
@@ -1289,7 +1293,7 @@ iconMap.map((i) => {
                             documentation: [
                                 mithril_13.default("h2", "Context"),
                                 iconMap.map((i) => {
-                                    return mithril_13.default(Icon_2.Icon, { eui: { type: i.type, spin: i.spin, context: i.context } });
+                                    return mithril_13.default(Icon_3.Icon, { eui: { type: i.type, spin: i.spin, context: i.context } });
                                 })
                             ],
                             source: `
@@ -1304,7 +1308,7 @@ iconMap.map((i) => {
                             documentation: [
                                 mithril_13.default("h2", "Size"),
                                 iconMap.map((i) => {
-                                    return mithril_13.default(Icon_2.Icon, { eui: { type: i.type, spin: i.spin, size: i.size } });
+                                    return mithril_13.default(Icon_3.Icon, { eui: { type: i.type, spin: i.spin, size: i.size } });
                                 })
                             ],
                             source: `

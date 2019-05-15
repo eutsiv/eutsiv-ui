@@ -729,6 +729,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     margin: 0 8px 0 -4px; }
   .eui-viewport a.eui-button > i.eui-icon:last-child, .eui-viewport button.eui-button > i.eui-icon:last-child, .eui-viewport input.eui-button > i.eui-icon:last-child {
     margin: 0 -4px 0 8px; }
+  .eui-viewport a.eui-button > i.eui-icon:only-child, .eui-viewport button.eui-button > i.eui-icon:only-child, .eui-viewport input.eui-button > i.eui-icon:only-child {
+    margin: 0; }
 
 .eui-viewport .eui-calendar h2 {
   margin: 0;
@@ -845,7 +847,29 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   margin: 0;
   padding: 0;
   font-size: 1em;
-  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  /*
+    .eui-input-icon {
+      display: flex;
+      border: $eui-widget-form-input-border;
+
+      &:focus-within {
+        border: $eui-widget-form-input-focus-border;
+      }
+
+      input, select, textarea, .eui-input {
+        border: 0;
+      }
+
+      i.eui-icon {
+        padding: 0.64em 0.32em;
+        vertical-align: middle;
+        line-height: 1.28em;
+        background: $eui-color-bg;
+      }
+
+    }
+    */ }
   .eui-viewport form.eui-form span.eui-fieldset, .eui-viewport div.eui-select span.eui-fieldset {
     display: block;
     font-size: 1.08em;
@@ -854,20 +878,22 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     color: #222222;
     border-bottom: 1px solid #dbdbdb; }
   .eui-viewport form.eui-form label, .eui-viewport div.eui-select label {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     line-height: 1.75em;
     color: #222222;
     font-size: 1em;
     font-weight: bold;
     -webkit-tap-highlight-color: transparent; }
+    .eui-viewport form.eui-form label span.eui-text, .eui-viewport div.eui-select label span.eui-text {
+      width: 100%; }
     .eui-viewport form.eui-form label.eui-checkbox, .eui-viewport form.eui-form label.eui-radio, .eui-viewport div.eui-select label.eui-checkbox, .eui-viewport div.eui-select label.eui-radio {
       font-weight: normal; }
     .eui-viewport form.eui-form label.eui-inline, .eui-viewport div.eui-select label.eui-inline {
       display: inline-block;
       margin-right: 20px; }
   .eui-viewport form.eui-form input, .eui-viewport form.eui-form select, .eui-viewport form.eui-form textarea, .eui-viewport form.eui-form .eui-input, .eui-viewport div.eui-select input, .eui-viewport div.eui-select select, .eui-viewport div.eui-select textarea, .eui-viewport div.eui-select .eui-input {
-    display: block;
-    width: 100%;
+    flex-grow: 1;
     margin: 0;
     padding: 11px;
     line-height: 1.1;
@@ -897,7 +923,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport div.eui-select textarea[disabled],
   .eui-viewport div.eui-select textarea[readonly] {
     background: #fafafa;
-    border: 1px solid #fafafa;
+    border: 1px solid #ebebeb;
     color: #222222; }
   .eui-viewport form.eui-form input[type="checkbox"],
   .eui-viewport form.eui-form input[type="radio"], .eui-viewport div.eui-select input[type="checkbox"],
@@ -926,7 +952,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     .eui-viewport form.eui-form input[type="radio"]:disabled:not(:checked) + span.eui-fake:before, .eui-viewport div.eui-select input[type="checkbox"]:disabled:not(:checked) + span.eui-fake:before,
     .eui-viewport div.eui-select input[type="radio"]:disabled:not(:checked) + span.eui-fake:before {
       background: #fafafa;
-      border: 1px solid #fafafa; }
+      border: 1px solid #ebebeb; }
     .eui-viewport form.eui-form input[type="checkbox"]:disabled:checked + span.eui-fake:before,
     .eui-viewport form.eui-form input[type="radio"]:disabled:checked + span.eui-fake:before, .eui-viewport div.eui-select input[type="checkbox"]:disabled:checked + span.eui-fake:before,
     .eui-viewport div.eui-select input[type="radio"]:disabled:checked + span.eui-fake:before {
@@ -935,18 +961,6 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
       border-width: 5px; }
   .eui-viewport form.eui-form input[type=radio] + span.eui-fake:before, .eui-viewport div.eui-select input[type=radio] + span.eui-fake:before {
     border-radius: 50%; }
-  .eui-viewport form.eui-form .eui-input-icon, .eui-viewport div.eui-select .eui-input-icon {
-    display: flex;
-    border: 1px solid #dbdbdb; }
-    .eui-viewport form.eui-form .eui-input-icon:focus-within, .eui-viewport div.eui-select .eui-input-icon:focus-within {
-      border: 1px solid #0d8bf2; }
-    .eui-viewport form.eui-form .eui-input-icon input, .eui-viewport form.eui-form .eui-input-icon select, .eui-viewport form.eui-form .eui-input-icon textarea, .eui-viewport form.eui-form .eui-input-icon .eui-input, .eui-viewport div.eui-select .eui-input-icon input, .eui-viewport div.eui-select .eui-input-icon select, .eui-viewport div.eui-select .eui-input-icon textarea, .eui-viewport div.eui-select .eui-input-icon .eui-input {
-      border: 0; }
-    .eui-viewport form.eui-form .eui-input-icon i.eui-icon, .eui-viewport div.eui-select .eui-input-icon i.eui-icon {
-      padding: 0.64em 0.32em;
-      vertical-align: middle;
-      line-height: 1.28em;
-      background: #ebebeb; }
 
 div.eui-select {
   margin: 0;

@@ -8,7 +8,14 @@ const Label = () => {
 
   return {
     view: (vn) => {
-      return m('label', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
+      return m('label', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), 
+        vn.children.map(ch => {
+          if(ch.tag == '#')
+            return m('span', { class: 'eui-text' }, ch)
+          else
+            return ch
+        })
+      )
     }
   }
 

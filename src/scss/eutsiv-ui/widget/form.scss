@@ -17,12 +17,17 @@
       border-bottom: $eui-widget-form-input-border;
     }
     label {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
       line-height: 1.75em;
       color: $eui-color;
       font-size: 1em;
       font-weight: bold;
       -webkit-tap-highlight-color: transparent;
+
+      span.#{$eui-namespace}-text {
+        width: 100%;
+      }
 
       &.#{$eui-namespace}-checkbox, &.#{$eui-namespace}-radio {
         font-weight: normal;
@@ -35,8 +40,9 @@
 
     }
     input, select, textarea, .#{$eui-namespace}-input {
-      display: block;
-      width: 100%;
+      //display: block;
+      //width: 100%;
+      flex-grow: 1;
       margin: 0;
       padding: ($eui-unit-grid*3) - 1; // remove 1 pixel because border
       line-height: 1.1;
@@ -67,7 +73,7 @@
     textarea[disabled],
     textarea[readonly] {
       background: $eui-color-disabled-bg;
-      border: 1px solid $eui-color-disabled-bg;
+      border: 1px solid $eui-color-disabled-border;
       color: $eui-color;
       //&:focus {
       //  border: $eui-widget-form-input-border;
@@ -101,7 +107,7 @@
 
       &:disabled:not(:checked) + span.#{$eui-namespace}-fake:before {
         background: $eui-color-disabled-bg;
-        border: 1px solid $eui-color-disabled-bg;
+        border: 1px solid $eui-color-disabled-border;
       }
 
       &:disabled:checked + span.#{$eui-namespace}-fake:before {
@@ -121,6 +127,7 @@
 
     }
 
+    /*
     .#{$eui-namespace}-input-icon {
       display: flex;
       border: $eui-widget-form-input-border;
@@ -141,6 +148,7 @@
       }
 
     }
+    */
 
   }
 

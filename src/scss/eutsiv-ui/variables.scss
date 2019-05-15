@@ -14,7 +14,7 @@ $eui-color-title: eui-color('primary', 'dark-1');
 
 $eui-color-disabled: eui-color('gray', 'dark-1');
 $eui-color-disabled-bg: eui-color('gray', 'light-3');
-$eui-color-disabled-border: $eui-color-disabled-bg;
+$eui-color-disabled-border: eui-color('gray', 'light-2'); //$eui-color-disabled-bg;
 
 $eui-color-focus-bg: eui-color('notice', 'light-3');
 $eui-color-focus-border: eui-color('notice', 'base');
