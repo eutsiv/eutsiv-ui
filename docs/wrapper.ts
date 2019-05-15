@@ -133,6 +133,11 @@ const menuTree = [
         type: 'leaf',
         text: 'Table',
         onclick: () => setRoute('#!/index?path=widget/Table')
+      },
+      {
+        type: 'leaf',
+        text: 'Tabs',
+        onclick: () => setRoute('#!/index?path=widget/Tabs')
       }
     ]
   }

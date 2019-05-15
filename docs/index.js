@@ -312,6 +312,11 @@ System.register("wrapper", ["mithril", "eutsiv-ui/layout/Grid", "eutsiv-ui/layou
                             type: 'leaf',
                             text: 'Table',
                             onclick: () => setRoute('#!/index?path=widget/Table')
+                        },
+                        {
+                            type: 'leaf',
+                            text: 'Tabs',
+                            onclick: () => setRoute('#!/index?path=widget/Tabs')
                         }
                     ]
                 }
@@ -1639,9 +1644,9 @@ eui: {
         }
     };
 });
-System.register("widget/calendar/Calendar", ["mithril", "resources/Section", "eutsiv-ui/widget/calendar/Calendar"], function (exports_19, context_19) {
+System.register("widget/Tabs", ["mithril", "resources/Section", "eutsiv-ui/widget/Tabs"], function (exports_19, context_19) {
     "use strict";
-    var mithril_19, Section_13, Calendar_1, View;
+    var mithril_19, Section_13, Tabs_1, View;
     var __moduleName = context_19 && context_19.id;
     return {
         setters: [
@@ -1650,6 +1655,88 @@ System.register("widget/calendar/Calendar", ["mithril", "resources/Section", "eu
             },
             function (Section_13_1) {
                 Section_13 = Section_13_1;
+            },
+            function (Tabs_1_1) {
+                Tabs_1 = Tabs_1_1;
+            }
+        ],
+        execute: function () {
+            View = {
+                view: () => {
+                    return [
+                        mithril_19.default(Section_13.Section, {
+                            documentation: [
+                                mithril_19.default("h1", "Tabs"),
+                                mithril_19.default(Tabs_1.Tabs, {
+                                    eui: {
+                                        tabs: [
+                                            {
+                                                title: 'About',
+                                                content: mithril_19.default('span', 'About content')
+                                            },
+                                            {
+                                                title: 'Adress',
+                                                content: mithril_19.default('span', 'Adress content')
+                                            },
+                                            {
+                                                title: 'Permissions',
+                                                content: mithril_19.default('span', 'Permissions content')
+                                            },
+                                            {
+                                                title: 'Config',
+                                                content: mithril_19.default('span', 'Config content')
+                                            }
+                                        ]
+                                    }
+                                })
+                            ],
+                            source: `
+import {Tabs} from 'eutsiv-ui/widget/Tabs'
+
+m(Tabs, 
+  { 
+    eui: { 
+      tabs: [
+        {
+          title: 'About',
+          content: m('span', 'About content')
+        },
+        {
+          title: 'Adress',
+          content: m('span', 'Adress content')
+        },
+        {
+          title: 'Permissions',
+          content: m('span', 'Permissions content')
+        },
+        {
+          title: 'Config',
+          content: m('span', 'Config content')
+        }
+      ] 
+    } 
+  }
+)
+        `
+                        })
+                    ];
+                }
+            };
+            exports_19("View", View);
+        }
+    };
+});
+System.register("widget/calendar/Calendar", ["mithril", "resources/Section", "eutsiv-ui/widget/calendar/Calendar"], function (exports_20, context_20) {
+    "use strict";
+    var mithril_20, Section_14, Calendar_1, View;
+    var __moduleName = context_20 && context_20.id;
+    return {
+        setters: [
+            function (mithril_20_1) {
+                mithril_20 = mithril_20_1;
+            },
+            function (Section_14_1) {
+                Section_14 = Section_14_1;
             },
             function (Calendar_1_1) {
                 Calendar_1 = Calendar_1_1;
@@ -1660,10 +1747,10 @@ System.register("widget/calendar/Calendar", ["mithril", "resources/Section", "eu
                 view: () => {
                     var now = new Date();
                     return [
-                        mithril_19.default(Section_13.Section, {
+                        mithril_20.default(Section_14.Section, {
                             documentation: [
-                                mithril_19.default("h1", "Calendar"),
-                                mithril_19.default(Calendar_1.Calendar, {
+                                mithril_20.default("h1", "Calendar"),
+                                mithril_20.default(Calendar_1.Calendar, {
                                     month: now.getMonth(),
                                     year: now.getFullYear()
                                 })
@@ -1682,21 +1769,21 @@ m(Calendar, {
                     ];
                 }
             };
-            exports_19("View", View);
+            exports_20("View", View);
         }
     };
 });
-System.register("widget/data/Grid", ["mithril", "resources/Section", "eutsiv-ui/widget/data/Grid"], function (exports_20, context_20) {
+System.register("widget/data/Grid", ["mithril", "resources/Section", "eutsiv-ui/widget/data/Grid"], function (exports_21, context_21) {
     "use strict";
-    var mithril_20, Section_14, Grid_7, people, View;
-    var __moduleName = context_20 && context_20.id;
+    var mithril_21, Section_15, Grid_7, people, View;
+    var __moduleName = context_21 && context_21.id;
     return {
         setters: [
-            function (mithril_20_1) {
-                mithril_20 = mithril_20_1;
+            function (mithril_21_1) {
+                mithril_21 = mithril_21_1;
             },
-            function (Section_14_1) {
-                Section_14 = Section_14_1;
+            function (Section_15_1) {
+                Section_15 = Section_15_1;
             },
             function (Grid_7_1) {
                 Grid_7 = Grid_7_1;
@@ -1718,10 +1805,10 @@ System.register("widget/data/Grid", ["mithril", "resources/Section", "eutsiv-ui/
             View = {
                 view: () => {
                     return [
-                        mithril_20.default(Section_14.Section, {
+                        mithril_21.default(Section_15.Section, {
                             documentation: [
-                                mithril_20.default("h1", "Grid"),
-                                mithril_20.default(Grid_7.Grid, {
+                                mithril_21.default("h1", "Grid"),
+                                mithril_21.default(Grid_7.Grid, {
                                     eui: {
                                         data: people,
                                         key: 'id',
@@ -1742,7 +1829,7 @@ System.register("widget/data/Grid", ["mithril", "resources/Section", "eutsiv-ui/
                                                 sort: (d, o, nth) => { return d.sort((a, b) => { return o == 1 ? a.age - b.age : b.age - a.age; }); }
                                             },
                                             {
-                                                content: (d) => { return mithril_20.default('a', { href: '' }, `View ${d.name} profile`); }
+                                                content: (d) => { return mithril_21.default('a', { href: '' }, `View ${d.name} profile`); }
                                             }
                                         ],
                                         height: '250px'
@@ -1798,21 +1885,21 @@ m(Grid, {
                     ];
                 }
             };
-            exports_20("View", View);
+            exports_21("View", View);
         }
     };
 });
-System.register("widget/data/Paging", ["mithril", "resources/Section", "eutsiv-ui/widget/data/Paging"], function (exports_21, context_21) {
+System.register("widget/data/Paging", ["mithril", "resources/Section", "eutsiv-ui/widget/data/Paging"], function (exports_22, context_22) {
     "use strict";
-    var mithril_21, Section_15, Paging_1, View;
-    var __moduleName = context_21 && context_21.id;
+    var mithril_22, Section_16, Paging_1, View;
+    var __moduleName = context_22 && context_22.id;
     return {
         setters: [
-            function (mithril_21_1) {
-                mithril_21 = mithril_21_1;
+            function (mithril_22_1) {
+                mithril_22 = mithril_22_1;
             },
-            function (Section_15_1) {
-                Section_15 = Section_15_1;
+            function (Section_16_1) {
+                Section_16 = Section_16_1;
             },
             function (Paging_1_1) {
                 Paging_1 = Paging_1_1;
@@ -1822,10 +1909,10 @@ System.register("widget/data/Paging", ["mithril", "resources/Section", "eutsiv-u
             View = {
                 view: () => {
                     return [
-                        mithril_21.default(Section_15.Section, {
+                        mithril_22.default(Section_16.Section, {
                             documentation: [
-                                mithril_21.default("h1", "Paging"),
-                                mithril_21.default(Paging_1.Paging, {
+                                mithril_22.default("h1", "Paging"),
+                                mithril_22.default(Paging_1.Paging, {
                                     eui: {
                                         page: 3,
                                         rows: {
@@ -1833,7 +1920,7 @@ System.register("widget/data/Paging", ["mithril", "resources/Section", "eutsiv-u
                                             total: 73
                                         },
                                         buildHref: (page, rowsPerPage) => {
-                                            return "/index?path=/fi/entry/list" + "&" + mithril_21.default.buildQueryString({ rowsPerPage, page });
+                                            return "/index?path=/fi/entry/list" + "&" + mithril_22.default.buildQueryString({ rowsPerPage, page });
                                         }
                                     }
                                 })
@@ -1858,21 +1945,21 @@ m(Paging, {
                     ];
                 }
             };
-            exports_21("View", View);
+            exports_22("View", View);
         }
     };
 });
-System.register("widget/tree/Tree", ["mithril", "resources/Section", "eutsiv-ui/widget/tree/Tree"], function (exports_22, context_22) {
+System.register("widget/tree/Tree", ["mithril", "resources/Section", "eutsiv-ui/widget/tree/Tree"], function (exports_23, context_23) {
     "use strict";
-    var mithril_22, Section_16, Tree_2, treeItems, View;
-    var __moduleName = context_22 && context_22.id;
+    var mithril_23, Section_17, Tree_2, treeItems, View;
+    var __moduleName = context_23 && context_23.id;
     return {
         setters: [
-            function (mithril_22_1) {
-                mithril_22 = mithril_22_1;
+            function (mithril_23_1) {
+                mithril_23 = mithril_23_1;
             },
-            function (Section_16_1) {
-                Section_16 = Section_16_1;
+            function (Section_17_1) {
+                Section_17 = Section_17_1;
             },
             function (Tree_2_1) {
                 Tree_2 = Tree_2_1;
@@ -1924,10 +2011,10 @@ System.register("widget/tree/Tree", ["mithril", "resources/Section", "eutsiv-ui/
             View = {
                 view: () => {
                     return [
-                        mithril_22.default(Section_16.Section, {
+                        mithril_23.default(Section_17.Section, {
                             documentation: [
-                                mithril_22.default("h1", "Tree"),
-                                mithril_22.default(Tree_2.Tree, {
+                                mithril_23.default("h1", "Tree"),
+                                mithril_23.default(Tree_2.Tree, {
                                     eui: {
                                         items: treeItems,
                                     }
@@ -1989,7 +2076,7 @@ m(Tree, {
                     ];
                 }
             };
-            exports_22("View", View);
+            exports_23("View", View);
         }
     };
 });

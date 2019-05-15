@@ -164,6 +164,16 @@ declare module "widget/Table" {
     };
     export { View };
 }
+declare module "widget/Tabs" {
+    import m from 'mithril';
+    let View: {
+        view: () => m.Vnode<{
+            documentation: m.Vnode<any, any>[];
+            source: string;
+        }, {}>[];
+    };
+    export { View };
+}
 declare module "widget/calendar/Calendar" {
     import m from 'mithril';
     let View: {

@@ -1158,37 +1158,68 @@ ol.eui, ul.eui {
     height: 0.56em;
     background: #214478; }
 
-.eui-tab > .eui-tab-menu {
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  overflow: auto; }
-  .eui-tab > .eui-tab-menu > .eui-tab-item {
-    float: left; }
-    .eui-tab > .eui-tab-menu > .eui-tab-item + .eui-tab-item {
-      margin-left: 0.32rem; }
-    .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link {
-      display: inline-block;
-      height: 48px;
-      padding: 0.5em 1em;
-      cursor: pointer;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 2px solid transparent; }
-      .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link:focus, .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link:hover {
-        border-bottom: 2px solid #ff98ad; }
-      .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link.disabled, .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link.disabled:focus, .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link.disabled:hover {
-        color: #818a91;
-        cursor: not-allowed; }
-      .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link.active, .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link.active:focus, .eui-tab > .eui-tab-menu > .eui-tab-item > .eui-tab-link.active:hover {
-        border-bottom: 2px solid #ff98ad; }
+.eui-viewport .eui-tabs {
+  /*
+    > .eui-tab-menu {
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+      overflow: auto;
 
-.eui-tab > .eui-tab-content {
-  padding: 20px 10px; }
-  .eui-tab > .eui-tab-content > .eui-tab-pane {
-    display: none; }
-  .eui-tab > .eui-tab-content > .active {
-    display: block; }
+      > .eui-tab-item {
+        float: left;
+
+        + .eui-tab-item {
+          margin-left: 0.32rem;
+        }
+
+        > .eui-tab-link {
+          display: inline-block;
+          height: 48px;
+          padding: 0.5em 1em;
+          cursor: pointer;
+          text-transform: uppercase;
+          text-decoration: none;
+          border: 2px solid transparent;
+
+          &:focus,
+          &:hover {
+            border-bottom: 2px solid #ff98ad;
+          }
+
+          &.disabled {
+            &,
+            &:focus,
+            &:hover {
+              color: #818a91;
+              cursor: not-allowed;
+            }
+          }
+
+          &.active {
+            &,
+            &:focus,
+            &:hover {
+              border-bottom: 2px solid #ff98ad;
+            }
+          }
+
+        }
+
+      }
+
+    }
+
+    > .eui-tab-content {
+      padding: 20px 10px;
+      > .eui-tab-pane {
+        display: none;
+      }
+      > .active {
+        display: block;
+      }
+    }
+    */ }
 
 .eui-viewport table.eui-table {
   width: 100%;

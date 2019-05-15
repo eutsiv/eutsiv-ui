@@ -192,6 +192,13 @@ declare module "eutsiv-ui/widget/Table" {
     };
     export { Table };
 }
+declare module "eutsiv-ui/widget/Tabs" {
+    import m from 'mithril';
+    const Tabs: () => {
+        view: (vn: any) => m.Vnode<any, any>;
+    };
+    export { Tabs };
+}
 declare module "eutsiv-ui/widget/calendar/Calendar" {
     import m from 'mithril';
     const Calendar: ({ attrs }: {
