@@ -4,9 +4,75 @@ import {applyAttrsModifiers} from 'eutsiv-ui'
 import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
 
 
+const adjustColumnWidth = (vn) => {
+  if(!vn.attrs.column.width || vn.attrs.column.width < vn.dom.scrollWidth) {
+    let n = vn.dom.scrollWidth + (parseInt(window.getComputedStyle(vn.dom, null).getPropertyValue('padding-right').slice(0, -2)) * 2)
+    vn.attrs.column.width = n
+    m.redraw()
+  }
+}
+
 const applySort = (d, st) => {
   if(!st.length) return false
   return st.reduce((a, e, i) => { return e.fn(a, e.order, i) }, [...d])
+}
+
+const GridHeaderColumn = {
+  oncreate: (vn) => { adjustColumnWidth(vn) },
+  onupdate: (vn) => { adjustColumnWidth(vn) },
+  view: (vn) => {
+    return m('div', 
+      { 
+        class: 'col col-header', style: vn.attrs.column.width ? `width:${vn.attrs.column.width}px` : '',
+        onclick: (e) => { 
+
+          // this column does not have sort
+          if(!vn.attrs.column.sort) {
+            vn.attrs.gridState.columns.forEach((el) => { if(el.sort) el.sort.order = undefined })
+            vn.attrs.gridState.sortStack = []
+            return
+          }
+          
+          // set order
+          if(!vn.attrs.column.sort.order)
+            vn.attrs.column.sort.order = 1
+          else if(vn.attrs.column.sort.order == 1)
+            vn.attrs.column.sort.order = -1
+          else
+            vn.attrs.column.sort.order = undefined
+
+          
+          if(e.ctrlKey) {
+            let pi = vn.attrs.gridState.sortStack.findIndex(el => { return el.index == vn.attrs.column.sort.index })
+            
+            // column not yet ordered
+            if(pi == -1) {
+              vn.attrs.gridState.sortStack.unshift(vn.attrs.column.sort)
+              vn.attrs.column.sort.nth = vn.attrs.gridState.sortStack.length - 1
+            } 
+            // column already ordered, update or delete
+            else {
+              if(vn.attrs.column.sort.order)
+                vn.attrs.gridState.sortStack[pi] = vn.attrs.column.sort
+              else
+                vn.attrs.gridState.sortStack.splice(pi, 1)
+            }
+            
+          } else {
+            vn.attrs.gridState.sortStack = vn.attrs.column.sort.order ? [vn.attrs.column.sort] : []
+            // ctrl was not pressed, so clean all the others columns
+            vn.attrs.gridState.columns.forEach((el) => { if(el.sort && (el.sort.index != vn.attrs.column.sort.index)) el.sort.order = undefined })
+            vn.attrs.column.sort.nth = 0
+          }
+          
+          vn.attrs.gridState.sortedData = applySort(vn.attrs.data, vn.attrs.gridState.sortStack)
+          
+        }
+        
+      }, 
+      vn.children
+    )
+  }
 }
 
 const Resizer = {
@@ -51,10 +117,8 @@ const GridBodyRow = {
       vn.attrs.columns.map((col, idx) => {
       
         let content = typeof col.content === 'function' ? col.content(vn.attrs.data) : vn.attrs.data[col.content]
-        
-        if(!vn.attrs.gridState.columns[idx]) vn.attrs.gridState.columns[idx] = { sort: {} }
 
-        return m(GridBodyColumn, { state: vn.attrs.gridState.columns[idx] }, content)
+        return m(GridBodyColumn, { column: vn.attrs.gridState.columns[idx] }, content)
 
       })
     )
@@ -64,16 +128,16 @@ const GridBodyRow = {
 const GridBodyColumn = {
   oncreate: (vn) => {
 
-    vn.attrs.state.dom = vn.dom
+    vn.attrs.column.dom = vn.dom
 
-    if(!vn.attrs.state.width || vn.attrs.state.width < vn.dom.getBoundingClientRect().width) {
-      vn.attrs.state.width = vn.dom.getBoundingClientRect().width
+    if(!vn.attrs.column.width || vn.attrs.column.width < vn.dom.getBoundingClientRect().width) {
+      vn.attrs.column.width = vn.dom.getBoundingClientRect().width
       m.redraw()
     }
 
   },
   view: (vn) => {
-    return m('div', { class: 'col col-body', style: vn.attrs.state.width ? `width:${vn.attrs.state.width}px` : '' }, vn.children)
+    return m('div', { class: 'col col-body', style: vn.attrs.column.width ? `width:${vn.attrs.column.width}px` : '' }, vn.children)
   }
 }
 
@@ -90,14 +154,6 @@ const Grid = () => {
     totalWidth: 0
   }
   
-  const adjustColumnWidth = (cvn, idx) => {
-    if(!mcols[idx].width || mcols[idx].width < cvn.dom.scrollWidth) {
-      let n = cvn.dom.scrollWidth + (parseInt(window.getComputedStyle(cvn.dom, null).getPropertyValue('padding-right').slice(0, -2)) * 2)
-      mcols[idx].width = n
-      m.redraw()
-    }
-  }
-  
   return {
     view: (vn) => {
       
@@ -109,63 +165,32 @@ const Grid = () => {
         m('div', { class: 'header', style: gridState.totalWidth ? `width:${gridState.totalWidth}px` : '' },
           params.columns.map((col, idx) => {
             
+            // creating columns state
+            if(!gridState.columns[idx]) gridState.columns[idx] = {}
+
+            // if sort is provided
+            if(!gridState.columns[idx].sort && col.sort) gridState.columns[idx].sort = {
+              fn: col.sort,
+              index: idx,
+              nth: 0,
+              order: undefined
+            }
+
             let title = '&nbsp;'
             
             if(col.title) title = col.title
             
-            if(mcols[idx] && mcols[idx].sort && mcols[idx].sort.fn) {
+            if(gridState.columns[idx].sort && gridState.columns[idx].sort.order) {
                     
-              if(mcols[idx].sort.order == 1) title += ' &#11015;'
-              else if(mcols[idx].sort.order == -1) title += ' &#11014;'
+              if(gridState.columns[idx].sort.order == 1) title += ' &#11015;'
+              else if(gridState.columns[idx].sort.order == -1) title += ' &#11014;'
               
-              title += ` <small>(${mcols[idx].sort.nth + 1})</small>`
+              title += ` <small>(${gridState.columns[idx].sort.nth + 1})</small>`
               
             }
             
             return [
-              m('div', { class: 'col col-header', style: (mcols[idx] && mcols[idx].width) ? `width:${mcols[idx].width}px` : '', 
-              oncreate: (cvn) => { adjustColumnWidth(cvn, idx) },
-              onupdate: (cvn) => { adjustColumnWidth(cvn, idx) },
-              onclick: (e) => { 
-                
-                mcols[idx].sort.fn = col.sort
-                
-                // set order
-                if(!mcols[idx].sort.order)
-                  mcols[idx].sort.order = 1
-                else if(mcols[idx].sort.order == 1)
-                  mcols[idx].sort.order *= -1
-                else
-                  mcols[idx].sort = {}
-                
-                let meta = mcols[idx].sort.order ? { fn: mcols[idx].sort.fn, order: mcols[idx].sort.order, index: idx } : {}
-                
-                if(e.ctrlKey) {
-                  let pi = gridState.sortStack.findIndex(el => { return el.index == idx })
-                  
-                  // column not yet ordered
-                  if(pi == -1) {
-                    gridState.sortStack.unshift(meta)
-                    mcols[idx].sort.nth = gridState.sortStack.length - 1
-                  } 
-                  // column already ordered, update or delete
-                  else {
-                    if(meta.fn)
-                      gridState.sortStack[pi] = meta
-                    else
-                      gridState.sortStack.splice(pi, 1)
-                  }
-                  
-                } else {
-                  gridState.sortStack = meta.fn ? [meta] : []
-                  // ctrl was not pressed, so clean all the others columns
-                  mcols.forEach((el, i) => { if(i != idx) el.sort = {} })
-                  mcols[idx].sort.nth = 0
-                }
-                
-                gridState.sortedData = applySort(params.data, gridState.sortStack)
-                
-              } }, m.trust(title)),
+              m(GridHeaderColumn, { column: mcols[idx], data: params.data, gridState }, m.trust(title)),
               m(Resizer, { onmousedown: (e) => {
                 
                 let marker = document.createElement('div')
