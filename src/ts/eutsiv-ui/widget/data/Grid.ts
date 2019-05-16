@@ -15,6 +15,31 @@ const Resizer = {
   }
 }
 
+const GridBody = {
+  oncreate: (vn) => { 
+    if(vn.attrs.gridState.height != 'auto')
+      vn.dom.style.height = (vn.dom.parentNode.getBoundingClientRect().height - vn.dom.parentNode.querySelector('.header').getBoundingClientRect().height) + 'px' 
+  },
+  view: (vn) => {
+    return m('div', 
+      { class: 'body', style: 'height: 100%', 
+        onscroll: (e) => {
+          // only redraw if scrolling in the x axis
+          e.redraw = false
+          if(vn.attrs.gridState.leftScrolled != e.target.scrollLeft) {
+            vn.dom.parentNode.querySelector('div.header').style.left = (e.target.scrollLeft * -1) + 'px'
+            vn.attrs.gridState.leftScrolled = e.target.scrollLeft
+            m.redraw()
+          }
+        }
+      },
+      vn.attrs.data.map(row => {
+        return m(GridBodyRow, { columns: vn.attrs.columns, data: row, key: row[vn.attrs.key], gridState: vn.attrs.gridState })
+      })
+    )
+  }
+}
+
 const GridBodyRow = {
   view: (vn) => {
     return m('div', 
@@ -55,14 +80,14 @@ const GridBodyColumn = {
 const Grid = () => {
   
   let mcols = []
-  let totalWidth = 0
-  let leftScrolled = 0
-  let sortStack = []
-  let sortedData = false
 
   let gridState = {
     columns: mcols,
-    totalWidth: totalWidth
+    height: 'auto',
+    leftScrolled: 0,
+    sortedData: false,
+    sortStack: [],
+    totalWidth: 0
   }
   
   const adjustColumnWidth = (cvn, idx) => {
@@ -77,11 +102,11 @@ const Grid = () => {
     view: (vn) => {
       
       let params = vn.attrs.eui
-      let data = sortedData ? sortedData : params.data
-      let height = params.height || 'auto'
+      let data = gridState.sortedData ? gridState.sortedData : params.data
+      gridState.height = params.height || 'auto'
       
-      return m('div', { class: 'grid', style: `height: ${height}` },
-        m('div', { class: 'header', style: totalWidth ? `width:${totalWidth}px` : '' },
+      return m('div', { class: 'grid', style: `height: ${gridState.height}` },
+        m('div', { class: 'header', style: gridState.totalWidth ? `width:${gridState.totalWidth}px` : '' },
           params.columns.map((col, idx) => {
             
             let title = '&nbsp;'
@@ -116,36 +141,36 @@ const Grid = () => {
                 let meta = mcols[idx].sort.order ? { fn: mcols[idx].sort.fn, order: mcols[idx].sort.order, index: idx } : {}
                 
                 if(e.ctrlKey) {
-                  let pi = sortStack.findIndex(el => { return el.index == idx })
+                  let pi = gridState.sortStack.findIndex(el => { return el.index == idx })
                   
                   // column not yet ordered
                   if(pi == -1) {
-                    sortStack.unshift(meta)
-                    mcols[idx].sort.nth = sortStack.length - 1
+                    gridState.sortStack.unshift(meta)
+                    mcols[idx].sort.nth = gridState.sortStack.length - 1
                   } 
                   // column already ordered, update or delete
                   else {
                     if(meta.fn)
-                      sortStack[pi] = meta
+                      gridState.sortStack[pi] = meta
                     else
-                      sortStack.splice(pi, 1)
+                      gridState.sortStack.splice(pi, 1)
                   }
                   
                 } else {
-                  sortStack = meta.fn ? [meta] : []
+                  gridState.sortStack = meta.fn ? [meta] : []
                   // ctrl was not pressed, so clean all the others columns
                   mcols.forEach((el, i) => { if(i != idx) el.sort = {} })
                   mcols[idx].sort.nth = 0
                 }
                 
-                sortedData = applySort(params.data, sortStack)
+                gridState.sortedData = applySort(params.data, gridState.sortStack)
                 
               } }, m.trust(title)),
               m(Resizer, { onmousedown: (e) => {
                 
                 let marker = document.createElement('div')
                 let mouseInitPosX = e.clientX
-                let colResizerInitPosX = mcols[idx].dom.offsetLeft + mcols[idx].dom.offsetWidth - leftScrolled
+                let colResizerInitPosX = mcols[idx].dom.offsetLeft + mcols[idx].dom.offsetWidth - gridState.leftScrolled
                 
                 marker.style.position = 'absolute'
                 marker.style.top = '0'
@@ -162,14 +187,14 @@ const Grid = () => {
 
                 function Resize(e) {
                   let newPosX = colResizerInitPosX + (e.clientX - mouseInitPosX)
-                  mcols[idx].width = newPosX - mcols[idx].dom.offsetLeft + leftScrolled
+                  mcols[idx].width = newPosX - mcols[idx].dom.offsetLeft + gridState.leftScrolled
                   marker.style.left = `${newPosX}px`
                 }
                 function stopResize(e) {
                   vn.dom.removeChild(marker)
 
                   let tw = mcols.map(i => { return i.width }).reduce((acc, i) => { return acc + i + 5 }, 0)
-                  totalWidth = tw > vn.dom.getBoundingClientRect().width ? tw : 0
+                  gridState.totalWidth = tw > vn.dom.getBoundingClientRect().width ? tw : 0
                   
                   m.redraw()
                   window.removeEventListener('mousemove', Resize, false)
@@ -185,25 +210,7 @@ const Grid = () => {
             ]
           })
         ),
-        m('div', { class: 'body', style: 'height: 100%', onscroll: (e) => {
-          // only redraw if scrolling in the x axis
-          e.redraw = false
-          if(leftScrolled != e.target.scrollLeft) {
-            vn.dom.querySelector('div.header').style.left = (e.target.scrollLeft * -1) + 'px'
-            leftScrolled = e.target.scrollLeft
-            m.redraw()
-          }
-        }, 
-        oncreate: (bvn) => { 
-          if(height != 'auto')
-            bvn.dom.style.height = (vn.dom.getBoundingClientRect().height - vn.dom.querySelector('.header').getBoundingClientRect().height) + 'px' 
-        } },
-
-          data.map(row => {
-            return m(GridBodyRow, { columns: params.columns, data: row, key: row[params.key], gridState })
-          })
-
-        )
+        m(GridBody, { columns: params.columns, data, key: params.key, gridState })
       )
       
     }

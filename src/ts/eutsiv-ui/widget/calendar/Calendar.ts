@@ -28,14 +28,14 @@ const calculateCalendarDays = (year, month) => {
   
   return [ ...Array(numberOfWeeks * daysLabels.length).keys() ].reduce((acc, v) => {
     
+    // day in the previous month
     if (v < numberInWeekFirstDayOfMonth) {
-      // previous month's day
       w.push({ day: (numberDaysPreviousMonth - numberInWeekFirstDayOfMonth + v + 1), intruder: true })
-    } else if (c > numberDaysMonth) {
-      // next month's day
+    } 
+    // day in the next month
+    else if (c > numberDaysMonth) {
       w.push({ day: n++, intruder: true })
     } else {
-      // current month's day
       w.push({ day: c++, intruder: false })
     }
     
@@ -68,9 +68,9 @@ const Calendar = ({ attrs }) => {
         m('h2', monthsLabels[vn.attrs.month] + ' ' + vn.attrs.year),
         m(CalendarHeader),
         m('div', { class: 'eui-calendar-grid' },
-          calculateCalendarDays(vn.attrs.year, vn.attrs.month).map(w => {
+          calculateCalendarDays(vn.attrs.year, vn.attrs.month).map(week => {
             return m('div', { class: 'eui-calendar-row'},
-              w.map(d => {
+              week.map(d => {
                 let classes = 'eui-day'
                 
                 if(d.intruder) classes += ' eui-other-month'

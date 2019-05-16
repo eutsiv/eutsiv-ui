@@ -1069,8 +1069,8 @@ System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "
             Calendar = ({ attrs }) => {
                 return {
                     view: (vn) => {
-                        return mithril_23.default('div', eutsiv_ui_21.applyAttrsModifiers(vn.attrs, applyClasses, Component_20.applyConfig), mithril_23.default('h2', monthsLabels[vn.attrs.month] + ' ' + vn.attrs.year), mithril_23.default(CalendarHeader), mithril_23.default('div', { class: 'eui-calendar-grid' }, calculateCalendarDays(vn.attrs.year, vn.attrs.month).map(w => {
-                            return mithril_23.default('div', { class: 'eui-calendar-row' }, w.map(d => {
+                        return mithril_23.default('div', eutsiv_ui_21.applyAttrsModifiers(vn.attrs, applyClasses, Component_20.applyConfig), mithril_23.default('h2', monthsLabels[vn.attrs.month] + ' ' + vn.attrs.year), mithril_23.default(CalendarHeader), mithril_23.default('div', { class: 'eui-calendar-grid' }, calculateCalendarDays(vn.attrs.year, vn.attrs.month).map(week => {
+                            return mithril_23.default('div', { class: 'eui-calendar-row' }, week.map(d => {
                                 let classes = 'eui-day';
                                 if (d.intruder)
                                     classes += ' eui-other-month';
@@ -1093,7 +1093,7 @@ System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "
 });
 System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"], function (exports_26, context_26) {
     "use strict";
-    var mithril_24, Component_21, applySort, Resizer, GridBodyRow, GridBodyColumn, Grid, applyClasses;
+    var mithril_24, Component_21, applySort, Resizer, GridBody, GridBodyRow, GridBodyColumn, Grid, applyClasses;
     var __moduleName = context_26 && context_26.id;
     return {
         setters: [
@@ -1113,6 +1113,26 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
             Resizer = {
                 view: (vn) => {
                     return mithril_24.default('div', Object.assign({ class: 'resizer' }, vn.attrs));
+                }
+            };
+            GridBody = {
+                oncreate: (vn) => {
+                    if (vn.attrs.gridState.height != 'auto')
+                        vn.dom.style.height = (vn.dom.parentNode.getBoundingClientRect().height - vn.dom.parentNode.querySelector('.header').getBoundingClientRect().height) + 'px';
+                },
+                view: (vn) => {
+                    return mithril_24.default('div', { class: 'body', style: 'height: 100%',
+                        onscroll: (e) => {
+                            e.redraw = false;
+                            if (vn.attrs.gridState.leftScrolled != e.target.scrollLeft) {
+                                vn.dom.parentNode.querySelector('div.header').style.left = (e.target.scrollLeft * -1) + 'px';
+                                vn.attrs.gridState.leftScrolled = e.target.scrollLeft;
+                                mithril_24.default.redraw();
+                            }
+                        }
+                    }, vn.attrs.data.map(row => {
+                        return mithril_24.default(GridBodyRow, { columns: vn.attrs.columns, data: row, key: row[vn.attrs.key], gridState: vn.attrs.gridState });
+                    }));
                 }
             };
             GridBodyRow = {
@@ -1143,13 +1163,13 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
             };
             Grid = () => {
                 let mcols = [];
-                let totalWidth = 0;
-                let leftScrolled = 0;
-                let sortStack = [];
-                let sortedData = false;
                 let gridState = {
                     columns: mcols,
-                    totalWidth: totalWidth
+                    height: 'auto',
+                    leftScrolled: 0,
+                    sortedData: false,
+                    sortStack: [],
+                    totalWidth: 0
                 };
                 const adjustColumnWidth = (cvn, idx) => {
                     if (!mcols[idx].width || mcols[idx].width < cvn.dom.scrollWidth) {
@@ -1161,9 +1181,9 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                 return {
                     view: (vn) => {
                         let params = vn.attrs.eui;
-                        let data = sortedData ? sortedData : params.data;
-                        let height = params.height || 'auto';
-                        return mithril_24.default('div', { class: 'grid', style: `height: ${height}` }, mithril_24.default('div', { class: 'header', style: totalWidth ? `width:${totalWidth}px` : '' }, params.columns.map((col, idx) => {
+                        let data = gridState.sortedData ? gridState.sortedData : params.data;
+                        gridState.height = params.height || 'auto';
+                        return mithril_24.default('div', { class: 'grid', style: `height: ${gridState.height}` }, mithril_24.default('div', { class: 'header', style: gridState.totalWidth ? `width:${gridState.totalWidth}px` : '' }, params.columns.map((col, idx) => {
                             let title = '&nbsp;';
                             if (col.title)
                                 title = col.title;
@@ -1188,30 +1208,30 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                             mcols[idx].sort = {};
                                         let meta = mcols[idx].sort.order ? { fn: mcols[idx].sort.fn, order: mcols[idx].sort.order, index: idx } : {};
                                         if (e.ctrlKey) {
-                                            let pi = sortStack.findIndex(el => { return el.index == idx; });
+                                            let pi = gridState.sortStack.findIndex(el => { return el.index == idx; });
                                             if (pi == -1) {
-                                                sortStack.unshift(meta);
-                                                mcols[idx].sort.nth = sortStack.length - 1;
+                                                gridState.sortStack.unshift(meta);
+                                                mcols[idx].sort.nth = gridState.sortStack.length - 1;
                                             }
                                             else {
                                                 if (meta.fn)
-                                                    sortStack[pi] = meta;
+                                                    gridState.sortStack[pi] = meta;
                                                 else
-                                                    sortStack.splice(pi, 1);
+                                                    gridState.sortStack.splice(pi, 1);
                                             }
                                         }
                                         else {
-                                            sortStack = meta.fn ? [meta] : [];
+                                            gridState.sortStack = meta.fn ? [meta] : [];
                                             mcols.forEach((el, i) => { if (i != idx)
                                                 el.sort = {}; });
                                             mcols[idx].sort.nth = 0;
                                         }
-                                        sortedData = applySort(params.data, sortStack);
+                                        gridState.sortedData = applySort(params.data, gridState.sortStack);
                                     } }, mithril_24.default.trust(title)),
                                 mithril_24.default(Resizer, { onmousedown: (e) => {
                                         let marker = document.createElement('div');
                                         let mouseInitPosX = e.clientX;
-                                        let colResizerInitPosX = mcols[idx].dom.offsetLeft + mcols[idx].dom.offsetWidth - leftScrolled;
+                                        let colResizerInitPosX = mcols[idx].dom.offsetLeft + mcols[idx].dom.offsetWidth - gridState.leftScrolled;
                                         marker.style.position = 'absolute';
                                         marker.style.top = '0';
                                         marker.style.left = `${colResizerInitPosX}px`;
@@ -1225,13 +1245,13 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                         }
                                         function Resize(e) {
                                             let newPosX = colResizerInitPosX + (e.clientX - mouseInitPosX);
-                                            mcols[idx].width = newPosX - mcols[idx].dom.offsetLeft + leftScrolled;
+                                            mcols[idx].width = newPosX - mcols[idx].dom.offsetLeft + gridState.leftScrolled;
                                             marker.style.left = `${newPosX}px`;
                                         }
                                         function stopResize(e) {
                                             vn.dom.removeChild(marker);
                                             let tw = mcols.map(i => { return i.width; }).reduce((acc, i) => { return acc + i + 5; }, 0);
-                                            totalWidth = tw > vn.dom.getBoundingClientRect().width ? tw : 0;
+                                            gridState.totalWidth = tw > vn.dom.getBoundingClientRect().width ? tw : 0;
                                             mithril_24.default.redraw();
                                             window.removeEventListener('mousemove', Resize, false);
                                             window.removeEventListener('selectstart', disableSelect);
@@ -1242,20 +1262,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                         window.addEventListener('mouseup', stopResize, false);
                                     } })
                             ];
-                        })), mithril_24.default('div', { class: 'body', style: 'height: 100%', onscroll: (e) => {
-                                e.redraw = false;
-                                if (leftScrolled != e.target.scrollLeft) {
-                                    vn.dom.querySelector('div.header').style.left = (e.target.scrollLeft * -1) + 'px';
-                                    leftScrolled = e.target.scrollLeft;
-                                    mithril_24.default.redraw();
-                                }
-                            },
-                            oncreate: (bvn) => {
-                                if (height != 'auto')
-                                    bvn.dom.style.height = (vn.dom.getBoundingClientRect().height - vn.dom.querySelector('.header').getBoundingClientRect().height) + 'px';
-                            } }, data.map(row => {
-                            return mithril_24.default(GridBodyRow, { columns: params.columns, data: row, key: row[params.key], gridState });
-                        })));
+                        })), mithril_24.default(GridBody, { columns: params.columns, data, key: params.key, gridState }));
                     }
                 };
             };
