@@ -226,6 +226,13 @@ declare module "eutsiv-ui/widget/form/ImprovedSelect" {
     const ImprovedSelect: () => void;
     export { ImprovedSelect };
 }
+declare module "eutsiv-ui/widget/form/MonthPicker" {
+    import m from 'mithril';
+    const MonthPicker: () => {
+        view: () => m.Vnode<any, any>[];
+    };
+    export { MonthPicker };
+}
 declare module "eutsiv-ui/widget/form/Select" {
     const Select: () => void;
     export { Select };

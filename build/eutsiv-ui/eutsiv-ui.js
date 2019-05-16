@@ -1342,27 +1342,83 @@ System.register("eutsiv-ui/widget/form/ImprovedSelect", [], function (exports_28
         }
     };
 });
-System.register("eutsiv-ui/widget/form/Select", [], function (exports_29, context_29) {
+System.register("eutsiv-ui/widget/form/MonthPicker", ["mithril", "eutsiv-ui/widget/Button", "eutsiv-ui/widget/Icon"], function (exports_29, context_29) {
+    "use strict";
+    var mithril_26, Button_3, Icon_2, increment, decrement, MonthPicker;
+    var __moduleName = context_29 && context_29.id;
+    return {
+        setters: [
+            function (mithril_26_1) {
+                mithril_26 = mithril_26_1;
+            },
+            function (Button_3_1) {
+                Button_3 = Button_3_1;
+            },
+            function (Icon_2_1) {
+                Icon_2 = Icon_2_1;
+            }
+        ],
+        execute: function () {
+            increment = (d) => {
+                let y = d.getFullYear();
+                let m = d.getMonth();
+                if (m == 11) {
+                    m = 0;
+                    y++;
+                }
+                else
+                    m++;
+                return new Date(y, m, 1);
+            };
+            decrement = (d) => {
+                let y = d.getFullYear();
+                let m = d.getMonth();
+                if (m == 0) {
+                    m = 11;
+                    y--;
+                }
+                else
+                    m--;
+                return new Date(y, m, 1);
+            };
+            MonthPicker = () => {
+                let month = new Date();
+                return {
+                    view: () => {
+                        return [
+                            mithril_26.default('input', { style: 'display:none' }),
+                            mithril_26.default(Button_3.Button, { onclick: () => { month = decrement(month); } }, mithril_26.default(Icon_2.Icon, { eui: { type: 'minus' } })),
+                            mithril_26.default('input', { value: `${month.getMonth() + 1} - ${month.getFullYear()}` }),
+                            mithril_26.default(Button_3.Button, { onclick: () => { month = increment(month); } }, mithril_26.default(Icon_2.Icon, { eui: { type: 'plus' } }))
+                        ];
+                    }
+                };
+            };
+            exports_29("MonthPicker", MonthPicker);
+        }
+    };
+});
+System.register("eutsiv-ui/widget/form/Select", [], function (exports_30, context_30) {
     "use strict";
     var Select;
-    var __moduleName = context_29 && context_29.id;
+    var __moduleName = context_30 && context_30.id;
     return {
         setters: [],
         execute: function () {
             Select = () => {
             };
-            exports_29("Select", Select);
+            exports_30("Select", Select);
         }
     };
 });
-System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_30, context_30) {
+System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_31, context_31) {
     "use strict";
-    var mithril_26, eutsiv_ui_23, Component_23, buildTreeNodes, Branch, Leaf, Item, Tree, applyClasses;
-    var __moduleName = context_30 && context_30.id;
+    var mithril_27, eutsiv_ui_23, Component_23, buildTreeNodes, Branch, Leaf, Item, Tree, applyClasses;
+    var __moduleName = context_31 && context_31.id;
     return {
         setters: [
-            function (mithril_26_1) {
-                mithril_26 = mithril_26_1;
+            function (mithril_27_1) {
+                mithril_27 = mithril_27_1;
             },
             function (eutsiv_ui_23_1) {
                 eutsiv_ui_23 = eutsiv_ui_23_1;
@@ -1376,8 +1432,8 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                 indentation += 16;
                 return data.map(item => {
                     return item.type == 'branch' ?
-                        mithril_26.default(Branch, { item, indentation, treeState }) :
-                        mithril_26.default(Leaf, Object.assign({}, item, { indentation }));
+                        mithril_27.default(Branch, { item, indentation, treeState }) :
+                        mithril_27.default(Leaf, Object.assign({}, item, { indentation }));
                 });
             };
             Branch = ({ attrs }) => {
@@ -1392,7 +1448,7 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                                 open = attrs.treeState.open;
                         }
                         classes += open ? ' eui-open' : '';
-                        return mithril_26.default('li', {
+                        return mithril_27.default('li', {
                             class: classes,
                             onclick: (e) => {
                                 e.stopPropagation();
@@ -1400,15 +1456,15 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                                 attrs.treeState.clicked = true;
                             }
                         }, [
-                            mithril_26.default(Item, Object.assign({}, attrs.item, { indentation: attrs.indentation })),
-                            mithril_26.default('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.treeState))
+                            mithril_27.default(Item, Object.assign({}, attrs.item, { indentation: attrs.indentation })),
+                            mithril_27.default('ul', buildTreeNodes(attrs.item.children, attrs.indentation, attrs.treeState))
                         ]);
                     }
                 };
             };
             Leaf = {
                 view: ({ attrs }) => {
-                    return mithril_26.default('li', { class: 'eui-leaf' }, mithril_26.default(Item, attrs));
+                    return mithril_27.default('li', { class: 'eui-leaf' }, mithril_27.default(Item, attrs));
                 }
             };
             Item = {
@@ -1423,7 +1479,7 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                     if (attrs.oncreate)
                         na.oncreate = attrs.oncreate;
                     na.href = attrs.href;
-                    return mithril_26.default('a', na, text);
+                    return mithril_27.default('a', na, text);
                 }
             };
             Tree = () => {
@@ -1443,11 +1499,11 @@ System.register("eutsiv-ui/widget/tree/Tree", ["mithril", "eutsiv-ui", "eutsiv-u
                     },
                     view: ({ attrs }) => {
                         treeState.open = attrs.eui.open;
-                        return mithril_26.default('ul', eutsiv_ui_23.applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(attrs.eui.items, 0, treeState));
+                        return mithril_27.default('ul', eutsiv_ui_23.applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(attrs.eui.items, 0, treeState));
                     }
                 };
             };
-            exports_30("Tree", Tree);
+            exports_31("Tree", Tree);
             applyClasses = (attrs) => {
                 attrs = Component_23.applyClasses(attrs);
                 attrs.class.push('eui-tree');

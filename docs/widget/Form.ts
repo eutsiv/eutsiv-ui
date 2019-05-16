@@ -6,6 +6,7 @@ import {Gutter} from 'eutsiv-ui/layout/Gutter'
 import {Checkbox, Field, Form, Label, Radio} from 'eutsiv-ui/widget/Form'
 import {Button} from 'eutsiv-ui/widget/Button'
 import {Icon} from 'eutsiv-ui/widget/Icon'
+import {MonthPicker} from 'eutsiv-ui/widget/form/MonthPicker'
 
 
 let View = {
@@ -164,7 +165,35 @@ m(Form,
   ])
 )
         `
+      }),
+
+
+      m(Section, { 
+        documentation: [
+          m("h1", "Month Picker"),
+          m(Form,
+            m(Grid, [
+              m(Row,
+                m(Field, { eui: { size: [24, 12] }},
+                  m(Label,
+                    'Date',
+                    m(MonthPicker)
+                  )
+                )
+              ),
+              m(Row,
+                m(Field, { eui: { size: [24, 12] }},
+                  m(MonthPicker)
+                )
+              )
+            ])
+          )
+        ],
+        source: `
+
+        `
       })
+
 
     ]
   }
