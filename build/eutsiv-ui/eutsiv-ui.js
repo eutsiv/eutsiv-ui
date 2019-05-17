@@ -1093,7 +1093,7 @@ System.register("eutsiv-ui/widget/calendar/Calendar", ["mithril", "eutsiv-ui", "
 });
 System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"], function (exports_26, context_26) {
     "use strict";
-    var mithril_24, Component_21, adjustColumnWidth, applySort, GridHeaderColumn, Resizer, GridBody, GridBodyRow, GridBodyColumn, Grid, applyClasses;
+    var mithril_24, Component_21, adjustColumnWidth, applySort, GridHeader, GridHeaderColumn, Resizer, GridBody, GridBodyRow, GridBodyColumn, Grid, applyClasses;
     var __moduleName = context_26 && context_26.id;
     return {
         setters: [
@@ -1117,6 +1117,35 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                     return false;
                 return st.reduce((a, e, i) => { return e.fn(a, e.order, i); }, [...d]);
             };
+            GridHeader = {
+                view: (vn) => {
+                    return mithril_24.default('div', { class: 'header', style: vn.attrs.gridState.totalWidth ? `width:${vn.attrs.gridState.totalWidth}px` : '' }, vn.attrs.columns.map((col, idx) => {
+                        if (!vn.attrs.gridState.columns[idx])
+                            vn.attrs.gridState.columns[idx] = {};
+                        if (!vn.attrs.gridState.columns[idx].sort && col.sort)
+                            vn.attrs.gridState.columns[idx].sort = {
+                                fn: col.sort,
+                                index: idx,
+                                nth: 0,
+                                order: undefined
+                            };
+                        let title = '&nbsp;';
+                        if (col.title)
+                            title = col.title;
+                        if (vn.attrs.gridState.columns[idx].sort && vn.attrs.gridState.columns[idx].sort.order) {
+                            if (vn.attrs.gridState.columns[idx].sort.order == 1)
+                                title += ' &#11015;';
+                            else if (vn.attrs.gridState.columns[idx].sort.order == -1)
+                                title += ' &#11014;';
+                            title += ` <small>(${vn.attrs.gridState.columns[idx].sort.nth + 1})</small>`;
+                        }
+                        return [
+                            mithril_24.default(GridHeaderColumn, { column: vn.attrs.gridState.columns[idx], data: vn.attrs.data, gridState: vn.attrs.gridState }, mithril_24.default.trust(title)),
+                            mithril_24.default(Resizer, { column: vn.attrs.gridState.columns[idx], gridState: vn.attrs.gridState })
+                        ];
+                    }));
+                }
+            };
             GridHeaderColumn = {
                 oncreate: (vn) => { adjustColumnWidth(vn); },
                 onupdate: (vn) => { adjustColumnWidth(vn); },
@@ -1128,7 +1157,6 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                 vn.attrs.gridState.columns.forEach((el) => { if (el.sort)
                                     el.sort.order = undefined; });
                                 vn.attrs.gridState.sortStack = [];
-                                return;
                             }
                             if (!vn.attrs.column.sort.order)
                                 vn.attrs.column.sort.order = 1;
@@ -1162,13 +1190,48 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
             };
             Resizer = {
                 view: (vn) => {
-                    return mithril_24.default('div', Object.assign({ class: 'resizer' }, vn.attrs));
+                    return mithril_24.default('div', {
+                        class: 'resizer',
+                        onmousedown: (e) => {
+                            let marker = document.createElement('div');
+                            let mouseInitPosX = e.clientX;
+                            let colResizerInitPosX = vn.attrs.column.dom.offsetLeft + vn.attrs.column.dom.offsetWidth - vn.attrs.gridState.leftScrolled;
+                            marker.style.position = 'absolute';
+                            marker.style.top = '0';
+                            marker.style.left = `${colResizerInitPosX}px`;
+                            marker.style.width = '1px';
+                            marker.style.height = '100%';
+                            marker.style.zIndex = '1';
+                            marker.style.background = '#e0e0e0';
+                            vn.attrs.gridState.dom.appendChild(marker);
+                            function disableSelect(event) {
+                                event.preventDefault();
+                            }
+                            function Resize(e) {
+                                let newPosX = colResizerInitPosX + (e.clientX - mouseInitPosX);
+                                vn.attrs.column.width = newPosX - vn.attrs.column.dom.offsetLeft + vn.attrs.gridState.leftScrolled;
+                                marker.style.left = `${newPosX}px`;
+                            }
+                            function stopResize(e) {
+                                vn.attrs.gridState.dom.removeChild(marker);
+                                let tw = vn.attrs.gridState.columns.map(i => { return i.width; }).reduce((acc, i) => { return acc + i + 5; }, 0);
+                                vn.attrs.gridState.totalWidth = tw > vn.attrs.gridState.dom.getBoundingClientRect().width ? tw : 0;
+                                mithril_24.default.redraw();
+                                window.removeEventListener('mousemove', Resize, false);
+                                window.removeEventListener('selectstart', disableSelect);
+                                window.removeEventListener('mouseup', stopResize, false);
+                            }
+                            window.addEventListener('selectstart', disableSelect);
+                            window.addEventListener('mousemove', Resize, false);
+                            window.addEventListener('mouseup', stopResize, false);
+                        }
+                    });
                 }
             };
             GridBody = {
                 oncreate: (vn) => {
                     if (vn.attrs.gridState.height != 'auto')
-                        vn.dom.style.height = (vn.dom.parentNode.getBoundingClientRect().height - vn.dom.parentNode.querySelector('.header').getBoundingClientRect().height) + 'px';
+                        vn.dom.style.height = (vn.dom.parentNode.getBoundingClientRect().height - vn.dom.parentNode.querySelector('.header').getBoundingClientRect().height - 2) + 'px';
                 },
                 view: (vn) => {
                     return mithril_24.default('div', { class: 'body', style: 'height: 100%',
@@ -1210,9 +1273,9 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                 }
             };
             Grid = () => {
-                let mcols = [];
                 let gridState = {
-                    columns: mcols,
+                    columns: [],
+                    dom: undefined,
                     height: 'auto',
                     leftScrolled: 0,
                     sortedData: false,
@@ -1220,67 +1283,14 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                     totalWidth: 0
                 };
                 return {
+                    oncreate: (vn) => {
+                        gridState.dom = vn.dom;
+                    },
                     view: (vn) => {
                         let params = vn.attrs.eui;
                         let data = gridState.sortedData ? gridState.sortedData : params.data;
                         gridState.height = params.height || 'auto';
-                        return mithril_24.default('div', { class: 'grid', style: `height: ${gridState.height}` }, mithril_24.default('div', { class: 'header', style: gridState.totalWidth ? `width:${gridState.totalWidth}px` : '' }, params.columns.map((col, idx) => {
-                            if (!gridState.columns[idx])
-                                gridState.columns[idx] = {};
-                            if (!gridState.columns[idx].sort && col.sort)
-                                gridState.columns[idx].sort = {
-                                    fn: col.sort,
-                                    index: idx,
-                                    nth: 0,
-                                    order: undefined
-                                };
-                            let title = '&nbsp;';
-                            if (col.title)
-                                title = col.title;
-                            if (gridState.columns[idx].sort && gridState.columns[idx].sort.order) {
-                                if (gridState.columns[idx].sort.order == 1)
-                                    title += ' &#11015;';
-                                else if (gridState.columns[idx].sort.order == -1)
-                                    title += ' &#11014;';
-                                title += ` <small>(${gridState.columns[idx].sort.nth + 1})</small>`;
-                            }
-                            return [
-                                mithril_24.default(GridHeaderColumn, { column: mcols[idx], data: params.data, gridState }, mithril_24.default.trust(title)),
-                                mithril_24.default(Resizer, { onmousedown: (e) => {
-                                        let marker = document.createElement('div');
-                                        let mouseInitPosX = e.clientX;
-                                        let colResizerInitPosX = mcols[idx].dom.offsetLeft + mcols[idx].dom.offsetWidth - gridState.leftScrolled;
-                                        marker.style.position = 'absolute';
-                                        marker.style.top = '0';
-                                        marker.style.left = `${colResizerInitPosX}px`;
-                                        marker.style.width = '1px';
-                                        marker.style.height = '100%';
-                                        marker.style.zIndex = '1';
-                                        marker.style.background = '#e0e0e0';
-                                        vn.dom.appendChild(marker);
-                                        function disableSelect(event) {
-                                            event.preventDefault();
-                                        }
-                                        function Resize(e) {
-                                            let newPosX = colResizerInitPosX + (e.clientX - mouseInitPosX);
-                                            mcols[idx].width = newPosX - mcols[idx].dom.offsetLeft + gridState.leftScrolled;
-                                            marker.style.left = `${newPosX}px`;
-                                        }
-                                        function stopResize(e) {
-                                            vn.dom.removeChild(marker);
-                                            let tw = mcols.map(i => { return i.width; }).reduce((acc, i) => { return acc + i + 5; }, 0);
-                                            gridState.totalWidth = tw > vn.dom.getBoundingClientRect().width ? tw : 0;
-                                            mithril_24.default.redraw();
-                                            window.removeEventListener('mousemove', Resize, false);
-                                            window.removeEventListener('selectstart', disableSelect);
-                                            window.removeEventListener('mouseup', stopResize, false);
-                                        }
-                                        window.addEventListener('selectstart', disableSelect);
-                                        window.addEventListener('mousemove', Resize, false);
-                                        window.addEventListener('mouseup', stopResize, false);
-                                    } })
-                            ];
-                        })), mithril_24.default(GridBody, { columns: params.columns, data, key: params.key, gridState }));
+                        return mithril_24.default('div', { class: 'grid', style: `height: ${gridState.height}` }, mithril_24.default(GridHeader, { columns: params.columns, data, gridState }), mithril_24.default(GridBody, { columns: params.columns, data, key: params.key, gridState }));
                     }
                 };
             };
