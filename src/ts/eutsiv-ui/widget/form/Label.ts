@@ -10,7 +10,7 @@ const Label = () => {
     view: (vn) => {
       return m('label', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), 
         vn.children.map(ch => {
-          if(ch.tag == '#')
+          if(typeof ch == 'string')
             return m('span', { class: 'eui-text' }, ch)
           else
             return ch

@@ -14,6 +14,8 @@ System.register("eutsiv-ui", [], function (exports_1, context_1) {
                     attrs = e(attrs);
                 });
                 Array.isArray(attrs.class) && (attrs.class = attrs.class.length ? attrs.class.join(' ') : undefined);
+                if (Object.keys(attrs.style).length === 0 && attrs.style.constructor === Object)
+                    attrs.style = undefined;
                 attrs.eui = undefined;
                 return attrs;
             };
@@ -711,7 +713,7 @@ System.register("eutsiv-ui/widget/form/Label", ["mithril", "eutsiv-ui", "eutsiv-
                 return {
                     view: (vn) => {
                         return mithril_15.default('label', eutsiv_ui_13.applyAttrsModifiers(vn.attrs, Component_12.applyClasses, applyConfig), vn.children.map(ch => {
-                            if (ch.tag == '#')
+                            if (typeof ch == 'string')
                                 return mithril_15.default('span', { class: 'eui-text' }, ch);
                             else
                                 return ch;
@@ -1244,14 +1246,14 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                             }
                         }
                     }, vn.attrs.data.map(row => {
-                        return mithril_24.default(GridBodyRow, { columns: vn.attrs.columns, data: row, key: row[vn.attrs.key], gridState: vn.attrs.gridState });
+                        return mithril_24.default(GridBodyRow, { columns: vn.attrs.columns, data: row, keyField: row[vn.attrs.keyField], gridState: vn.attrs.gridState });
                     }));
                 }
             };
             GridBodyRow = {
                 view: (vn) => {
                     return mithril_24.default('div', {
-                        key: vn.attrs.data[vn.attrs.key],
+                        key: vn.attrs.data[vn.attrs.keyField],
                         class: 'row',
                         style: vn.attrs.gridState.totalWidth ? `width:${vn.attrs.gridState.totalWidth}px` : ''
                     }, vn.attrs.columns.map((col, idx) => {
@@ -1290,7 +1292,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                         let params = vn.attrs.eui;
                         let data = gridState.sortedData ? gridState.sortedData : params.data;
                         gridState.height = params.height || 'auto';
-                        return mithril_24.default('div', { class: 'grid', style: `height: ${gridState.height}` }, mithril_24.default(GridHeader, { columns: params.columns, data, gridState }), mithril_24.default(GridBody, { columns: params.columns, data, key: params.key, gridState }));
+                        return mithril_24.default('div', { class: 'grid', style: `height: ${gridState.height}` }, mithril_24.default(GridHeader, { columns: params.columns, data, gridState }), mithril_24.default(GridBody, { columns: params.columns, data, keyField: params.key, gridState }));
                     }
                 };
             };

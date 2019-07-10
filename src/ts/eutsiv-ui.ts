@@ -18,6 +18,9 @@ const applyAttrsModifiers = (a, ...fn) => {
 
   // if class is an array, join the classes
   Array.isArray(attrs.class) && ( attrs.class = attrs.class.length ? attrs.class.join(' '): undefined )
+
+  // if style is empty
+  if(Object.keys(attrs.style).length === 0 && attrs.style.constructor === Object) attrs.style = undefined
   
   // delete eui config container
   attrs.eui = undefined

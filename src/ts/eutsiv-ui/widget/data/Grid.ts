@@ -183,7 +183,7 @@ const GridBody = {
         }
       },
       vn.attrs.data.map(row => {
-        return m(GridBodyRow, { columns: vn.attrs.columns, data: row, key: row[vn.attrs.key], gridState: vn.attrs.gridState })
+        return m(GridBodyRow, { columns: vn.attrs.columns, data: row, keyField: row[vn.attrs.keyField], gridState: vn.attrs.gridState })
       })
     )
   }
@@ -193,7 +193,7 @@ const GridBodyRow = {
   view: (vn) => {
     return m('div', 
       { 
-        key: vn.attrs.data[vn.attrs.key],
+        key: vn.attrs.data[vn.attrs.keyField],
         class: 'row', 
         style: vn.attrs.gridState.totalWidth ? `width:${vn.attrs.gridState.totalWidth}px` : '' 
       }, 
@@ -248,7 +248,7 @@ const Grid = () => {
       
       return m('div', { class: 'grid', style: `height: ${gridState.height}` },
         m(GridHeader, { columns: params.columns, data, gridState }),
-        m(GridBody, { columns: params.columns, data, key: params.key, gridState })
+        m(GridBody, { columns: params.columns, data, keyField: params.key, gridState })
       )
       
     }
