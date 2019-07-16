@@ -101,7 +101,7 @@ const Select = () => {
         m("div", buildFormFields(vnode)),
         m("div", { class: (vnode.state.open ? "eui-select-container eui-open" : "eui-select-container" ) }, [
           m("div", { class: "eui-select-content", ...(width && { style: `width:${width}px` }) }, [
-            m("input", { oninput: m.withAttr("value", (v) => { vnode.state.query = v; vnode.state.onInput(v, vnode); if(vnode.state.remote) refreshFromRemote(vnode) }) }),
+            m("input", { oninput: (e) => { vnode.state.query = e.target.value; vnode.state.onInput(e.target.value, vnode); if(vnode.state.remote) refreshFromRemote(vnode) } }),
             m("ul", vnode.state.data.filter((i) => { return filterFn(i, vnode.state.query) }).map((r) => {
               return m("li", m("a", { onclick: (e) => { onSelectHandler(e, r, vnode) } }, r.text))
             }))
