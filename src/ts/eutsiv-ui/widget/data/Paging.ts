@@ -28,7 +28,7 @@ const Paging = () => {
           m('span', { class: 'eui-status' }, `Displaying ${((page-1)*perPage)+1} to ${to} of ${rows}`),
         ),
         ...pages.map(p => {
-          let ba = { href: params.buildHref(p, perPage), oncreate: m.route.link, eui: { context: p == page ? 'primary' : undefined, spaced: true }}
+          let ba = { ...params.buildLink(p, perPage), eui: { context: p == page ? 'primary' : undefined, spaced: true }}
           return m(Gutter, { eui: { fit: false, size: Sizes.XS }},
             m(Button, ba, p)
           )

@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
+import {applyAttrsModifiers, buildRouteLink} from 'eutsiv-ui'
 import {applyClasses as applyClassesComponent, applyConfig as applyConfigComponent} from 'eutsiv-ui/Component'
 
 
@@ -8,8 +8,15 @@ const Button = () => {
 
   return {
     view: (vn) => {
-      let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href) ? 'a' : 'button'
-      return m(tag, applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
+      let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href || vn.attrs.route) ? 'a' : 'button'
+
+      let attrs = applyAttrsModifiers(vn.attrs, applyClasses, applyConfig)
+
+      
+      return vn.attrs.route ? 
+        buildRouteLink(tag, attrs, vn.children) :
+        m(tag, attrs, vn.children)
+ 
     }
   }
 

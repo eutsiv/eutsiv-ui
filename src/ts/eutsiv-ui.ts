@@ -1,3 +1,6 @@
+import m from 'mithril'
+
+
 const applyAttrsModifiers = (a, ...fn) => {
   
   // copy
@@ -29,6 +32,17 @@ const applyAttrsModifiers = (a, ...fn) => {
 
 }
 
+const buildRouteLink = (tag: string = 'a', attrs, children) => {
+
+  delete attrs.href
+
+  return m(m.route.Link, {
+    selector: tag,
+    href: attrs.route,
+    ...attrs
+  }, children) 
+}
+
 const Sizes = {
   XS: 'XS',
   SM: 'SM',
@@ -54,4 +68,4 @@ const Sizes = {
   }
 }
 
-export { applyAttrsModifiers, Sizes }
+export { applyAttrsModifiers, buildRouteLink, Sizes }

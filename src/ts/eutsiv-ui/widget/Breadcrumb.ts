@@ -15,7 +15,7 @@ const Breadcrumb = () => {
         vn.attrs.eui.items.map((v, i, a) => {
           let text = typeof v.text == 'function' ? v.text() : v.text
           let it = (i == (a.length - 1)) ? m('span', { class: 'eui-active' }, text) : [
-            m(Link, { href: v.href, disabled: v.disabled, oncreate: v.oncreate, eui: { context: v.context } }, text),
+            m(Link, { href: v.href, disabled: v.disabled, route: v.route, eui: { context: v.context } }, text),
             m(Icon, { disabled: true, eui: { type: 'right-open' } })
           ]
           return m('li', it)

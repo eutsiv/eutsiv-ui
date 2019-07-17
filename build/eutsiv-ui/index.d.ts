@@ -1,6 +1,8 @@
 /// <reference types="mithril" />
 declare module "eutsiv-ui" {
+    import m from 'mithril';
     const applyAttrsModifiers: (a: any, ...fn: any[]) => any;
+    const buildRouteLink: (tag: string, attrs: any, children: any) => m.Vnode<m.RouteLinkAttrs, {}>;
     const Sizes: {
         XS: string;
         SM: string;
@@ -25,7 +27,7 @@ declare module "eutsiv-ui" {
             HU: string;
         };
     };
-    export { applyAttrsModifiers, Sizes };
+    export { applyAttrsModifiers, buildRouteLink, Sizes };
 }
 declare module "eutsiv-ui/Component" {
     import m from 'mithril';
