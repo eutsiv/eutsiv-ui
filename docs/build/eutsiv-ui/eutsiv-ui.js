@@ -226,8 +226,8 @@ System.register("eutsiv-ui/components/form/Select", ["mithril"], function (expor
                             mithril_3.default("div", buildFormFields(vnode)),
                             mithril_3.default("div", { class: (vnode.state.open ? "eui-select-container eui-open" : "eui-select-container") }, [
                                 mithril_3.default("div", Object.assign({ class: "eui-select-content" }, (width && { style: `width:${width}px` })), [
-                                    mithril_3.default("input", { oninput: mithril_3.default.withAttr("value", (v) => { vnode.state.query = v; vnode.state.onInput(v, vnode); if (vnode.state.remote)
-                                            refreshFromRemote(vnode); }) }),
+                                    mithril_3.default("input", { oninput: (e) => { vnode.state.query = e.target.value; vnode.state.onInput(e.target.value, vnode); if (vnode.state.remote)
+                                            refreshFromRemote(vnode); } }),
                                     mithril_3.default("ul", vnode.state.data.filter((i) => { return filterFn(i, vnode.state.query); }).map((r) => {
                                         return mithril_3.default("li", mithril_3.default("a", { onclick: (e) => { onSelectHandler(e, r, vnode); } }, r.text));
                                     }))

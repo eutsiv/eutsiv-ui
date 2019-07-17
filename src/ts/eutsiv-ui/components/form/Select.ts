@@ -32,12 +32,21 @@ let onSelectHandler = (e, i, vnode) => {
 }
 
 let refreshFromRemote = (vnode) => {
-  return m.request({
-    method: "GET",
-    url: vnode.state.remote.url,
-    data: vnode.state.remote.params,
-    useBody: true
-  }).then(vnode.state.remote.processResponse)
+
+  let req: Promise<unknown> 
+
+  if(vnode.state.remote.fn) {
+    req = vnode.state.remote.fn(vnode.state.query)
+  } else  {
+    req = m.request({
+      method: "GET",
+      url: vnode.state.remote.url,
+      data: vnode.state.remote.params,
+      useBody: true
+    })
+  }
+
+  return req.then(vnode.state.remote.processResponse)
   .then((d) => { vnode.state.data = d })
 }
 
