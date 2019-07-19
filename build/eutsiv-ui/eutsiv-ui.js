@@ -1,6 +1,6 @@
 System.register("eutsiv-ui", ["mithril"], function (exports_1, context_1) {
     "use strict";
-    var mithril_1, applyAttrsModifiers, buildRouteLink, Sizes;
+    var mithril_1, applyAttrsModifiers, Sizes;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -17,18 +17,29 @@ System.register("eutsiv-ui", ["mithril"], function (exports_1, context_1) {
                 fn.forEach(e => {
                     attrs = e(attrs);
                 });
+                if (attrs.route) {
+                    let oc = attrs.onclick;
+                    let route = attrs.route;
+                    let params = attrs.params;
+                    if ((/\?/).test(route) && params)
+                        throw new SyntaxError('Route contains a ? so params should not be defined');
+                    attrs.href = params ? `#!${route}?` + mithril_1.default.buildQueryString(params) : `#!${route}`;
+                    attrs.onclick = (e) => {
+                        if (oc)
+                            oc(e);
+                        e.preventDefault();
+                        mithril_1.default.route.set(route, params);
+                    };
+                }
                 Array.isArray(attrs.class) && (attrs.class = attrs.class.length ? attrs.class.join(' ') : undefined);
                 if (Object.keys(attrs.style).length === 0 && attrs.style.constructor === Object)
                     attrs.style = undefined;
                 attrs.eui = undefined;
+                attrs.params = undefined;
+                attrs.route = undefined;
                 return attrs;
             };
             exports_1("applyAttrsModifiers", applyAttrsModifiers);
-            buildRouteLink = (tag = 'a', attrs, children) => {
-                delete attrs.href;
-                return mithril_1.default(mithril_1.default.route.Link, Object.assign({ selector: tag, href: attrs.route }, attrs), children);
-            };
-            exports_1("buildRouteLink", buildRouteLink);
             Sizes = {
                 XS: 'XS',
                 SM: 'SM',
@@ -490,10 +501,7 @@ System.register("eutsiv-ui/widget/Link", ["mithril", "eutsiv-ui", "eutsiv-ui/Com
             Link = () => {
                 return {
                     view: (vn) => {
-                        let attrs = eutsiv_ui_8.applyAttrsModifiers(vn.attrs, applyClasses, Component_7.applyConfig);
-                        return vn.attrs.route ?
-                            eutsiv_ui_8.buildRouteLink('a', attrs, vn.children) :
-                            mithril_10.default('a', attrs, vn.children);
+                        return mithril_10.default('a', eutsiv_ui_8.applyAttrsModifiers(vn.attrs, applyClasses, Component_7.applyConfig), vn.children);
                     }
                 };
             };
@@ -617,10 +625,7 @@ System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/C
                 return {
                     view: (vn) => {
                         let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href || vn.attrs.route) ? 'a' : 'button';
-                        let attrs = eutsiv_ui_11.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig);
-                        return vn.attrs.route ?
-                            eutsiv_ui_11.buildRouteLink(tag, attrs, vn.children) :
-                            mithril_13.default(tag, attrs, vn.children);
+                        return mithril_13.default(tag, eutsiv_ui_11.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
                     }
                 };
             };

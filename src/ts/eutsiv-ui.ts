@@ -19,28 +19,39 @@ const applyAttrsModifiers = (a, ...fn) => {
     attrs = e(attrs)
   })
 
+  // special param route, if the component has a route, when clicked (onclick) 
+  // the route will be called with m.route.set (mithril) and href will be discarded
+  if(attrs.route) {
+    
+    let oc = attrs.onclick
+    let route = attrs.route
+    let params = attrs.params
+
+    if((/\?/).test(route) && params) throw new SyntaxError('Route contains a ? so params should not be defined')
+
+    attrs.href = params ? `#!${route}?` + m.buildQueryString(params) : `#!${route}`
+    
+    attrs.onclick = (e) => {
+      if(oc) oc(e)
+      e.preventDefault()
+      m.route.set(route, params)
+    }
+
+  }
+
   // if class is an array, join the classes
   Array.isArray(attrs.class) && ( attrs.class = attrs.class.length ? attrs.class.join(' '): undefined )
 
   // if style is empty
   if(Object.keys(attrs.style).length === 0 && attrs.style.constructor === Object) attrs.style = undefined
   
-  // delete eui config container
+  // delete some special properties to not polute DOM
   attrs.eui = undefined
+  attrs.params = undefined
+  attrs.route = undefined
   
   return attrs
 
-}
-
-const buildRouteLink = (tag: string = 'a', attrs, children) => {
-
-  delete attrs.href
-
-  return m(m.route.Link, {
-    selector: tag,
-    href: attrs.route,
-    ...attrs
-  }, children) 
 }
 
 const Sizes = {
@@ -68,4 +79,4 @@ const Sizes = {
   }
 }
 
-export { applyAttrsModifiers, buildRouteLink, Sizes }
+export { applyAttrsModifiers, Sizes }
