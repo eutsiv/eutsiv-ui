@@ -41,8 +41,7 @@ let refreshFromRemote = (vnode) => {
     req = m.request({
       method: "GET",
       url: vnode.state.remote.url,
-      data: vnode.state.remote.params,
-      useBody: true
+      params: vnode.state.remote.params
     })
   }
 

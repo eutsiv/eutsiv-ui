@@ -15,7 +15,7 @@ const Tabs = () => {
     view: (vn) => {
       return m('div', applyAttrsModifiers(vn.attrs, applyClasses), [
         ...vn.attrs.eui.tabs.map((tab, idx) => {
-          return m(Button, { onclick: () => { activeTab = idx }, disabled: (activeTab == idx) }, 
+          return m(Button, { onclick: () => { activeTab = idx }, disabled: (activeTab == idx), eui: { tag: 'a' } }, 
             tab.title
           )
         }),

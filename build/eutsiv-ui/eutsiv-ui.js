@@ -198,8 +198,7 @@ System.register("eutsiv-ui/components/form/Select", ["mithril"], function (expor
                     req = mithril_4.default.request({
                         method: "GET",
                         url: vnode.state.remote.url,
-                        data: vnode.state.remote.params,
-                        useBody: true
+                        params: vnode.state.remote.params
                     });
                 }
                 return req.then(vnode.state.remote.processResponse)
