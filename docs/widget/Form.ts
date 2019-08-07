@@ -7,6 +7,7 @@ import {Checkbox, Field, Form, Label, Radio} from 'eutsiv-ui/widget/Form'
 import {Button} from 'eutsiv-ui/widget/Button'
 import {Icon} from 'eutsiv-ui/widget/Icon'
 import {MonthPicker} from 'eutsiv-ui/widget/form/MonthPicker'
+import {Select} from 'eutsiv-ui/components/form/Select'
 
 
 let View = {
@@ -184,6 +185,28 @@ m(Form,
               m(Row,
                 m(Field, { eui: { size: [24, 12] }},
                   m(MonthPicker)
+                )
+              )
+            ])
+          )
+        ],
+        source: `
+
+        `
+      }),
+
+
+      m(Section, { 
+        documentation: [
+          m("h1", "Select"),
+          m(Form,
+            m(Grid, [
+              m(Row,
+                m(Field, { eui: { size: [24, 12] }},
+                  m(Label,
+                    'Select',
+                    m(Select, { onSelect: () => { console.log('test') }, remote: { url: "https://api.github.com/search/repositories?term=sel&_type=query&q=sel", processResponse: function(d) { return d.items.map((i) => { return { id: i.id, text: i.name } }) } } })
+                  )
                 )
               )
             ])

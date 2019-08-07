@@ -49,6 +49,7 @@ declare module "eutsiv-ui/components/form/Select" {
     import m from 'mithril';
     const Select: () => {
         oninit: (vnode: any) => void;
+        oncreate: (vnode: any) => void;
         onupdate: (vnode: any) => void;
         view: (vnode: any) => m.Vnode<any, any>;
     };

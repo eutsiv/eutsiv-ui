@@ -1063,9 +1063,9 @@ m(Button, { eui: { context: "reverse" } }, [ m(Icon, { eui: { type: "user" } }),
         }
     };
 });
-System.register("widget/Form", ["mithril", "resources/Section", "eutsiv-ui/layout/Grid", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Form", "eutsiv-ui/widget/Button", "eutsiv-ui/widget/Icon", "eutsiv-ui/widget/form/MonthPicker"], function (exports_12, context_12) {
+System.register("widget/Form", ["mithril", "resources/Section", "eutsiv-ui/layout/Grid", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Form", "eutsiv-ui/widget/Button", "eutsiv-ui/widget/Icon", "eutsiv-ui/widget/form/MonthPicker", "eutsiv-ui/components/form/Select"], function (exports_12, context_12) {
     "use strict";
-    var mithril_12, Section_6, Grid_6, Gutter_6, Form_1, Button_4, Icon_2, MonthPicker_1, View;
+    var mithril_12, Section_6, Grid_6, Gutter_6, Form_1, Button_4, Icon_2, MonthPicker_1, Select_1, View;
     var __moduleName = context_12 && context_12.id;
     return {
         setters: [
@@ -1092,6 +1092,9 @@ System.register("widget/Form", ["mithril", "resources/Section", "eutsiv-ui/layou
             },
             function (MonthPicker_1_1) {
                 MonthPicker_1 = MonthPicker_1_1;
+            },
+            function (Select_1_1) {
+                Select_1 = Select_1_1;
             }
         ],
         execute: function () {
@@ -1193,6 +1196,17 @@ m(Form,
                                 mithril_12.default(Form_1.Form, mithril_12.default(Grid_6.Grid, [
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(Form_1.Label, 'Date', mithril_12.default(MonthPicker_1.MonthPicker)))),
                                     mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(MonthPicker_1.MonthPicker)))
+                                ]))
+                            ],
+                            source: `
+
+        `
+                        }),
+                        mithril_12.default(Section_6.Section, {
+                            documentation: [
+                                mithril_12.default("h1", "Select"),
+                                mithril_12.default(Form_1.Form, mithril_12.default(Grid_6.Grid, [
+                                    mithril_12.default(Grid_6.Row, mithril_12.default(Form_1.Field, { eui: { size: [24, 12] } }, mithril_12.default(Form_1.Label, 'Select', mithril_12.default(Select_1.Select, { onSelect: () => { console.log('test'); }, remote: { url: "https://api.github.com/search/repositories?term=sel&_type=query&q=sel", processResponse: function (d) { return d.items.map((i) => { return { id: i.id, text: i.name }; }); } } }))))
                                 ]))
                             ],
                             source: `

@@ -156,7 +156,7 @@ System.register("eutsiv-ui/Viewport", ["mithril", "eutsiv-ui", "eutsiv-ui/Compon
 });
 System.register("eutsiv-ui/components/form/Select", ["mithril"], function (exports_4, context_4) {
     "use strict";
-    var mithril_4, buildFormFields, emptyFn, filterFn, onSelectHandler, refreshFromRemote, showSelected, Select;
+    var mithril_4, buildFormFields, emptyFn, filterFn, refreshFromRemote, Select;
     var __moduleName = context_4 && context_4.id;
     return {
         setters: [
@@ -178,17 +178,6 @@ System.register("eutsiv-ui/components/form/Select", ["mithril"], function (expor
                 let re = new RegExp(q, "i");
                 return i.text && (i.text.search(re) != -1);
             };
-            onSelectHandler = (e, i, vnode) => {
-                if (vnode.state.multiple) {
-                    e.stopPropagation();
-                    vnode.state.selected.push(i);
-                }
-                else {
-                    vnode.state.selected = [i];
-                }
-                vnode.state.onSelect(e, i, vnode);
-                vnode.state.dirty = true;
-            };
             refreshFromRemote = (vnode) => {
                 let req;
                 if (vnode.state.remote.fn) {
@@ -204,19 +193,32 @@ System.register("eutsiv-ui/components/form/Select", ["mithril"], function (expor
                 return req.then(vnode.state.remote.processResponse)
                     .then((d) => { vnode.state.data = d; });
             };
-            showSelected = (vnode) => {
-                let showMultiple = (i) => { return mithril_4.default("a", { class: "eui-button eui-sm eui-compact eui-primary" }, [i.text, mithril_4.default.trust("&nbsp;&times;")]); };
-                let showUnique = (i) => { return mithril_4.default("span", i.text); };
-                let s = vnode.state.multiple ? vnode.state.selected.map(showMultiple) : vnode.state.selected.map(showUnique);
-                return s.length ? s : mithril_4.default.trust("&nbsp;");
-            };
             Select = () => {
                 let width = 0;
+                let selected = undefined;
                 let updateWidth = (vn) => { width = vn.dom.offsetWidth; };
+                let state = {
+                    dirty: false,
+                    open: false
+                };
+                let showSelected = (vnode) => {
+                    return selected ? mithril_4.default("span", selected) : mithril_4.default("span", "...");
+                };
+                let onSelectHandler = (e, i, vnode) => {
+                    if (vnode.state.multiple) {
+                        vnode.state.selected.push(i);
+                    }
+                    else {
+                        vnode.state.selected = [i];
+                    }
+                    selected = i.text;
+                    vnode.state.onSelect(e, i, vnode);
+                    state.dirty = true;
+                };
                 return {
-                    oninit: function (vnode) {
+                    oninit: (vnode) => {
                         vnode.state.data = vnode.attrs.data || [];
-                        vnode.state.open = vnode.attrs.open || false;
+                        state.open = vnode.attrs.open || false;
                         vnode.state.multiple = vnode.attrs.multiple || false;
                         vnode.state.fields = vnode.attrs.fields || { id: "select[id]", text: "select[text]" };
                         vnode.state.onSelect = vnode.attrs.onSelect || emptyFn;
@@ -224,19 +226,21 @@ System.register("eutsiv-ui/components/form/Select", ["mithril"], function (expor
                         vnode.state.query = vnode.attrs.query || "";
                         vnode.state.selected = vnode.attrs.selected || [];
                         vnode.state.remote = vnode.attrs.remote || false;
-                        vnode.state.dirty = false;
                         if (vnode.state.remote)
                             refreshFromRemote(vnode);
+                    },
+                    oncreate: (vnode) => {
                         document.addEventListener("click", function (e) {
-                            if (e.target.parentNode != vnode.dom) {
-                                vnode.state.open = false;
+                            let tgt = e.target.parentElement;
+                            if (tgt != vnode.dom) {
+                                state.open = false;
                                 vnode.dom.querySelector("div.eui-select-content").children.item(0).blur();
-                                mithril_4.default.redraw();
+                                mithril_4.default.redraw.sync();
                             }
                         });
                     },
                     onupdate: function (vnode) {
-                        if (vnode.state.open) {
+                        if (state.open) {
                             vnode.dom.querySelector("div.eui-select-content").children.item(0).focus();
                             vnode.dom.style.zIndex = "9999";
                         }
@@ -244,21 +248,20 @@ System.register("eutsiv-ui/components/form/Select", ["mithril"], function (expor
                             vnode.dom.style.zIndex = "1";
                         }
                     },
-                    view: function (vnode) {
-                        if (!vnode.state.dirty && vnode.attrs.selected)
+                    view: (vnode) => {
+                        if (!state.dirty && vnode.attrs.selected)
                             vnode.state.selected = vnode.attrs.selected;
-                        return mithril_4.default("div", { class: "eui-select", oncreate: updateWidth, onupdate: updateWidth }, [
-                            mithril_4.default("div", { class: (vnode.state.open ? "eui-input eui-open" : "eui-input"), onclick: () => { vnode.state.open = !vnode.state.open; } }, showSelected(vnode)),
+                        return mithril_4.default("div", { class: "eui-select", oncreate: updateWidth, onupdate: updateWidth, onclick: (e) => { e.stopPropagation(); state.open = !state.open; } }, [
+                            mithril_4.default("div", { class: (state.open ? "eui-input eui-open" : "eui-input") }, showSelected(vnode)),
                             mithril_4.default("div", buildFormFields(vnode)),
-                            mithril_4.default("div", { class: (vnode.state.open ? "eui-select-container eui-open" : "eui-select-container") }, [
-                                mithril_4.default("div", Object.assign({ class: "eui-select-content" }, (width && { style: `width:${width}px` })), [
-                                    mithril_4.default("input", { oninput: (e) => { vnode.state.query = e.target.value; vnode.state.onInput(e.target.value, vnode); if (vnode.state.remote)
-                                            refreshFromRemote(vnode); } }),
-                                    mithril_4.default("ul", vnode.state.data.filter((i) => { return filterFn(i, vnode.state.query); }).map((r) => {
-                                        return mithril_4.default("li", mithril_4.default("a", { onclick: (e) => { onSelectHandler(e, r, vnode); } }, r.text));
-                                    }))
-                                ])
-                            ])
+                            mithril_4.default("div", { class: (state.open ? "eui-select-container eui-open" : "eui-select-container") }, mithril_4.default("div", Object.assign({ class: "eui-select-content" }, (width && { style: `width:${width}px` })), mithril_4.default("input", { oninput: (e) => { vnode.state.query = e.target.value; vnode.state.onInput(e.target.value, vnode); if (vnode.state.remote)
+                                    refreshFromRemote(vnode); }, onclick: (e) => { e.stopPropagation(); } }), mithril_4.default("ul", vnode.state.data.filter((i) => { return filterFn(i, vnode.state.query); }).map((r) => {
+                                return mithril_4.default("li", mithril_4.default("a", { onclick: (e) => {
+                                        e.stopPropagation();
+                                        onSelectHandler(e, r, vnode);
+                                        state.open = !state.open;
+                                    } }, r.text));
+                            }))))
                         ]);
                     }
                 };
@@ -1022,7 +1025,7 @@ System.register("eutsiv-ui/widget/Tabs", ["mithril", "eutsiv-ui", "eutsiv-ui/Com
                     view: (vn) => {
                         return mithril_23.default('div', eutsiv_ui_20.applyAttrsModifiers(vn.attrs, applyClasses), [
                             ...vn.attrs.eui.tabs.map((tab, idx) => {
-                                return mithril_23.default(Button_1.Button, { onclick: () => { activeTab = idx; }, disabled: (activeTab == idx) }, tab.title);
+                                return mithril_23.default(Button_1.Button, { onclick: () => { activeTab = idx; }, disabled: (activeTab == idx), eui: { tag: 'a' } }, tab.title);
                             }),
                             mithril_23.default(Gutter_2.Gutter, vn.attrs.eui.tabs[activeTab].content)
                         ]);
@@ -1283,7 +1286,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                         class: 'row',
                         style: vn.attrs.gridState.totalWidth ? `width:${vn.attrs.gridState.totalWidth}px` : ''
                     }, vn.attrs.columns.map((col, idx) => {
-                        let content = typeof col.content === 'function' ? col.content(vn.attrs.data) : vn.attrs.data[col.content];
+                        let content = typeof col.content == 'function' ? col.content(vn.attrs.data) : vn.attrs.data[col.content];
                         return mithril_25.default(GridBodyColumn, { column: vn.attrs.gridState.columns[idx] }, content);
                     }));
                 }

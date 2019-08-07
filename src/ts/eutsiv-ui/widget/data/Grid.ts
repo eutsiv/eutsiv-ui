@@ -199,7 +199,7 @@ const GridBodyRow = {
       }, 
       vn.attrs.columns.map((col, idx) => {
       
-        let content = typeof col.content === 'function' ? col.content(vn.attrs.data) : vn.attrs.data[col.content]
+        let content = typeof col.content == 'function' ? col.content(vn.attrs.data) : vn.attrs.data[col.content]
 
         return m(GridBodyColumn, { column: vn.attrs.gridState.columns[idx] }, content)
 
