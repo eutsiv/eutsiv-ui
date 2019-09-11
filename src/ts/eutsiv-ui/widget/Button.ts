@@ -1,7 +1,7 @@
 import m from 'mithril'
 
 import {pipeAttrsHandlers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent, applyConfig as applyConfigComponent} from 'eutsiv-ui/Component'
+import {handleComponentClass, handleComponentContext, handleComponentSize} from 'eutsiv-ui/Component'
 
 
 const Button = () => {
@@ -9,37 +9,45 @@ const Button = () => {
   return {
     view: (vn) => {
       let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href || vn.attrs.route) ? 'a' : 'button'
-      //return m(tag, applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
-      return m(tag, pipeAttrsHandlers(applyClasses, applyConfig)(vn.attrs), vn.children)
+      return m(
+        tag,
+        pipeAttrsHandlers(
+          handleComponentClass, 
+          handleButtonClass, 
+          handleComponentContext, 
+          handleComponentSize, 
+          handleButtonBlock, 
+          handleButtonCompact, 
+          handleButtonFlat
+        )(vn.attrs),
+        vn.children
+      )
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleButtonClass = (attrs) => {
   attrs.class.push('eui-button')
-
-  return attrs
-  
+  return attrs 
 }
 
-
-const applyConfig = (attrs) => {
-
-  attrs = applyConfigComponent(attrs)
-
-  let config = attrs.eui
-
-  if(config.block) attrs.class.push('eui-block')
-
-  if(config.compact) attrs.class.push('eui-compact')
-
-  if(config.flat) attrs.class.push('eui-flat')
-
+const handleButtonBlock = (attrs) => {
+  let c = attrs.eui
+  if(c.block) attrs.class.push('eui-block')
   return attrs
-  
+}
+
+const handleButtonCompact = (attrs) => {
+  let c = attrs.eui
+  if(c.compact) attrs.class.push('eui-compact')
+  return attrs
+}
+
+const handleButtonFlat = (attrs) => {
+  let c = attrs.eui
+  if(c.flat) attrs.class.push('eui-flat')
+  return attrs
 }
 
 

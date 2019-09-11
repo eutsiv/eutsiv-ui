@@ -670,7 +670,7 @@ System.register("eutsiv-ui/widget/Breadcrumb", ["mithril", "eutsiv-ui", "eutsiv-
 });
 System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_14, context_14) {
     "use strict";
-    var mithril_13, eutsiv_ui_11, Component_10, Button, applyClasses, applyConfig;
+    var mithril_13, eutsiv_ui_11, Component_10, Button, handleButtonClass, handleButtonBlock, handleButtonCompact, handleButtonFlat;
     var __moduleName = context_14 && context_14.id;
     return {
         setters: [
@@ -689,24 +689,30 @@ System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/C
                 return {
                     view: (vn) => {
                         let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href || vn.attrs.route) ? 'a' : 'button';
-                        return mithril_13.default(tag, eutsiv_ui_11.pipeAttrsHandlers(applyClasses, applyConfig)(vn.attrs), vn.children);
+                        return mithril_13.default(tag, eutsiv_ui_11.pipeAttrsHandlers(Component_10.handleComponentClass, handleButtonClass, Component_10.handleComponentContext, Component_10.handleComponentSize, handleButtonBlock, handleButtonCompact, handleButtonFlat)(vn.attrs), vn.children);
                     }
                 };
             };
             exports_14("Button", Button);
-            applyClasses = (attrs) => {
-                attrs = Component_10.applyClasses(attrs);
+            handleButtonClass = (attrs) => {
                 attrs.class.push('eui-button');
                 return attrs;
             };
-            applyConfig = (attrs) => {
-                attrs = Component_10.applyConfig(attrs);
-                let config = attrs.eui;
-                if (config.block)
+            handleButtonBlock = (attrs) => {
+                let c = attrs.eui;
+                if (c.block)
                     attrs.class.push('eui-block');
-                if (config.compact)
+                return attrs;
+            };
+            handleButtonCompact = (attrs) => {
+                let c = attrs.eui;
+                if (c.compact)
                     attrs.class.push('eui-compact');
-                if (config.flat)
+                return attrs;
+            };
+            handleButtonFlat = (attrs) => {
+                let c = attrs.eui;
+                if (c.flat)
                     attrs.class.push('eui-flat');
                 return attrs;
             };

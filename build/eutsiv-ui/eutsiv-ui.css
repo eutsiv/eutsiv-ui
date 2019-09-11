@@ -895,7 +895,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport form.eui-form input, .eui-viewport form.eui-form select, .eui-viewport form.eui-form textarea, .eui-viewport form.eui-form .eui-input, .eui-viewport div.eui-select input, .eui-viewport div.eui-select select, .eui-viewport div.eui-select textarea, .eui-viewport div.eui-select .eui-input {
     flex-grow: 1;
     margin: 0;
-    padding: 11px;
+    padding: 7px;
     line-height: 1.1;
     font-size: 1em;
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
