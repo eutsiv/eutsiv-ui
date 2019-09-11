@@ -1480,9 +1480,9 @@ m(Loading)
         }
     };
 });
-System.register("widget/Notification", ["mithril", "resources/Section", "eutsiv-ui/widget/Notification", "eutsiv-ui"], function (exports_16, context_16) {
+System.register("widget/Notification", ["mithril", "resources/Section", "eutsiv-ui/layout/Gutter", "eutsiv-ui/widget/Notification", "eutsiv-ui"], function (exports_16, context_16) {
     "use strict";
-    var mithril_16, Section_10, Notification_1, eutsiv_ui_6, View;
+    var mithril_16, Section_10, Gutter_7, Notification_1, eutsiv_ui_6, View;
     var __moduleName = context_16 && context_16.id;
     return {
         setters: [
@@ -1491,6 +1491,9 @@ System.register("widget/Notification", ["mithril", "resources/Section", "eutsiv-
             },
             function (Section_10_1) {
                 Section_10 = Section_10_1;
+            },
+            function (Gutter_7_1) {
+                Gutter_7 = Gutter_7_1;
             },
             function (Notification_1_1) {
                 Notification_1 = Notification_1_1;
@@ -1506,57 +1509,70 @@ System.register("widget/Notification", ["mithril", "resources/Section", "eutsiv-
                         mithril_16.default(Section_10.Section, {
                             documentation: [
                                 mithril_16.default("h1", "Notification"),
-                                mithril_16.default(Notification_1.Notification, "Default"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "primary" } }, "Primary"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "secondary" } }, "Secondary"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "reverse" } }, "Reverse")
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, "Default")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "danger" } }, "Danger")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "warning" } }, "Warning")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "caution" } }, "Caution")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "notice" } }, "Notice")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "safety" } }, "Safety")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "reverse" } }, "Reverse"))
                             ],
                             source: `
 import {Notification} from 'eutsiv-ui/widget/Notification'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 
-m(Notification, "Default"),
-m(Notification, { eui: { context: "primary" } }, "Primary"),
-m(Notification, { eui: { context: "secondary" } }, "Secondary"),
-m(Notification, { eui: { context: "reverse" } }, "Reverse")
-        `
-                        }),
-                        mithril_16.default(Section_10.Section, {
-                            documentation: [
-                                mithril_16.default("h2", "Context"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "danger" } }, "Danger"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "warning" } }, "Warning"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "caution" } }, "Caution"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "notice" } }, "Notice"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "safety" } }, "Safety")
-                            ],
-                            source: `
-import {Notification} from 'eutsiv-ui/widget/Notification'
-
-m(Notification, { eui: { context: "danger" } }, "Danger"),
-m(Notification, { eui: { context: "warning" } }, "Warning"),
-m(Notification, { eui: { context: "caution" } }, "Caution"),
-m(Notification, { eui: { context: "notice" } }, "Notice"),
-m(Notification, { eui: { context: "safety" } }, "Safety")
+m(Gutter,
+  m(Notification, "Default")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "danger" } }, "Danger")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "warning" } }, "Warning")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "caution" } }, "Caution")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "notice" } }, "Notice")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "safety" } }, "Safety")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "reverse" } }, "Reverse")
+)
         `
                         }),
                         mithril_16.default(Section_10.Section, {
                             documentation: [
                                 mithril_16.default("h2", "Size"),
-                                mithril_16.default(Notification_1.Notification, { eui: { size: eutsiv_ui_6.Sizes.XS } }, "Default extra small"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "primary", size: eutsiv_ui_6.Sizes.SM } }, "Primary small"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "secondary", size: eutsiv_ui_6.Sizes.LG } }, "Secondary large"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "reverse", size: eutsiv_ui_6.Sizes.XL } }, "Reverse extra large"),
-                                mithril_16.default(Notification_1.Notification, { eui: { context: "danger", size: eutsiv_ui_6.Sizes.HU } }, "Danger huge")
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { size: eutsiv_ui_6.Sizes.XS } }, "Default extra small")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "danger", size: eutsiv_ui_6.Sizes.SM } }, "Danger small")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "warning", size: eutsiv_ui_6.Sizes.LG } }, "Warning large")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "caution", size: eutsiv_ui_6.Sizes.XL } }, "Caution extra large")),
+                                mithril_16.default(Gutter_7.Gutter, mithril_16.default(Notification_1.Notification, { eui: { context: "notice", size: eutsiv_ui_6.Sizes.HU } }, "Notice huge"))
                             ],
                             source: `
 import {Notification} from 'eutsiv-ui/widget/Notification'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 import {Sizes} from 'eutsiv-ui'
 
-m(Notification, { eui: { size: Sizes.XS } }, "Default extra small"),
-m(Notification, { eui: { context: "primary", size: Sizes.SM } }, "Primary small"),
-m(Notification, { eui: { context: "secondary", size: Sizes.LG } }, "Secondary large"),
-m(Notification, { eui: { context: "reverse", size: Sizes.XL } }, "Reverse extra large"),
-m(Notification, { eui: { context: "danger", size: Sizes.HU } }, "Danger huge")
+m(Gutter,
+  m(Notification, { eui: { size: Sizes.XS } }, "Default extra small")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "danger", size: Sizes.SM } }, "Danger small")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "warning", size: Sizes.LG } }, "Warning large")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "caution", size: Sizes.XL } }, "Caution extra large")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "notice", size: Sizes.HU } }, "Notice huge")
+)
         `
                         })
                     ];

@@ -51,21 +51,12 @@ const Select = () => {
 
   let showSelected = (vnode) => {
 
-    //let showMultiple = (i) => { return m("a", { class: "eui-button eui-sm eui-compact eui-primary" }, i.text, m.trust("&nbsp;&times;")) }
-    //let showUnique = (i) => { return m("span", i.text) }
+    let showMultiple = (i) => { return m("a", { class: "eui-button eui-sm eui-compact eui-primary" }, i.text, m.trust("&nbsp;&times;")) }
+    let showUnique = (i) => { return m("span", i.text) }
 
-    //let s = vnode.state.multiple ? vnode.state.selected.map(showMultiple) : vnode.state.selected.map(showUnique)
-    //return s.length ? s : m.trust("&nbsp;")
-    //return vnode.state.selected.length ? m("span", vnode.state.selected[0].text) : m.trust("&nbsp;")
-    //return m.trust("&nbsp;")
-    //if(vnode.state.selected.length) { console.log("we are here")
-      //return [m.trust(`<span>${vnode.state.selected[0].text}</span>`)]
-      //return "Test" //vnode.state.selected[0].text
-      //return m("span", "Test")
-    //} else {
-    //  return m.trust("&nbsp;")
-    //}
-    return selected ? m("span", selected) : m("span", "...")
+    let s = vnode.state.multiple ? vnode.state.selected.map(showMultiple) : vnode.state.selected.map(showUnique)
+    return s.length ? s : m("span", "...")
+
   }
 
 

@@ -1,6 +1,6 @@
 System.register("eutsiv-ui", ["mithril"], function (exports_1, context_1) {
     "use strict";
-    var mithril_1, applyAttrsModifiers, Sizes;
+    var mithril_1, applyAttrsModifiers, pipeAttrsHandlers, Sizes;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -40,6 +40,39 @@ System.register("eutsiv-ui", ["mithril"], function (exports_1, context_1) {
                 return attrs;
             };
             exports_1("applyAttrsModifiers", applyAttrsModifiers);
+            pipeAttrsHandlers = (...fn) => {
+                return (a) => {
+                    let attrs = Object.assign({}, a);
+                    attrs.eui = Object.assign({}, attrs.eui);
+                    !Array.isArray(attrs.class) && (attrs.class = attrs.class ? [attrs.class] : []);
+                    !attrs.style && (attrs.style = {});
+                    fn.forEach(e => {
+                        attrs = e(attrs);
+                    });
+                    if (attrs.route) {
+                        let oc = attrs.onclick;
+                        let route = attrs.route;
+                        let params = attrs.params;
+                        if ((/\?/).test(route) && params)
+                            throw new SyntaxError('Route contains a ? so params should not be defined');
+                        attrs.href = params ? `#!${route}?` + mithril_1.default.buildQueryString(params) : `#!${route}`;
+                        attrs.onclick = (e) => {
+                            if (oc)
+                                oc(e);
+                            e.preventDefault();
+                            mithril_1.default.route.set(route, params);
+                        };
+                    }
+                    Array.isArray(attrs.class) && (attrs.class = attrs.class.length ? attrs.class.join(' ') : undefined);
+                    if (Object.keys(attrs.style).length === 0 && attrs.style.constructor === Object)
+                        attrs.style = undefined;
+                    attrs.eui = undefined;
+                    attrs.params = undefined;
+                    attrs.route = undefined;
+                    return attrs;
+                };
+            };
+            exports_1("pipeAttrsHandlers", pipeAttrsHandlers);
             Sizes = {
                 XS: 'XS',
                 SM: 'SM',
@@ -70,7 +103,7 @@ System.register("eutsiv-ui", ["mithril"], function (exports_1, context_1) {
 });
 System.register("eutsiv-ui/Component", ["mithril", "eutsiv-ui"], function (exports_2, context_2) {
     "use strict";
-    var mithril_2, eutsiv_ui_1, Component, applyClasses, applyConfig, applyConfigContext, applyConfigFit;
+    var mithril_2, eutsiv_ui_1, Component, applyClasses, applyConfig, applyConfigContext, applyConfigFit, handleComponentClass, handleComponentContext, handleComponentFit, handleComponentSize;
     var __moduleName = context_2 && context_2.id;
     return {
         setters: [
@@ -85,7 +118,7 @@ System.register("eutsiv-ui/Component", ["mithril", "eutsiv-ui"], function (expor
             Component = () => {
                 return {
                     view: (vn) => {
-                        return mithril_2.default('div', eutsiv_ui_1.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
+                        return mithril_2.default('div', eutsiv_ui_1.pipeAttrsHandlers(handleComponentClass, handleComponentFit)(vn.attrs), vn.children);
                     }
                 };
             };
@@ -118,6 +151,32 @@ System.register("eutsiv-ui/Component", ["mithril", "eutsiv-ui"], function (expor
                 return attrs;
             };
             exports_2("applyConfigFit", applyConfigFit);
+            handleComponentClass = (attrs) => {
+                attrs.class.push('eui-component');
+                return attrs;
+            };
+            exports_2("handleComponentClass", handleComponentClass);
+            handleComponentContext = (attrs) => {
+                let c = attrs.eui;
+                if (c.context)
+                    attrs.class.push(`eui-${c.context}`);
+                return attrs;
+            };
+            exports_2("handleComponentContext", handleComponentContext);
+            handleComponentFit = (attrs) => {
+                let c = attrs.eui;
+                if (c.fit)
+                    attrs.class.push('eui-fit');
+                return attrs;
+            };
+            exports_2("handleComponentFit", handleComponentFit);
+            handleComponentSize = (attrs) => {
+                let c = attrs.eui;
+                if (c.size)
+                    attrs.style.fontSize = eutsiv_ui_1.Sizes.fontSize[c.size];
+                return attrs;
+            };
+            exports_2("handleComponentSize", handleComponentSize);
         }
     };
 });
@@ -202,7 +261,10 @@ System.register("eutsiv-ui/components/form/Select", ["mithril"], function (expor
                     open: false
                 };
                 let showSelected = (vnode) => {
-                    return selected ? mithril_4.default("span", selected) : mithril_4.default("span", "...");
+                    let showMultiple = (i) => { return mithril_4.default("a", { class: "eui-button eui-sm eui-compact eui-primary" }, i.text, mithril_4.default.trust("&nbsp;&times;")); };
+                    let showUnique = (i) => { return mithril_4.default("span", i.text); };
+                    let s = vnode.state.multiple ? vnode.state.selected.map(showMultiple) : vnode.state.selected.map(showUnique);
+                    return s.length ? s : mithril_4.default("span", "...");
                 };
                 let onSelectHandler = (e, i, vnode) => {
                     if (vnode.state.multiple) {
@@ -627,7 +689,7 @@ System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/C
                 return {
                     view: (vn) => {
                         let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href || vn.attrs.route) ? 'a' : 'button';
-                        return mithril_13.default(tag, eutsiv_ui_11.applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children);
+                        return mithril_13.default(tag, eutsiv_ui_11.pipeAttrsHandlers(applyClasses, applyConfig)(vn.attrs), vn.children);
                     }
                 };
             };
@@ -886,7 +948,7 @@ System.register("eutsiv-ui/widget/Loading", ["mithril", "eutsiv-ui", "eutsiv-ui/
 });
 System.register("eutsiv-ui/widget/Notification", ["mithril", "eutsiv-ui", "eutsiv-ui/Component"], function (exports_21, context_21) {
     "use strict";
-    var mithril_20, eutsiv_ui_17, Component_16, Notification, applyClasses;
+    var mithril_20, eutsiv_ui_17, Component_16, Notification, handleNotificationClass;
     var __moduleName = context_21 && context_21.id;
     return {
         setters: [
@@ -904,13 +966,12 @@ System.register("eutsiv-ui/widget/Notification", ["mithril", "eutsiv-ui", "eutsi
             Notification = () => {
                 return {
                     view: (vn) => {
-                        return mithril_20.default('div', eutsiv_ui_17.applyAttrsModifiers(vn.attrs, applyClasses, Component_16.applyConfig), vn.children);
+                        return mithril_20.default('div', eutsiv_ui_17.pipeAttrsHandlers(Component_16.handleComponentClass, handleNotificationClass, Component_16.handleComponentContext, Component_16.handleComponentSize)(vn.attrs), vn.children);
                     }
                 };
             };
             exports_21("Notification", Notification);
-            applyClasses = (attrs) => {
-                attrs = Component_16.applyClasses(attrs);
+            handleNotificationClass = (attrs) => {
                 attrs.class.push('eui-notification');
                 return attrs;
             };
@@ -1146,7 +1207,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
             applySort = (d, st) => {
                 if (!st.length)
                     return false;
-                return st.reduce((a, e, i) => { return e.fn(a, e.order, i); }, [...d]);
+                return st.reduce((a, e, i) => { return e.fn(a, e.order, i); }, d);
             };
             GridHeader = {
                 view: (vn) => {
@@ -1158,7 +1219,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                                 fn: col.sort,
                                 index: idx,
                                 nth: 0,
-                                order: undefined
+                                order: null
                             };
                         let title = '&nbsp;';
                         if (col.title)
@@ -1186,15 +1247,16 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                         onclick: (e) => {
                             if (!vn.attrs.column.sort) {
                                 vn.attrs.gridState.columns.forEach((el) => { if (el.sort)
-                                    el.sort.order = undefined; });
+                                    el.sort.order = null; });
                                 vn.attrs.gridState.sortStack = [];
+                                return;
                             }
                             if (!vn.attrs.column.sort.order)
                                 vn.attrs.column.sort.order = 1;
                             else if (vn.attrs.column.sort.order == 1)
                                 vn.attrs.column.sort.order = -1;
                             else
-                                vn.attrs.column.sort.order = undefined;
+                                vn.attrs.column.sort.order = null;
                             if (e.ctrlKey) {
                                 let pi = vn.attrs.gridState.sortStack.findIndex(el => { return el.index == vn.attrs.column.sort.index; });
                                 if (pi == -1) {
@@ -1275,14 +1337,13 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
                             }
                         }
                     }, vn.attrs.data.map(row => {
-                        return mithril_25.default(GridBodyRow, { columns: vn.attrs.columns, data: row, keyField: row[vn.attrs.keyField], gridState: vn.attrs.gridState });
+                        return mithril_25.default(GridBodyRow, { columns: vn.attrs.columns, data: row, keyField: vn.attrs.keyField, gridState: vn.attrs.gridState });
                     }));
                 }
             };
             GridBodyRow = {
                 view: (vn) => {
                     return mithril_25.default('div', {
-                        key: vn.attrs.data[vn.attrs.keyField],
                         class: 'row',
                         style: vn.attrs.gridState.totalWidth ? `width:${vn.attrs.gridState.totalWidth}px` : ''
                     }, vn.attrs.columns.map((col, idx) => {

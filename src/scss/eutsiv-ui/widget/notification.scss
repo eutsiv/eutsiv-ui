@@ -1,38 +1,30 @@
 .#{$eui-namespace}-viewport {
 
   .#{$eui-namespace}-notification {
-    padding: $eui-unit-grid*3 $eui-unit-grid*4;
+    padding: $eui-unit-grid*2 $eui-unit-grid*4;
     font-size: 1em;
     line-height: 1.1;
     color: $eui-color;
-    background-color: eui-color('gray', 'light-3');
+    background-color: eui-color('gray', 'light-2');
 
-    &.#{$eui-namespace}-primary {
-      color: #ffffff;
-      background: eui-color('primary', 'base');
-    }
-    &.#{$eui-namespace}-secondary {
-      color: #ffffff;
-      background: eui-color('secondary', 'base');
-    }
     &.#{$eui-namespace}-reverse {
       color: #ffffff;
-      background: #000000;
+      background: eui-color('black', 'dark-2');
     }
     &.#{$eui-namespace}-danger {
-      background: eui-color('danger', 'light-3');
+      background: eui-color('danger', 'light-2');
     }
     &.#{$eui-namespace}-warning {
-      background: eui-color('warning', 'light-3');
+      background: eui-color('warning', 'light-2');
     }
     &.#{$eui-namespace}-caution {
-      background: eui-color('caution', 'light-3');
+      background: eui-color('caution', 'light-2');
     }
     &.#{$eui-namespace}-notice {
-      background: eui-color('notice', 'light-3');
+      background: eui-color('notice', 'light-2');
     }
     &.#{$eui-namespace}-safety {
-      background: eui-color('safety', 'light-3');
+      background: eui-color('safety', 'light-2');
     }
   }
 

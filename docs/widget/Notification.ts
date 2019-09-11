@@ -1,7 +1,7 @@
 import m from 'mithril'
 
 import {Section} from 'resources/Section'
-import {Grid} from 'eutsiv-ui/layout/Grid'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 import {Notification} from 'eutsiv-ui/widget/Notification'
 import {Sizes} from 'eutsiv-ui'
 
@@ -12,59 +12,95 @@ let View = {
       m(Section, { 
         documentation: [
           m("h1", "Notification"),
-          m(Notification, "Default"),
-          m(Notification, { eui: { context: "primary" } }, "Primary"),
-          m(Notification, { eui: { context: "secondary" } }, "Secondary"),
-          m(Notification, { eui: { context: "reverse" } }, "Reverse")
+          m(Gutter,
+            m(Notification, "Default")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "danger" } }, "Danger")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "warning" } }, "Warning")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "caution" } }, "Caution")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "notice" } }, "Notice")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "safety" } }, "Safety")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "reverse" } }, "Reverse")
+          )
         ],
         source: `
 import {Notification} from 'eutsiv-ui/widget/Notification'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 
-m(Notification, "Default"),
-m(Notification, { eui: { context: "primary" } }, "Primary"),
-m(Notification, { eui: { context: "secondary" } }, "Secondary"),
-m(Notification, { eui: { context: "reverse" } }, "Reverse")
-        `
-      }),
-
-      m(Section, { 
-        documentation: [
-          m("h2", "Context"),
-          m(Notification, { eui: { context: "danger" } }, "Danger"),
-          m(Notification, { eui: { context: "warning" } }, "Warning"),
-          m(Notification, { eui: { context: "caution" } }, "Caution"),
-          m(Notification, { eui: { context: "notice" } }, "Notice"),
-          m(Notification, { eui: { context: "safety" } }, "Safety")
-        ],
-        source: `
-import {Notification} from 'eutsiv-ui/widget/Notification'
-
-m(Notification, { eui: { context: "danger" } }, "Danger"),
-m(Notification, { eui: { context: "warning" } }, "Warning"),
-m(Notification, { eui: { context: "caution" } }, "Caution"),
-m(Notification, { eui: { context: "notice" } }, "Notice"),
-m(Notification, { eui: { context: "safety" } }, "Safety")
+m(Gutter,
+  m(Notification, "Default")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "danger" } }, "Danger")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "warning" } }, "Warning")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "caution" } }, "Caution")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "notice" } }, "Notice")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "safety" } }, "Safety")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "reverse" } }, "Reverse")
+)
         `
       }),
 
       m(Section, { 
         documentation: [
           m("h2", "Size"),
-          m(Notification, { eui: { size: Sizes.XS } }, "Default extra small"),
-          m(Notification, { eui: { context: "primary", size: Sizes.SM } }, "Primary small"),
-          m(Notification, { eui: { context: "secondary", size: Sizes.LG } }, "Secondary large"),
-          m(Notification, { eui: { context: "reverse", size: Sizes.XL } }, "Reverse extra large"),
-          m(Notification, { eui: { context: "danger", size: Sizes.HU } }, "Danger huge")
+          m(Gutter,
+            m(Notification, { eui: { size: Sizes.XS } }, "Default extra small")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "danger", size: Sizes.SM } }, "Danger small")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "warning", size: Sizes.LG } }, "Warning large")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "caution", size: Sizes.XL } }, "Caution extra large")
+          ),
+          m(Gutter,
+            m(Notification, { eui: { context: "notice", size: Sizes.HU } }, "Notice huge")
+          )
         ],
         source: `
 import {Notification} from 'eutsiv-ui/widget/Notification'
+import {Gutter} from 'eutsiv-ui/layout/Gutter'
 import {Sizes} from 'eutsiv-ui'
 
-m(Notification, { eui: { size: Sizes.XS } }, "Default extra small"),
-m(Notification, { eui: { context: "primary", size: Sizes.SM } }, "Primary small"),
-m(Notification, { eui: { context: "secondary", size: Sizes.LG } }, "Secondary large"),
-m(Notification, { eui: { context: "reverse", size: Sizes.XL } }, "Reverse extra large"),
-m(Notification, { eui: { context: "danger", size: Sizes.HU } }, "Danger huge")
+m(Gutter,
+  m(Notification, { eui: { size: Sizes.XS } }, "Default extra small")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "danger", size: Sizes.SM } }, "Danger small")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "warning", size: Sizes.LG } }, "Warning large")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "caution", size: Sizes.XL } }, "Caution extra large")
+),
+m(Gutter,
+  m(Notification, { eui: { context: "notice", size: Sizes.HU } }, "Notice huge")
+)
         `
       })
 

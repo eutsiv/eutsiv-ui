@@ -1,7 +1,7 @@
 {
   "name": "eutsiv-ui-docs",
   "dependencies": {
-    "mithril": "2.0.0-rc.7",
+    "mithril": "2.0.4",
     "systemjs": "2.1.1"
   }
 }

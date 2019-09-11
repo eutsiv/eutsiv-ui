@@ -4,7 +4,7 @@
     cursor: pointer;
     display: inline-block;
     //margin: 0;
-    padding: $eui-unit-grid*3 $eui-unit-grid*5;
+    padding: $eui-unit-grid*2 $eui-unit-grid*4;
     border: none;
     outline: 0;
     line-height: 1.1;
@@ -158,7 +158,7 @@
 
     &.#{$eui-namespace}-compact {
       line-height: 1.1;
-      padding: $eui-unit-grid*1.5 $eui-unit-grid*2.5;
+      padding: $eui-unit-grid*1 $eui-unit-grid*2;
       font-weight: normal;
     }
 

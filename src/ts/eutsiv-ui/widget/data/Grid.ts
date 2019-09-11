@@ -14,7 +14,7 @@ const adjustColumnWidth = (vn) => {
 
 const applySort = (d, st) => {
   if(!st.length) return false
-  return st.reduce((a, e, i) => { return e.fn(a, e.order, i) }, [...d])
+  return st.reduce((a, e, i) => { return e.fn(a, e.order, i) }, d)
 }
 
 const GridHeader = {
@@ -31,7 +31,7 @@ const GridHeader = {
           fn: col.sort,
           index: idx,
           nth: 0,
-          order: undefined
+          order: null
         }
 
         let title = '&nbsp;'
@@ -68,20 +68,19 @@ const GridHeaderColumn = {
 
           // this column does not have sort
           if(!vn.attrs.column.sort) {
-            vn.attrs.gridState.columns.forEach((el) => { if(el.sort) el.sort.order = undefined })
+            vn.attrs.gridState.columns.forEach((el) => { if(el.sort) el.sort.order = null })
             vn.attrs.gridState.sortStack = []
-            //return
+            return
           }
-          
+
           // set order
           if(!vn.attrs.column.sort.order)
             vn.attrs.column.sort.order = 1
           else if(vn.attrs.column.sort.order == 1)
             vn.attrs.column.sort.order = -1
           else
-            vn.attrs.column.sort.order = undefined
+            vn.attrs.column.sort.order = null
 
-          
           if(e.ctrlKey) {
             let pi = vn.attrs.gridState.sortStack.findIndex(el => { return el.index == vn.attrs.column.sort.index })
             
@@ -183,7 +182,7 @@ const GridBody = {
         }
       },
       vn.attrs.data.map(row => {
-        return m(GridBodyRow, { columns: vn.attrs.columns, data: row, keyField: row[vn.attrs.keyField], gridState: vn.attrs.gridState })
+        return m(GridBodyRow, { columns: vn.attrs.columns, data: row, keyField: vn.attrs.keyField, gridState: vn.attrs.gridState })
       })
     )
   }
@@ -193,7 +192,7 @@ const GridBodyRow = {
   view: (vn) => {
     return m('div', 
       { 
-        key: vn.attrs.data[vn.attrs.keyField],
+        //key: vn.attrs.data[vn.attrs.keyField],
         class: 'row', 
         style: vn.attrs.gridState.totalWidth ? `width:${vn.attrs.gridState.totalWidth}px` : '' 
       }, 

@@ -1,6 +1,7 @@
 /// <reference types="mithril" />
 declare module "eutsiv-ui" {
     const applyAttrsModifiers: (a: any, ...fn: any[]) => any;
+    const pipeAttrsHandlers: (...fn: any[]) => (a: any) => any;
     const Sizes: {
         XS: string;
         SM: string;
@@ -25,7 +26,7 @@ declare module "eutsiv-ui" {
             HU: string;
         };
     };
-    export { applyAttrsModifiers, Sizes };
+    export { applyAttrsModifiers, pipeAttrsHandlers, Sizes };
 }
 declare module "eutsiv-ui/Component" {
     import m from 'mithril';
@@ -36,7 +37,11 @@ declare module "eutsiv-ui/Component" {
     const applyConfig: (attrs: any) => any;
     const applyConfigContext: (attrs: any) => any;
     const applyConfigFit: (attrs: any) => any;
-    export { Component, applyClasses, applyConfig, applyConfigContext, applyConfigFit };
+    const handleComponentClass: (attrs: any) => any;
+    const handleComponentContext: (attrs: any) => any;
+    const handleComponentFit: (attrs: any) => any;
+    const handleComponentSize: (attrs: any) => any;
+    export { Component, applyClasses, applyConfig, applyConfigContext, applyConfigFit, handleComponentClass, handleComponentContext, handleComponentFit, handleComponentSize };
 }
 declare module "eutsiv-ui/Viewport" {
     import m from 'mithril';
