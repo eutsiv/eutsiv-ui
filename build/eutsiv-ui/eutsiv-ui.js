@@ -688,8 +688,7 @@ System.register("eutsiv-ui/widget/Button", ["mithril", "eutsiv-ui", "eutsiv-ui/C
             Button = () => {
                 return {
                     view: (vn) => {
-                        let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href || vn.attrs.route) ? 'a' : 'button';
-                        return mithril_13.default(tag, eutsiv_ui_11.pipeAttrsHandlers(Component_10.handleComponentClass, handleButtonClass, Component_10.handleComponentContext, Component_10.handleComponentSize, handleButtonBlock, handleButtonCompact, handleButtonFlat)(vn.attrs), vn.children);
+                        return mithril_13.default('a', eutsiv_ui_11.pipeAttrsHandlers(Component_10.handleComponentClass, handleButtonClass, Component_10.handleComponentContext, Component_10.handleComponentSize, handleButtonBlock, handleButtonCompact, handleButtonFlat)(vn.attrs), vn.children);
                     }
                 };
             };
@@ -1092,7 +1091,7 @@ System.register("eutsiv-ui/widget/Tabs", ["mithril", "eutsiv-ui", "eutsiv-ui/Com
                     view: (vn) => {
                         return mithril_23.default('div', eutsiv_ui_20.applyAttrsModifiers(vn.attrs, applyClasses), [
                             ...vn.attrs.eui.tabs.map((tab, idx) => {
-                                return mithril_23.default(Button_1.Button, { onclick: () => { activeTab = idx; }, disabled: (activeTab == idx), eui: { tag: 'a' } }, tab.title);
+                                return mithril_23.default(Button_1.Button, { onclick: () => { activeTab = idx; }, disabled: (activeTab == idx) }, tab.title);
                             }),
                             mithril_23.default(Gutter_2.Gutter, vn.attrs.eui.tabs[activeTab].content)
                         ]);
