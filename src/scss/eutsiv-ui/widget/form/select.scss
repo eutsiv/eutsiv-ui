@@ -18,12 +18,12 @@ div.#{$eui-namespace}-select {
     }
 
     div.#{$eui-namespace}-select-content {
-      position: absolute;
       background: $eui-color-bg;
       border: $eui-widget-form-input-focus-border;
       border-top: 0;
 
       input, input:focus {
+        width: 99%;
         border: none;
       }
 

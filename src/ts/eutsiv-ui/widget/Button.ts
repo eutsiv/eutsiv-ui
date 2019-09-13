@@ -8,7 +8,6 @@ const Button = () => {
 
   return {
     view: (vn) => {
-      //let tag = ((vn.attrs.eui && vn.attrs.eui.tag == 'a') || vn.attrs.href || vn.attrs.route) ? 'a' : 'button'
       return m(
         'a',
         pipeAttrsHandlers(

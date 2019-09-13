@@ -1064,7 +1064,7 @@ System.register("eutsiv-ui/widget/Table", ["mithril", "eutsiv-ui", "eutsiv-ui/Co
 });
 System.register("eutsiv-ui/widget/Tabs", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Button", "eutsiv-ui/layout/Gutter"], function (exports_24, context_24) {
     "use strict";
-    var mithril_23, eutsiv_ui_20, Component_19, Button_1, Gutter_2, Tabs, applyClasses;
+    var mithril_23, eutsiv_ui_20, Component_19, Button_1, Gutter_2, Tabs, handleTabsClass;
     var __moduleName = context_24 && context_24.id;
     return {
         setters: [
@@ -1089,7 +1089,7 @@ System.register("eutsiv-ui/widget/Tabs", ["mithril", "eutsiv-ui", "eutsiv-ui/Com
                 let activeTab = 0;
                 return {
                     view: (vn) => {
-                        return mithril_23.default('div', eutsiv_ui_20.applyAttrsModifiers(vn.attrs, applyClasses), [
+                        return mithril_23.default('div', eutsiv_ui_20.pipeAttrsHandlers(Component_19.handleComponentClass, handleTabsClass)(vn.attrs), [
                             ...vn.attrs.eui.tabs.map((tab, idx) => {
                                 return mithril_23.default(Button_1.Button, { onclick: () => { activeTab = idx; }, disabled: (activeTab == idx) }, tab.title);
                             }),
@@ -1099,8 +1099,7 @@ System.register("eutsiv-ui/widget/Tabs", ["mithril", "eutsiv-ui", "eutsiv-ui/Com
                 };
             };
             exports_24("Tabs", Tabs);
-            applyClasses = (attrs) => {
-                attrs = Component_19.applyClasses(attrs);
+            handleTabsClass = (attrs) => {
                 attrs.class.push('eui-tabs');
                 return attrs;
             };
@@ -1402,7 +1401,7 @@ System.register("eutsiv-ui/widget/data/Grid", ["mithril", "eutsiv-ui/Component"]
 });
 System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv-ui/Component", "eutsiv-ui/widget/Button", "eutsiv-ui/layout/Gutter"], function (exports_27, context_27) {
     "use strict";
-    var mithril_26, eutsiv_ui_22, Component_22, Button_2, Gutter_3, Paging, applyClasses;
+    var mithril_26, eutsiv_ui_22, Component_22, Button_2, Gutter_3, Paging, handlePagingClass;
     var __moduleName = context_27 && context_27.id;
     return {
         setters: [
@@ -1435,7 +1434,7 @@ System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv
                         let to = page * perPage;
                         if (to > rows)
                             to = rows;
-                        return mithril_26.default('nav', eutsiv_ui_22.applyAttrsModifiers(vn.attrs, applyClasses), [
+                        return mithril_26.default('nav', eutsiv_ui_22.pipeAttrsHandlers(Component_22.handleComponentClass, handlePagingClass)(vn.attrs), [
                             mithril_26.default(Gutter_3.Gutter, { eui: { size: eutsiv_ui_22.Sizes.SM } }, mithril_26.default('span', { class: 'eui-status' }, `Displaying ${((page - 1) * perPage) + 1} to ${to} of ${rows}`)),
                             ...pages.map(p => {
                                 let ba = Object.assign({}, params.buildLink(p, perPage), { eui: { context: p == page ? 'primary' : undefined, spaced: true } });
@@ -1446,8 +1445,7 @@ System.register("eutsiv-ui/widget/data/Paging", ["mithril", "eutsiv-ui", "eutsiv
                 };
             };
             exports_27("Paging", Paging);
-            applyClasses = (attrs) => {
-                attrs = Component_22.applyClasses(attrs);
+            handlePagingClass = (attrs) => {
                 attrs.class.push('eui-paging');
                 return attrs;
             };

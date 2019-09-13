@@ -5,76 +5,76 @@ import {Grid, Row, Column} from 'eutsiv-ui/layout/Grid'
 
 const colorMap = {
   Primary: {
-    "light-3": "e9ecf2",
-    "light-2": "a6b4c9",
-    "light-1": "647ca1",
+    "light-3": "dbe5f5",
+    "light-2": "89acdf",
+    "light-1": "3872c8",
     "base": "214478",
-    "dark-1": "173054",
-    "dark-2": "0d1b30"
+    "dark-1": "19335a",
+    "dark-2": "11223c"
   },
   Secondary: {
-    "light-3": "eff6ea",
-    "light-2": "bdd9ab",
-    "light-1": "8cbd6b",
+    "light-3": "e9f6e0",
+    "light-2": "b7e39a",
+    "light-1": "86d055",
     "base": "5aa02c",
-    "dark-1": "3f701f",
-    "dark-2": "244012"
+    "dark-1": "447821",
+    "dark-2": "2d5016"
   },
   Black: {
-    "light-3": "aaaaaa",
-    "light-2": "888888",
-    "light-1": "666666",
+    "light-3": "e7e7e7",
+    "light-2": "b0b0b0",
+    "light-1": "7a7a7a",
     "base": "444444",
-    "dark-1": "222222",
-    "dark-2": "000000"
+    "dark-1": "333333",
+    "dark-2": "222222"
   },
   Gray: {
-    "light-3": "fafafa",
-    "light-2": "ebebeb",
+    "light-3": "f8f8f8",
+    "light-2": "eaeaea",
     "light-1": "dbdbdb",
     "base": "cccccc",
-    "dark-1": "8f8f8f",
-    "dark-2": "525252"
+    "dark-1": "999999",
+    "dark-2": "666666"
   },
   Danger: {
-    "light-3": "fee8e7",
-    "light-2": "faa49e",
-    "light-1": "f66056",
+    "light-3": "fde1e0",
+    "light-2": "faa099",
+    "light-1": "f65e53",
     "base": "f21c0d",
-    "dark-1": "a91409",
-    "dark-2": "610b05"
+    "dark-1": "b6150a",
+    "dark-2": "790e07"
   },
   Warning: {
-    "light-3": "fff5e6",
-    "light-2": "ffd699",
-    "light-1": "ffb84d",
+    "light-3": "fff2de",
+    "light-2": "ffd494",
+    "light-1": "ffb74a",
     "base": "ff9900",
-    "dark-1": "cc7a00",
-    "dark-2": "995c00"
+    "dark-1": "bf7300",
+    "dark-2": "804d00"
   },
   Caution: {
-    "light-3": "fffce6",
-    "light-2": "fff599",
-    "light-1": "ffed4d",
+    "light-3": "fffcde",
+    "light-2": "fff494",
+    "light-1": "ffed4a",
     "base": "ffe500",
-    "dark-1": "ccb700",
-    "dark-2": "998900"
+    "dark-1": "bfac00",
+    "dark-2": "807300"
   },
   Notice: {
-    "light-3": "e7f3fe",
-    "light-2": "9ed1fa",
-    "light-1": "56aef6",
+    "light-3": "e0f0fd",
+    "light-2": "99cefa",
+    "light-1": "53adf6",
     "base": "0d8bf2",
-    "dark-1": "0961a9",
-    "dark-2": "053861"
+    "dark-1": "0a68b6",
+    "dark-2": "074679"
   },
   Safety: {
-    "light-3": "edf7ee",
-    "light-2": "b8e0b9",
-    "light-1": "83c885",
+    "light-3": "e8f5e8",
+    "light-2": "b5deb6",
+    "light-1": "81c883",
     "base": "4eb151",
-    "dark-1": "377c39",
-    "dark-2": "1f4720"
+    "dark-1": "3b853d",
+    "dark-2": "275929"
   }
 }
 

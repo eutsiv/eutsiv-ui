@@ -48,7 +48,7 @@
       line-height: 1.1;
       font-size: $eui-font-size;
       font-family: $eui-font-family;
-      background: $eui-color-bg;
+      background: $eui-color-focus-bg;
       border: $eui-widget-form-input-border;
       box-shadow: none;
       outline: none;
@@ -94,7 +94,7 @@
         content: "";
         display: inline-block;
         vertical-align: middle;
-        background: $eui-color-bg;
+        background: $eui-color-focus-bg;
         border: $eui-widget-form-input-border;
         transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
         z-index: 1;

@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 import {Button} from 'eutsiv-ui/widget/Button'
 import {Gutter} from 'eutsiv-ui/layout/Gutter'
@@ -13,7 +13,7 @@ const Tabs = () => {
 
   return {
     view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses), [
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleTabsClass)(vn.attrs), [
         ...vn.attrs.eui.tabs.map((tab, idx) => {
           return m(Button, { onclick: () => { activeTab = idx }, disabled: (activeTab == idx) }, 
             tab.title
@@ -28,13 +28,9 @@ const Tabs = () => {
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleTabsClass = (attrs) => {
   attrs.class.push('eui-tabs')
-
   return attrs
-  
 }
 
 

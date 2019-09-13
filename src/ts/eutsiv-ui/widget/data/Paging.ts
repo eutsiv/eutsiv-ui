@@ -1,7 +1,8 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers, Sizes} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers, Sizes} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
+
 import {Button} from 'eutsiv-ui/widget/Button'
 import {Gutter} from 'eutsiv-ui/layout/Gutter'
 
@@ -23,7 +24,7 @@ const Paging = () => {
       // ensure to is not greater then total rows
       if(to > rows) to = rows
 
-      return m('nav', applyAttrsModifiers(vn.attrs, applyClasses), [
+      return m('nav', pipeAttrsHandlers(handleComponentClass, handlePagingClass)(vn.attrs), [
         m(Gutter, { eui: { size: Sizes.SM }},
           m('span', { class: 'eui-status' }, `Displaying ${((page-1)*perPage)+1} to ${to} of ${rows}`),
         ),
@@ -39,13 +40,9 @@ const Paging = () => {
   }
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handlePagingClass = (attrs) => {
   attrs.class.push('eui-paging')
-
   return attrs
-  
 }
 
 

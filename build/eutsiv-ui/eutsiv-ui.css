@@ -558,13 +558,13 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport *::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    background-color: #ebebeb; }
+    background-color: #eaeaea; }
   .eui-viewport::-webkit-scrollbar-thumb,
   .eui-viewport *::-webkit-scrollbar-thumb {
     background: #214478; }
   .eui-viewport::-webkit-scrollbar-thumb:hover,
   .eui-viewport *::-webkit-scrollbar-thumb:hover {
-    background: #647ca1; }
+    background: #3872c8; }
 
 .eui-viewport div.eui-badge-container {
   position: relative;
@@ -585,30 +585,30 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     font-size: 0.92em;
     line-height: 1.1;
     font-weight: bold;
-    color: #222222;
+    color: #333333;
     background: #dbdbdb;
     z-index: 2;
     -webkit-tap-highlight-color: transparent; }
     .eui-viewport div.eui-badge-container .eui-badge.eui-primary {
-      color: #ebebeb;
+      color: #eaeaea;
       background: #214478; }
     .eui-viewport div.eui-badge-container .eui-badge.eui-secondary {
-      color: #ebebeb;
+      color: #eaeaea;
       background: #5aa02c; }
     .eui-viewport div.eui-badge-container .eui-badge.eui-danger {
-      color: #ebebeb;
+      color: #eaeaea;
       background: #f21c0d; }
     .eui-viewport div.eui-badge-container .eui-badge.eui-warning {
-      color: #ebebeb;
+      color: #eaeaea;
       background: #ff9900; }
     .eui-viewport div.eui-badge-container .eui-badge.eui-caution {
-      color: #222222;
+      color: #333333;
       background: #ffe500; }
     .eui-viewport div.eui-badge-container .eui-badge.eui-notice {
-      color: #ebebeb;
+      color: #eaeaea;
       background: #0d8bf2; }
     .eui-viewport div.eui-badge-container .eui-badge.eui-safety {
-      color: #ebebeb;
+      color: #eaeaea;
       background: #4eb151; }
 
 .eui-viewport ul.eui-breadcrumb {
@@ -617,13 +617,13 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   line-height: 1.1;
   list-style: none;
   display: inline-table;
-  color: #173054; }
+  color: #19335a; }
   .eui-viewport ul.eui-breadcrumb > li {
     display: inline; }
     .eui-viewport ul.eui-breadcrumb > li > i {
       margin: 0 0.40em; }
     .eui-viewport ul.eui-breadcrumb > li > span.eui-active {
-      color: #222222;
+      color: #333333;
       cursor: default; }
 
 .eui-viewport a.eui-button, .eui-viewport button.eui-button, .eui-viewport input.eui-button {
@@ -639,8 +639,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 1em;
   font-weight: bold;
-  color: #222222;
-  background: #ebebeb;
+  color: #333333;
+  background: #eaeaea;
   z-index: 1;
   transition: 0.2s ease-out;
   user-select: none;
@@ -651,46 +651,46 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     color: #ffffff;
     background: #214478; }
     .eui-viewport a.eui-button.eui-primary:hover, .eui-viewport button.eui-button.eui-primary:hover, .eui-viewport input.eui-button.eui-primary:hover {
-      background: #173054; }
+      background: #19335a; }
   .eui-viewport a.eui-button.eui-secondary, .eui-viewport button.eui-button.eui-secondary, .eui-viewport input.eui-button.eui-secondary {
     color: #ffffff;
     background: #5aa02c; }
     .eui-viewport a.eui-button.eui-secondary:hover, .eui-viewport button.eui-button.eui-secondary:hover, .eui-viewport input.eui-button.eui-secondary:hover {
-      background: #3f701f; }
+      background: #447821; }
   .eui-viewport a.eui-button.eui-danger, .eui-viewport button.eui-button.eui-danger, .eui-viewport input.eui-button.eui-danger {
     color: #ffffff;
     background: #f21c0d; }
     .eui-viewport a.eui-button.eui-danger:hover, .eui-viewport button.eui-button.eui-danger:hover, .eui-viewport input.eui-button.eui-danger:hover {
-      background: #a91409; }
+      background: #b6150a; }
   .eui-viewport a.eui-button.eui-warning, .eui-viewport button.eui-button.eui-warning, .eui-viewport input.eui-button.eui-warning {
     color: #ffffff;
     background: #ff9900; }
     .eui-viewport a.eui-button.eui-warning:hover, .eui-viewport button.eui-button.eui-warning:hover, .eui-viewport input.eui-button.eui-warning:hover {
-      background: #cc7a00; }
+      background: #bf7300; }
   .eui-viewport a.eui-button.eui-caution, .eui-viewport button.eui-button.eui-caution, .eui-viewport input.eui-button.eui-caution {
-    color: #222222;
+    color: #333333;
     background: #ffe500; }
     .eui-viewport a.eui-button.eui-caution:hover, .eui-viewport button.eui-button.eui-caution:hover, .eui-viewport input.eui-button.eui-caution:hover {
-      background: #ccb700; }
+      background: #bfac00; }
   .eui-viewport a.eui-button.eui-notice, .eui-viewport button.eui-button.eui-notice, .eui-viewport input.eui-button.eui-notice {
     color: #ffffff;
     background: #0d8bf2; }
     .eui-viewport a.eui-button.eui-notice:hover, .eui-viewport button.eui-button.eui-notice:hover, .eui-viewport input.eui-button.eui-notice:hover {
-      background: #0961a9; }
+      background: #0a68b6; }
   .eui-viewport a.eui-button.eui-safety, .eui-viewport button.eui-button.eui-safety, .eui-viewport input.eui-button.eui-safety {
     color: #ffffff;
     background: #4eb151; }
     .eui-viewport a.eui-button.eui-safety:hover, .eui-viewport button.eui-button.eui-safety:hover, .eui-viewport input.eui-button.eui-safety:hover {
-      background: #377c39; }
+      background: #3b853d; }
   .eui-viewport a.eui-button.eui-reverse, .eui-viewport button.eui-button.eui-reverse, .eui-viewport input.eui-button.eui-reverse {
     color: #ffffff;
-    background: #222222; }
+    background: #333333; }
     .eui-viewport a.eui-button.eui-reverse:hover, .eui-viewport button.eui-button.eui-reverse:hover, .eui-viewport input.eui-button.eui-reverse:hover {
       background: #000000; }
   .eui-viewport a.eui-button:disabled, .eui-viewport a.eui-button[disabled], .eui-viewport button.eui-button:disabled, .eui-viewport button.eui-button[disabled], .eui-viewport input.eui-button:disabled, .eui-viewport input.eui-button[disabled] {
     pointer-events: none;
-    background: #fafafa;
-    color: #8f8f8f;
+    background: #f8f8f8;
+    color: #999999;
     cursor: default; }
   .eui-viewport a.eui-button.eui-flat, .eui-viewport button.eui-button.eui-flat, .eui-viewport input.eui-button.eui-flat {
     background: transparent;
@@ -717,7 +717,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     .eui-viewport a.eui-button.eui-flat:disabled, .eui-viewport a.eui-button.eui-flat[disabled], .eui-viewport button.eui-button.eui-flat:disabled, .eui-viewport button.eui-button.eui-flat[disabled], .eui-viewport input.eui-button.eui-flat:disabled, .eui-viewport input.eui-button.eui-flat[disabled] {
       pointer-events: none;
       background: transparent;
-      color: #8f8f8f;
+      color: #999999;
       cursor: default; }
   .eui-viewport a.eui-button.eui-block, .eui-viewport button.eui-button.eui-block, .eui-viewport input.eui-button.eui-block {
     width: 100%; }
@@ -760,8 +760,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     flex-direction: row;
     flex-grow: 1; }
     .eui-viewport .eui-calendar > .eui-calendar-grid > .eui-calendar-row > .eui-day {
-      background: #fafafa;
-      border: 1px solid #ebebeb;
+      background: #f8f8f8;
+      border: 1px solid #eaeaea;
       border-bottom: 0;
       border-right: 0; }
       .eui-viewport .eui-calendar > .eui-calendar-grid > .eui-calendar-row > .eui-day.eui-other-month {
@@ -806,7 +806,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
 
 .eui-viewport .row {
   width: 100%;
-  border-bottom: 1px solid #ebebeb; }
+  border-bottom: 1px solid #eaeaea; }
 
 .eui-viewport .row:nth-child(odd) {
   background-color: #f8f8f8; }
@@ -833,14 +833,14 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   padding: 12px 16px;
   font-size: 1em;
   line-height: 1.1;
-  color: #222222;
+  color: #333333;
   overflow: hidden;
   vertical-align: top;
   /* fix extra space generated by overflow: hidden */ }
 
 .eui-viewport nav.eui-paging span.eui-status {
   font-size: 0.84em;
-  color: #222222; }
+  color: #333333; }
 
 .eui-viewport form.eui-form, .eui-viewport div.eui-select {
   width: 100%;
@@ -875,13 +875,13 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     font-size: 1.08em;
     font-weight: bold;
     line-height: 1.76em;
-    color: #222222;
-    border-bottom: 1px solid #dbdbdb; }
+    color: #333333;
+    border-bottom: 1px solid #e0f0fd; }
   .eui-viewport form.eui-form label, .eui-viewport div.eui-select label {
     display: flex;
     flex-wrap: wrap;
     line-height: 1.75em;
-    color: #222222;
+    color: #333333;
     font-size: 1em;
     font-weight: bold;
     -webkit-tap-highlight-color: transparent; }
@@ -899,8 +899,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     line-height: 1.1;
     font-size: 1em;
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    background: #ebebeb;
-    border: 1px solid #dbdbdb;
+    background: #e0f0fd;
+    border: 1px solid #e0f0fd;
     box-shadow: none;
     outline: none; }
     .eui-viewport form.eui-form input::placeholder, .eui-viewport form.eui-form select::placeholder, .eui-viewport form.eui-form textarea::placeholder, .eui-viewport form.eui-form .eui-input::placeholder, .eui-viewport div.eui-select input::placeholder, .eui-viewport div.eui-select select::placeholder, .eui-viewport div.eui-select textarea::placeholder, .eui-viewport div.eui-select .eui-input::placeholder {
@@ -909,7 +909,7 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport form.eui-form textarea, .eui-viewport div.eui-select textarea {
     min-height: 6em; }
   .eui-viewport form.eui-form input:focus, .eui-viewport form.eui-form select:focus, .eui-viewport form.eui-form textarea:focus, .eui-viewport form.eui-form .eui-input:focus, .eui-viewport div.eui-select input:focus, .eui-viewport div.eui-select select:focus, .eui-viewport div.eui-select textarea:focus, .eui-viewport div.eui-select .eui-input:focus {
-    background: #e7f3fe;
+    background: #e0f0fd;
     border: 1px solid #0d8bf2; }
   .eui-viewport form.eui-form input[disabled],
   .eui-viewport form.eui-form input[readonly],
@@ -922,9 +922,9 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
   .eui-viewport div.eui-select select[readonly],
   .eui-viewport div.eui-select textarea[disabled],
   .eui-viewport div.eui-select textarea[readonly] {
-    background: #fafafa;
-    border: 1px solid #ebebeb;
-    color: #222222; }
+    background: #f8f8f8;
+    border: 1px solid #eaeaea;
+    color: #333333; }
   .eui-viewport form.eui-form input[type="checkbox"],
   .eui-viewport form.eui-form input[type="radio"], .eui-viewport div.eui-select input[type="checkbox"],
   .eui-viewport div.eui-select input[type="radio"] {
@@ -939,8 +939,8 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
       content: "";
       display: inline-block;
       vertical-align: middle;
-      background: #ebebeb;
-      border: 1px solid #dbdbdb;
+      background: #e0f0fd;
+      border: 1px solid #e0f0fd;
       transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
       z-index: 1; }
     .eui-viewport form.eui-form input[type="checkbox"]:checked + span.eui-fake:before,
@@ -951,13 +951,13 @@ Example: html, body { box-sizing: border-box; height: 100%; margin: 0; }
     .eui-viewport form.eui-form input[type="checkbox"]:disabled:not(:checked) + span.eui-fake:before,
     .eui-viewport form.eui-form input[type="radio"]:disabled:not(:checked) + span.eui-fake:before, .eui-viewport div.eui-select input[type="checkbox"]:disabled:not(:checked) + span.eui-fake:before,
     .eui-viewport div.eui-select input[type="radio"]:disabled:not(:checked) + span.eui-fake:before {
-      background: #fafafa;
-      border: 1px solid #ebebeb; }
+      background: #f8f8f8;
+      border: 1px solid #eaeaea; }
     .eui-viewport form.eui-form input[type="checkbox"]:disabled:checked + span.eui-fake:before,
     .eui-viewport form.eui-form input[type="radio"]:disabled:checked + span.eui-fake:before, .eui-viewport div.eui-select input[type="checkbox"]:disabled:checked + span.eui-fake:before,
     .eui-viewport div.eui-select input[type="radio"]:disabled:checked + span.eui-fake:before {
-      background: #fafafa;
-      border-color: #a6b4c9;
+      background: #f8f8f8;
+      border-color: #89acdf;
       border-width: 5px; }
   .eui-viewport form.eui-form input[type=radio] + span.eui-fake:before, .eui-viewport div.eui-select input[type=radio] + span.eui-fake:before {
     border-radius: 50%; }
@@ -968,17 +968,17 @@ div.eui-select {
   z-index: 2; }
   div.eui-select .eui-input.eui-open {
     border: 1px solid #0d8bf2;
-    border-bottom: 1px solid #fafafa; }
+    border-bottom: 1px solid #f8f8f8; }
   div.eui-select div.eui-select-container {
     display: none; }
     div.eui-select div.eui-select-container.eui-open {
       display: block; }
     div.eui-select div.eui-select-container div.eui-select-content {
-      position: absolute;
-      background: #ebebeb;
+      background: #eaeaea;
       border: 1px solid #0d8bf2;
       border-top: 0; }
       div.eui-select div.eui-select-container div.eui-select-content input, div.eui-select div.eui-select-container div.eui-select-content input:focus {
+        width: 99%;
         border: none; }
       div.eui-select div.eui-select-container div.eui-select-content > ul {
         width: 100%;
@@ -999,7 +999,7 @@ div.eui-select {
             font-size: 1em;
             outline: none; }
             div.eui-select div.eui-select-container div.eui-select-content > ul li a:hover {
-              color: #ebebeb;
+              color: #eaeaea;
               background: #0d8bf2;
               cursor: pointer; }
 
@@ -1026,7 +1026,7 @@ div.eui-select {
 
 .eui-viewport i.eui-icon:disabled, .eui-viewport i.eui-icon[disabled] {
   opacity: 0.4;
-  color: #8f8f8f;
+  color: #999999;
   cursor: default; }
 
 .eui-viewport a.eui-link {
@@ -1054,12 +1054,12 @@ div.eui-select {
   .eui-viewport a.eui-link.eui-safety {
     color: #4eb151; }
   .eui-viewport a.eui-link.eui-black {
-    color: #222222; }
+    color: #333333; }
   .eui-viewport a.eui-link.eui-white {
-    color: #ebebeb; }
+    color: #eaeaea; }
   .eui-viewport a.eui-link:disabled, .eui-viewport a.eui-link[disabled] {
     pointer-events: none;
-    color: #8f8f8f;
+    color: #999999;
     cursor: default;
     text-decoration: none; }
 
@@ -1077,18 +1077,18 @@ ol.eui, ul.eui {
   ol.eui.eui-relaxed li, ul.eui.eui-relaxed li {
     padding: 1em; }
   ol.eui.eui-divided, ul.eui.eui-divided {
-    border-top: 1px solid #ebebeb; }
+    border-top: 1px solid #eaeaea; }
     ol.eui.eui-divided, ol.eui.eui-divided ol, ol.eui.eui-divided ul, ul.eui.eui-divided, ul.eui.eui-divided ol, ul.eui.eui-divided ul {
       list-style: none; }
     ol.eui.eui-divided li, ul.eui.eui-divided li {
-      border-bottom: 1px solid #ebebeb; }
+      border-bottom: 1px solid #eaeaea; }
   ol.eui.eui-hover li:hover, ul.eui.eui-hover li:hover {
-    background: #fafafa; }
+    background: #f8f8f8; }
   ol.eui.eui-darker, ul.eui.eui-darker {
-    border-top: 1px solid #ebebeb; }
+    border-top: 1px solid #eaeaea; }
     ol.eui.eui-darker li, ul.eui.eui-darker li {
-      background: #ebebeb;
-      border-bottom: 1px solid #fafafa; }
+      background: #eaeaea;
+      border-bottom: 1px solid #f8f8f8; }
 
 .eui-viewport .eui-loading div.eui-ball {
   width: 0.72em;
@@ -1127,26 +1127,26 @@ ol.eui, ul.eui {
   padding: 8px 16px;
   font-size: 1em;
   line-height: 1.1;
-  color: #222222;
-  background-color: #ebebeb; }
+  color: #333333;
+  background-color: #f8f8f8; }
   .eui-viewport .eui-notification.eui-reverse {
     color: #ffffff;
-    background: #000000; }
+    background: #222222; }
   .eui-viewport .eui-notification.eui-danger {
-    background: #faa49e; }
+    background: #fde1e0; }
   .eui-viewport .eui-notification.eui-warning {
-    background: #ffd699; }
+    background: #fff2de; }
   .eui-viewport .eui-notification.eui-caution {
-    background: #fff599; }
+    background: #fffcde; }
   .eui-viewport .eui-notification.eui-notice {
-    background: #9ed1fa; }
+    background: #e0f0fd; }
   .eui-viewport .eui-notification.eui-safety {
-    background: #b8e0b9; }
+    background: #e8f5e8; }
 
 .eui-viewport div.eui-progress {
   width: 100%;
   height: 0.56em;
-  background: #a6b4c9; }
+  background: #89acdf; }
   .eui-viewport div.eui-progress div.eui-bar {
     width: 0;
     height: 0.56em;
@@ -1158,39 +1158,39 @@ ol.eui, ul.eui {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0px;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid #eaeaea;
   background: #ffffff;
   white-space: nowrap; }
   .eui-viewport table.eui-table.eui-striped > tbody > tr:nth-child(odd) {
-    background-color: #fafafa; }
+    background-color: #f8f8f8; }
   .eui-viewport table.eui-table > thead > tr > th {
     padding: 16px;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #eaeaea;
     font-size: 0.92em;
     font-weight: bold;
     text-align: left;
     line-height: 1.1;
-    color: #888888; }
+    color: #b0b0b0; }
   .eui-viewport table.eui-table > tbody > tr > td {
     padding: 8px 16px;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #eaeaea;
     font-size: 1em;
     line-height: 1.1;
-    color: #222222; }
+    color: #333333; }
   .eui-viewport table.eui-table > tbody > tr:hover {
-    background-color: #e9ecf2 !important; }
+    background-color: #dbe5f5 !important; }
   .eui-viewport table.eui-table > tbody > tr.eui-gray {
-    background-color: #fafafa; }
+    background-color: #f8f8f8; }
   .eui-viewport table.eui-table > tbody > tr.eui-danger {
-    background-color: #fee8e7; }
+    background-color: #fde1e0; }
   .eui-viewport table.eui-table > tbody > tr.eui-warning {
-    background-color: #fff5e6; }
+    background-color: #fff2de; }
   .eui-viewport table.eui-table > tbody > tr.eui-caution {
-    background-color: #fffce6; }
+    background-color: #fffcde; }
   .eui-viewport table.eui-table > tbody > tr.eui-notice {
-    background-color: #e7f3fe; }
+    background-color: #e0f0fd; }
   .eui-viewport table.eui-table > tbody > tr.eui-safety {
-    background-color: #edf7ee; }
+    background-color: #e8f5e8; }
   .eui-viewport table.eui-table > tbody > tr.eui-text-bold {
     font-weight: bold; }
 
@@ -1209,10 +1209,10 @@ ol.eui, ul.eui {
   .eui-viewport ul.eui-tree a {
     display: block;
     padding: 12px 16px;
-    color: #222222;
+    color: #333333;
     text-decoration: none; }
     .eui-viewport ul.eui-tree a:hover {
-      background: #e9ecf2; }
+      background: #dbe5f5; }
   .eui-viewport ul.eui-tree ul {
     margin: 0;
     padding: 0;
