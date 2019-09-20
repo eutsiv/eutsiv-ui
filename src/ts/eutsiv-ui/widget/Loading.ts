@@ -1,14 +1,14 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const Loading = () => {
 
   return {
     view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses),
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleLoadingClass)(vn.attrs),
         [...Array(6).keys()].map(i => { return m('div', { class: `eui-ball eui-ball-${i + 1}` }) })
       )
     }
@@ -16,13 +16,9 @@ const Loading = () => {
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleLoadingClass = (attrs) => {
   attrs.class.push('eui-loading')
-
-  return attrs
-  
+  return attrs 
 }
 
 

@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const adjustColumnWidth = (vn) => {
@@ -254,13 +254,9 @@ const Grid = () => {
   }
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleGridClass = (attrs) => {
   attrs.class.push('eui-data-grid')
-
-  return attrs
-  
+  return attrs 
 }
 
 

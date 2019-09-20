@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const buildTreeNodes = (data, indentation, treeState) => {
@@ -99,20 +99,16 @@ const Tree = () => {
 
       treeState.open = attrs.eui.open
 
-      return m('ul', applyAttrsModifiers(attrs, applyClasses), buildTreeNodes(attrs.eui.items, 0, treeState))
+      return m('ul', pipeAttrsHandlers(handleComponentClass, handleTreeClass)(attrs), buildTreeNodes(attrs.eui.items, 0, treeState))
 
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleTreeClass = (attrs) => {
   attrs.class.push('eui-tree')
-
-  return attrs
-  
+  return attrs 
 }
 
 

@@ -1,37 +1,30 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent, applyConfigContext} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass, handleComponentContext} from 'eutsiv-ui/Component'
 
 
 const Badge = () => {
 
   return {
     view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClassesContainer), 
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleBadgeContainerClass)(vn.attrs), 
         vn.children,
-        m('span', applyAttrsModifiers(vn.attrs, applyClassesBadge, applyConfigContext), vn.attrs.eui.value)
+        m('span', pipeAttrsHandlers(handleBadgeClass, handleComponentContext)(vn.attrs), vn.attrs.eui.value)
       )
     }
   }
 
 }
 
-const applyClassesContainer = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
-  attrs.class.push('eui-badge-container')
-
-  return attrs
-  
+const handleBadgeClass = (attrs) => {
+  attrs.class.push('eui-badge')
+  return attrs 
 }
 
-const applyClassesBadge = (attrs) => {
-
-  attrs.class.push('eui-badge')
-
-  return attrs
-  
+const handleBadgeContainerClass = (attrs) => {
+  attrs.class.push('eui-badge-container')
+  return attrs 
 }
 
 

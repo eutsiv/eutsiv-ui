@@ -1,26 +1,22 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const Grid = () => {
 
   return {
     view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses), vn.children)
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleGridClass)(vn.attrs), vn.children)
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleGridClass = (attrs) => {
   attrs.class.push('eui-layout-grid')
-
-  return attrs
-  
+  return attrs 
 }
 
 

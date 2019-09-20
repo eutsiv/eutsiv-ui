@@ -1,26 +1,22 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent, applyConfig} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass, handleComponentContext, handleComponentSize} from 'eutsiv-ui/Component'
 
 
 const Link = () => {
 
   return {
     view: (vn) => {
-      return m('a', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
+      return m('a', pipeAttrsHandlers(handleComponentClass, handleLinkClass, handleComponentContext, handleComponentSize)(vn.attrs), vn.children)
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleLinkClass = (attrs) => {
   attrs.class.push('eui-link')
-
-  return attrs
-  
+  return attrs 
 }
 
 

@@ -1,14 +1,16 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
+
+import {handleFieldInline} from 'eutsiv-ui/widget/form/Field'
 
 
 const Label = () => {
 
   return {
     view: (vn) => {
-      return m('label', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), 
+      return m('label', pipeAttrsHandlers(handleComponentClass, handleFieldInline)(vn.attrs), 
         vn.children.map(ch => {
           if(typeof ch == 'string')
             return m('span', { class: 'eui-text' }, ch)
@@ -19,16 +21,6 @@ const Label = () => {
     }
   }
 
-}
-
-const applyConfig = (attrs) => {
-
-  let c = attrs.eui
-
-  if(c.inline) attrs.class.push('eui-inline')
-
-  return attrs
-  
 }
 
 

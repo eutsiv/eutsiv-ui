@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 import {Checkbox} from 'eutsiv-ui/widget/form/Checkbox'
 import {Field} from 'eutsiv-ui/widget/form/Field'
@@ -13,19 +13,15 @@ const Form = () => {
 
   return {
     view: (vn) => {
-      return m('form', applyAttrsModifiers(vn.attrs, applyClasses), vn.children)
+      return m('form',  pipeAttrsHandlers(handleComponentClass, handleFormClass)(vn.attrs), vn.children)
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleFormClass = (attrs) => {
   attrs.class.push('eui-form')
-
-  return attrs
-  
+  return attrs 
 }
 
 

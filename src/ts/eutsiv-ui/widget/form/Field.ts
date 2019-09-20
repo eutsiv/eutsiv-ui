@@ -16,4 +16,11 @@ const Field = () => {
 
 }
 
-export { Field }
+const handleFieldInline = (attrs) => {
+  let c = attrs.eui
+  if(c.inline) attrs.class.push('eui-inline')
+  return attrs 
+}
+
+
+export { Field, handleFieldInline }

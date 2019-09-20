@@ -1,25 +1,22 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
+
 
 const Viewport = () => {
 
   return {
     view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses), vn.children)
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleViewportClass)(vn.attrs), vn.children)
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleViewportClass = (attrs) => {
   attrs.class.push('eui-viewport')
-
-  return attrs
-  
+  return attrs 
 }
 
 

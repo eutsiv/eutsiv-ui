@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent, applyConfig} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass, handleComponentContext, handleComponentSize} from 'eutsiv-ui/Component'
 import {Link} from 'Link'
 import {Icon} from 'Icon'
 
@@ -11,7 +11,7 @@ const Breadcrumb = () => {
   return {
     view: (vn) => {
 
-      return m('ul', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), [
+      return m('ul', pipeAttrsHandlers(handleComponentClass, handleBreadcrumbClass, handleComponentContext, handleComponentSize)(vn.attrs), [
         vn.attrs.eui.items.map((v, i, a) => {
           let text = typeof v.text == 'function' ? v.text() : v.text
           let it = (i == (a.length - 1)) ? m('span', { class: 'eui-active' }, text) : [
@@ -27,13 +27,9 @@ const Breadcrumb = () => {
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleBreadcrumbClass = (attrs) => {
   attrs.class.push('eui-breadcrumb')
-
-  return attrs
-  
+  return attrs 
 }
 
 

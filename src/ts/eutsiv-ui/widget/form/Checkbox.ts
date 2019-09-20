@@ -1,7 +1,9 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
+
+import {handleFieldInline} from 'eutsiv-ui/widget/form/Field'
 
 
 const Checkbox = () => {
@@ -9,7 +11,7 @@ const Checkbox = () => {
   return {
     view: (vn) => {
 
-      let attrs = applyAttrsModifiers(vn.attrs, applyClasses, applyConfig)
+      let attrs = pipeAttrsHandlers(handleComponentClass, handleCheckboxClass, handleFieldInline)(vn.attrs)
       let onchange = attrs.onchange
       delete attrs.onchange
 
@@ -23,23 +25,9 @@ const Checkbox = () => {
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleCheckboxClass = (attrs) => {
   attrs.class.push('eui-checkbox')
-
-  return attrs
-  
-}
-
-const applyConfig = (attrs) => {
-
-  let c = attrs.eui
-
-  if(c.inline) attrs.class.push('eui-inline')
-
-  return attrs
-  
+  return attrs 
 }
 
 

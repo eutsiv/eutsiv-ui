@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent, applyConfig} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const Progress = () => {
@@ -9,7 +9,7 @@ const Progress = () => {
   return {
     view: (vn) => {
 
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig),
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleProgressClass)(vn.attrs),
         m('div', { class: 'eui-bar', style: `width:${vn.attrs.eui.percent}%` })
       )
 
@@ -18,13 +18,9 @@ const Progress = () => {
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleProgressClass = (attrs) => {
   attrs.class.push('eui-progress')
-
-  return attrs
-  
+  return attrs 
 }
 
 

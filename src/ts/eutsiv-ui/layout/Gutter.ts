@@ -1,40 +1,35 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers, Sizes} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent, applyConfigFit} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers, Sizes} from 'eutsiv-ui'
+import {handleComponentClass, handleComponentFit} from 'eutsiv-ui/Component'
 
 
 const Gutter = () => {
 
   return {
     view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleGutterClass, handleGutterFit, handleGutterSize)(vn.attrs), vn.children)
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleGutterClass = (attrs) => {
   attrs.class.push('eui-gutter')
-
-  return attrs
-  
+  return attrs 
 }
 
-const applyConfig = (attrs) => {
-
+const handleGutterFit = (attrs) => {
+  // if not set to false, true is the default
   (typeof attrs.eui.fit != 'boolean') && (attrs.eui.fit = true)
-
-  // fit
-  attrs = applyConfigFit(attrs)
-
-  // size
-  if(attrs.eui.size) attrs.style.padding = Sizes.unitGrid[attrs.eui.size]
-
+  attrs = handleComponentFit(attrs)
   return attrs
-  
+}
+
+const handleGutterSize = (attrs) => {
+  let c = attrs.eui
+  if(c.size) attrs.style.padding = Sizes.unitGrid[c.size]
+  return attrs
 }
 
 

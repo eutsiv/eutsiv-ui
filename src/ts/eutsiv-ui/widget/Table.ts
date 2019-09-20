@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const Table = () => {
@@ -11,7 +11,7 @@ const Table = () => {
 
       let params = vn.attrs.eui
 
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses), 
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleTableClass)(vn.attrs), 
         m('table', { class: 'eui-table eui-condensed eui-striped' }, [
           m('thead', [
             m('tr', params.columns.map((f) => {
@@ -37,13 +37,9 @@ const Table = () => {
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleTableClass = (attrs) => {
   attrs.class.push('eui-table-container')
-
-  return attrs
-  
+  return attrs 
 }
 
 

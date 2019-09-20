@@ -87,14 +87,6 @@ System.register("Color", ["mithril", "eutsiv-ui/layout/Grid"], function (exports
                     "dark-2": "790e07"
                 },
                 Warning: {
-                    "light-3": "fff5e6",
-                    "light-2": "ffd699",
-                    "light-1": "ffb84d",
-                    "base": "ff9900",
-                    "dark-1": "cc7a00",
-                    "dark-2": "995c00"
-                },
-                Warning2: {
                     "light-3": "fff2de",
                     "light-2": "ffd494",
                     "light-1": "ffb74a",
@@ -103,14 +95,6 @@ System.register("Color", ["mithril", "eutsiv-ui/layout/Grid"], function (exports
                     "dark-2": "804d00"
                 },
                 Caution: {
-                    "light-3": "fffce6",
-                    "light-2": "fff599",
-                    "light-1": "ffed4d",
-                    "base": "ffe500",
-                    "dark-1": "ccb700",
-                    "dark-2": "998900"
-                },
-                Caution2: {
                     "light-3": "fffcde",
                     "light-2": "fff494",
                     "light-1": "ffed4a",

@@ -1,29 +1,25 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const Column = () => {
 
   return {
     view: (vn) => {
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), vn.children)
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleColumnClass, handleColumnSizeOffset)(vn.attrs), vn.children)
     }
   }
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleColumnClass = (attrs) => {
   attrs.class.push('eui-column')
-
-  return attrs
-  
+  return attrs 
 }
 
-const applyConfig = (attrs) => {
+const handleColumnSizeOffset = (attrs) => {
 
   let params = attrs.eui
 
@@ -42,4 +38,4 @@ const applyConfig = (attrs) => {
 }
 
 
-export { applyClasses, applyConfig, Column }
+export { Column }

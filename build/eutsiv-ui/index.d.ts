@@ -1,6 +1,5 @@
 /// <reference types="mithril" />
 declare module "eutsiv-ui" {
-    const applyAttrsModifiers: (a: any, ...fn: any[]) => any;
     const pipeAttrsHandlers: (...fn: any[]) => (a: any) => any;
     const Sizes: {
         XS: string;
@@ -26,22 +25,18 @@ declare module "eutsiv-ui" {
             HU: string;
         };
     };
-    export { applyAttrsModifiers, pipeAttrsHandlers, Sizes };
+    export { pipeAttrsHandlers, Sizes };
 }
 declare module "eutsiv-ui/Component" {
     import m from 'mithril';
     const Component: () => {
         view: (vn: any) => m.Vnode<any, any>;
     };
-    const applyClasses: (attrs: any) => any;
-    const applyConfig: (attrs: any) => any;
-    const applyConfigContext: (attrs: any) => any;
-    const applyConfigFit: (attrs: any) => any;
     const handleComponentClass: (attrs: any) => any;
     const handleComponentContext: (attrs: any) => any;
     const handleComponentFit: (attrs: any) => any;
     const handleComponentSize: (attrs: any) => any;
-    export { Component, applyClasses, applyConfig, applyConfigContext, applyConfigFit, handleComponentClass, handleComponentContext, handleComponentFit, handleComponentSize };
+    export { Component, handleComponentClass, handleComponentContext, handleComponentFit, handleComponentSize };
 }
 declare module "eutsiv-ui/Viewport" {
     import m from 'mithril';
@@ -79,9 +74,7 @@ declare module "eutsiv-ui/layout/grid/Column" {
     const Column: () => {
         view: (vn: any) => m.Vnode<any, any>;
     };
-    const applyClasses: (attrs: any) => any;
-    const applyConfig: (attrs: any) => any;
-    export { applyClasses, applyConfig, Column };
+    export { Column };
 }
 declare module "eutsiv-ui/layout/Grid" {
     import { Grid } from "eutsiv-ui/layout/grid/Grid";
@@ -131,19 +124,20 @@ declare module "eutsiv-ui/widget/Button" {
     };
     export { Button };
 }
+declare module "eutsiv-ui/widget/form/Field" {
+    import m from 'mithril';
+    const Field: () => {
+        view: (vn: any) => m.Vnode<{}, {}>;
+    };
+    const handleFieldInline: (attrs: any) => any;
+    export { Field, handleFieldInline };
+}
 declare module "eutsiv-ui/widget/form/Checkbox" {
     import m from 'mithril';
     const Checkbox: () => {
         view: (vn: any) => m.Vnode<any, any>;
     };
     export { Checkbox };
-}
-declare module "eutsiv-ui/widget/form/Field" {
-    import m from 'mithril';
-    const Field: () => {
-        view: (vn: any) => m.Vnode<{}, {}>;
-    };
-    export { Field };
 }
 declare module "eutsiv-ui/widget/form/Label" {
     import m from 'mithril';

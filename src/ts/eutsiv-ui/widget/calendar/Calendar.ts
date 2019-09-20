@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import {applyAttrsModifiers} from 'eutsiv-ui'
-import {applyClasses as applyClassesComponent, applyConfig} from 'eutsiv-ui/Component'
+import {pipeAttrsHandlers} from 'eutsiv-ui'
+import {handleComponentClass} from 'eutsiv-ui/Component'
 
 
 const numberOfWeeks = 6
@@ -64,7 +64,7 @@ const Calendar = ({ attrs }) => {
 
     view: (vn) => {
 
-      return m('div', applyAttrsModifiers(vn.attrs, applyClasses, applyConfig), 
+      return m('div', pipeAttrsHandlers(handleComponentClass, handleCalendarClass)(vn.attrs), 
         m('h2', monthsLabels[vn.attrs.month] + ' ' + vn.attrs.year),
         m(CalendarHeader),
         m('div', { class: 'eui-calendar-grid' },
@@ -91,13 +91,9 @@ const Calendar = ({ attrs }) => {
 
 }
 
-const applyClasses = (attrs) => {
-
-  attrs = applyClassesComponent(attrs)
+const handleCalendarClass = (attrs) => {
   attrs.class.push('eui-calendar')
-
-  return attrs
-  
+  return attrs 
 }
 
 
